@@ -1,3 +1,5 @@
+use ::std::os::raw::c_uint;
+
 use super::{ai_color::AtRGB, ai_string::AtString};
 
 #[doc = " \\defgroup ai_closure AtClosure API"]
@@ -30,7 +32,7 @@ pub const AtClosureType_AI_CLOSURE_VOLUME_MATTE: AtClosureType = 11;
 pub const AtClosureType_AI_CLOSURE_VOLUME_ATMOSPHERE: AtClosureType = 12;
 pub const AtClosureType_AI_CLOSURE_DIELECTRIC: AtClosureType = 13;
 #[doc = " Shader closure types"]
-pub type AtClosureType = ::std::os::raw::c_uint;
+pub type AtClosureType = c_uint;
 extern "C" {
     pub fn AiClosureType(closure: *mut AtClosureBase) -> AtClosureType;
 }

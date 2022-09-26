@@ -1,14 +1,16 @@
+use ::std::os::raw::{c_char, c_ulong};
+
 extern "C" {
     #[doc = " @cond internal"]
     pub fn AiCreateAtStringData_private(
-        arg1: *const ::std::os::raw::c_char,
-    ) -> *const ::std::os::raw::c_char;
+        arg1: *const c_char,
+    ) -> *const c_char;
 }
 extern "C" {
-    pub fn AiAtStringLength(arg1: *const ::std::os::raw::c_char) -> ::std::os::raw::c_ulong;
+    pub fn AiAtStringLength(arg1: *const c_char) -> c_ulong;
 }
 extern "C" {
-    pub fn AiAtStringHash(arg1: *const ::std::os::raw::c_char) -> ::std::os::raw::c_ulong;
+    pub fn AiAtStringHash(arg1: *const c_char) -> c_ulong;
 }
 #[doc = " Arnold String allows for fast string comparisons.  Since it is expensive to"]
 #[doc = " create, try to create an AtString once in a preprocess, for instance in"]
@@ -31,7 +33,7 @@ extern "C" {
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct AtString {
-    pub data: *const ::std::os::raw::c_char,
+    pub data: *const c_char,
 }
 #[doc = " Functor class to use as a hasher when you want to make a hash map or"]
 #[doc = " hash set using AtString as a key."]

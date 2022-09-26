@@ -1,3 +1,5 @@
+use ::std::{os::raw::{c_uint, c_int, c_void, c_char}, option::Option};
+
 use super::{
     ai_array::AtArray,
     ai_render::{AtRenderErrorCode, AtRenderSession, AtRenderStatus},
@@ -9,7 +11,7 @@ pub const AtDeviceType_AI_DEVICE_TYPE_CPU: AtDeviceType = 0;
 #[doc = "< Render using the GPU"]
 pub const AtDeviceType_AI_DEVICE_TYPE_GPU: AtDeviceType = 1;
 #[doc = " Device types"]
-pub type AtDeviceType = ::std::os::raw::c_uint;
+pub type AtDeviceType = c_uint;
 #[doc = "< Total memory on device"]
 pub const AtDeviceMemory_AI_DEVICE_MEMORY_TOTAL: AtDeviceMemory = 0;
 #[doc = "< Total free memory available to device"]
@@ -17,7 +19,7 @@ pub const AtDeviceMemory_AI_DEVICE_MEMORY_FREE: AtDeviceMemory = 1;
 #[doc = "< Total used memory"]
 pub const AtDeviceMemory_AI_DEVICE_MEMORY_USED: AtDeviceMemory = 2;
 #[doc = " Queriable memory attributes"]
-pub type AtDeviceMemory = ::std::os::raw::c_uint;
+pub type AtDeviceMemory = c_uint;
 extern "C" {
     #[doc = " Returns if a given device is supported on the current system"]
     pub fn AiDeviceTypeIsSupported(device_type: AtDeviceType, reason: *mut AtString) -> bool;
@@ -28,11 +30,11 @@ extern "C" {
         render_session: *mut AtRenderSession,
         device_type: AtDeviceType,
         device_ids: *const AtArray,
-    ) -> ::std::os::raw::c_int;
+    ) -> c_int;
 }
 extern "C" {
     #[doc = " Automatically select render device based on options"]
-    pub fn AiDeviceAutoSelect(render_session: *mut AtRenderSession) -> ::std::os::raw::c_int;
+    pub fn AiDeviceAutoSelect(render_session: *mut AtRenderSession) -> c_int;
 }
 extern "C" {
     #[doc = " Returns the currently selected render device type"]
@@ -47,7 +49,7 @@ extern "C" {
 }
 extern "C" {
     #[doc = " Returns the number of available devices of a given type"]
-    pub fn AiDeviceGetCount(device_type: AtDeviceType) -> ::std::os::raw::c_uint;
+    pub fn AiDeviceGetCount(device_type: AtDeviceType) -> c_uint;
 }
 extern "C" {
     #[doc = " Returns the ids of available devices of a given type"]
@@ -57,16 +59,16 @@ extern "C" {
     #[doc = " Returns the name of a device"]
     pub fn AiDeviceGetName(
         device_type: AtDeviceType,
-        device_id: ::std::os::raw::c_uint,
+        device_id: c_uint,
     ) -> AtString;
 }
 extern "C" {
     #[doc = " Returns memory information of a device"]
     pub fn AiDeviceGetMemoryMB(
         device_type: AtDeviceType,
-        device_id: ::std::os::raw::c_uint,
+        device_id: c_uint,
         memory: AtDeviceMemory,
-    ) -> ::std::os::raw::c_uint;
+    ) -> c_uint;
 }
 #[doc = " GPU cache population report callback."]
 #[doc = "  This callback provides:"]
@@ -74,24 +76,24 @@ extern "C" {
 #[doc = "     - status:        status code as returned from AiGPUCachePopulateStatus (AI_RENDER_STATUS_FINISHED will occur only once, on completion)"]
 #[doc = "     - fraction_done: the progress as a fraction in [0.0, 1.0]"]
 #[doc = "     - msg:           a report string"]
-pub type AtGPUCachePopulateCallback = ::std::option::Option<
+pub type AtGPUCachePopulateCallback = Option<
     unsafe extern "C" fn(
-        user_ptr: *mut ::std::os::raw::c_void,
+        user_ptr: *mut c_void,
         status: AtRenderStatus,
         fraction_done: f32,
-        msg: *const ::std::os::raw::c_char,
+        msg: *const c_char,
     ),
 >;
 pub const AtGPUCachePopulateMode_AI_GPU_CACHE_POPULATE_BLOCKING: AtGPUCachePopulateMode = 0;
 pub const AtGPUCachePopulateMode_AI_GPU_CACHE_POPULATE_NON_BLOCKING: AtGPUCachePopulateMode = 1;
-pub type AtGPUCachePopulateMode = ::std::os::raw::c_uint;
+pub type AtGPUCachePopulateMode = c_uint;
 extern "C" {
     #[doc = " Pre-populates the GPU program cache"]
     pub fn AiGPUCachePopulate(
         mode: AtGPUCachePopulateMode,
-        num_proc: ::std::os::raw::c_uint,
+        num_proc: c_uint,
         report_callback: AtGPUCachePopulateCallback,
-        user_ptr: *mut ::std::os::raw::c_void,
+        user_ptr: *mut c_void,
     ) -> AtRenderErrorCode;
 }
 extern "C" {
@@ -108,7 +110,7 @@ extern "C" {
 }
 extern "C" {
     #[doc = " Set the directory where the OptiX cache will be stored"]
-    pub fn AiGPUCacheSetDirectory(dir_path: *const ::std::os::raw::c_char);
+    pub fn AiGPUCacheSetDirectory(dir_path: *const c_char);
 }
 extern "C" {
     #[doc = " Get the directory specified via AiGPUCacheSetDirectory (or if not specified, the default)"]

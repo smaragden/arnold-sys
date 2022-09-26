@@ -1,3 +1,5 @@
+use ::std::os::raw::c_int;
+
 use super::ai_vector::{AtVector, AtVector2};
 
 extern "C" {
@@ -16,26 +18,26 @@ extern "C" {
     #[doc = " \\{"]
     pub fn AiPeriodicPerlin2(
         p: AtVector2,
-        periodx: ::std::os::raw::c_int,
-        periody: ::std::os::raw::c_int,
+        periodx: c_int,
+        periody: c_int,
     ) -> f32;
 }
 extern "C" {
     pub fn AiPeriodicPerlin3(
         p: AtVector,
-        periodx: ::std::os::raw::c_int,
-        periody: ::std::os::raw::c_int,
-        periodz: ::std::os::raw::c_int,
+        periodx: c_int,
+        periody: c_int,
+        periodz: c_int,
     ) -> f32;
 }
 extern "C" {
     pub fn AiPeriodicPerlin4(
         p: AtVector,
         time: f32,
-        periodx: ::std::os::raw::c_int,
-        periody: ::std::os::raw::c_int,
-        periodz: ::std::os::raw::c_int,
-        periodt: ::std::os::raw::c_int,
+        periodx: c_int,
+        periody: c_int,
+        periodz: c_int,
+        periodt: c_int,
     ) -> f32;
 }
 extern "C" {
@@ -43,7 +45,7 @@ extern "C" {
     #[doc = " \\{"]
     pub fn AiNoise2(
         p: AtVector2,
-        octaves: ::std::os::raw::c_int,
+        octaves: c_int,
         distortion: f32,
         lacunarity: f32,
     ) -> f32;
@@ -51,7 +53,7 @@ extern "C" {
 extern "C" {
     pub fn AiNoise3(
         p: AtVector,
-        octaves: ::std::os::raw::c_int,
+        octaves: c_int,
         distortion: f32,
         lacunarity: f32,
     ) -> f32;
@@ -60,7 +62,7 @@ extern "C" {
     pub fn AiNoise4(
         p: AtVector,
         time: f32,
-        octaves: ::std::os::raw::c_int,
+        octaves: c_int,
         distortion: f32,
         lacunarity: f32,
     ) -> f32;
@@ -68,7 +70,7 @@ extern "C" {
 extern "C" {
     pub fn AiVNoise2(
         p: AtVector2,
-        octaves: ::std::os::raw::c_int,
+        octaves: c_int,
         distortion: f32,
         lacunarity: f32,
     ) -> AtVector2;
@@ -76,7 +78,7 @@ extern "C" {
 extern "C" {
     pub fn AiVNoise3(
         p: AtVector,
-        octaves: ::std::os::raw::c_int,
+        octaves: c_int,
         distortion: f32,
         lacunarity: f32,
     ) -> AtVector;
@@ -85,7 +87,7 @@ extern "C" {
     pub fn AiVNoise4(
         p: AtVector,
         time: f32,
-        octaves: ::std::os::raw::c_int,
+        octaves: c_int,
         distortion: f32,
         lacunarity: f32,
     ) -> AtVector;

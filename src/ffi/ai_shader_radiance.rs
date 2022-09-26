@@ -1,3 +1,5 @@
+use ::std::os::raw::c_int;
+
 use super::{ai_color::AtRGB, ai_nodes::AtNode, ai_vector::AtVector};
 
 extern "C" {
@@ -9,7 +11,7 @@ extern "C" {
     pub fn AiIrradiance(
         p: *const AtVector,
         n: *const AtVector,
-        tid: ::std::os::raw::c_int,
+        tid: c_int,
         pid: u32,
     ) -> AtRGB;
 }
@@ -23,7 +25,7 @@ extern "C" {
         u: f32,
         v: f32,
         shader: *mut AtNode,
-        tid: ::std::os::raw::c_int,
+        tid: c_int,
         pid: u32,
     ) -> AtRGB;
 }

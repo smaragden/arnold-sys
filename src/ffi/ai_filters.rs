@@ -1,3 +1,5 @@
+use ::std::{option::Option, os::raw::{c_void, c_char, c_int, c_uint}};
+
 use super::{
     ai_color::{AtRGB, AtRGBA},
     ai_matrix::AtMatrix,
@@ -16,12 +18,12 @@ pub struct AtAOVSampleIterator {
 #[derive(Debug, Copy, Clone)]
 pub struct AtFilterNodeMethods {
     pub FilterOutputType:
-        ::std::option::Option<unsafe extern "C" fn(arg1: *const AtNode, arg2: u8) -> u8>,
-    pub FilterPixel: ::std::option::Option<
+        Option<unsafe extern "C" fn(arg1: *const AtNode, arg2: u8) -> u8>,
+    pub FilterPixel: Option<
         unsafe extern "C" fn(
             arg1: *mut AtNode,
             arg2: *mut AtAOVSampleIterator,
-            arg3: *mut ::std::os::raw::c_void,
+            arg3: *mut c_void,
             arg4: u8,
         ),
     >,
@@ -32,7 +34,7 @@ extern "C" {
     pub fn AiFilterInitialize(
         node: *mut AtNode,
         requires_depth: bool,
-        required_aovs: *mut *const ::std::os::raw::c_char,
+        required_aovs: *mut *const c_char,
     );
 }
 extern "C" {
@@ -43,15 +45,15 @@ extern "C" {
     #[doc = " \\{"]
     pub fn AiAOVSampleIteratorInitPixel(
         iter: *mut AtAOVSampleIterator,
-        x: ::std::os::raw::c_int,
-        y: ::std::os::raw::c_int,
+        x: c_int,
+        y: c_int,
     );
 }
 extern "C" {
     pub fn AiAOVSampleIteratorGetPixel(
         iter: *mut AtAOVSampleIterator,
-        x: *mut ::std::os::raw::c_int,
-        y: *mut ::std::os::raw::c_int,
+        x: *mut c_int,
+        y: *mut c_int,
     );
 }
 extern "C" {
@@ -70,7 +72,7 @@ extern "C" {
     pub fn AiAOVSampleIteratorGetInvDensity(iter: *const AtAOVSampleIterator) -> f32;
 }
 extern "C" {
-    pub fn AiAOVSampleIteratorGetDepth(iter: *const AtAOVSampleIterator) -> ::std::os::raw::c_int;
+    pub fn AiAOVSampleIteratorGetDepth(iter: *const AtAOVSampleIterator) -> c_int;
 }
 extern "C" {
     pub fn AiAOVSampleIteratorHasValue(iter: *const AtAOVSampleIterator) -> bool;
@@ -91,10 +93,10 @@ extern "C" {
     pub fn AiAOVSampleIteratorGetBool(iter: *const AtAOVSampleIterator) -> bool;
 }
 extern "C" {
-    pub fn AiAOVSampleIteratorGetInt(iter: *const AtAOVSampleIterator) -> ::std::os::raw::c_int;
+    pub fn AiAOVSampleIteratorGetInt(iter: *const AtAOVSampleIterator) -> c_int;
 }
 extern "C" {
-    pub fn AiAOVSampleIteratorGetUInt(iter: *const AtAOVSampleIterator) -> ::std::os::raw::c_uint;
+    pub fn AiAOVSampleIteratorGetUInt(iter: *const AtAOVSampleIterator) -> c_uint;
 }
 extern "C" {
     pub fn AiAOVSampleIteratorGetFlt(iter: *const AtAOVSampleIterator) -> f32;
@@ -117,7 +119,7 @@ extern "C" {
 extern "C" {
     pub fn AiAOVSampleIteratorGetPtr(
         iter: *const AtAOVSampleIterator,
-    ) -> *const ::std::os::raw::c_void;
+    ) -> *const c_void;
 }
 extern "C" {
     #[doc = " \\name API Methods to Get Sample Value from Iterator for an Arbitrary AOV"]
@@ -128,13 +130,13 @@ extern "C" {
     pub fn AiAOVSampleIteratorGetAOVInt(
         iter: *const AtAOVSampleIterator,
         name: AtString,
-    ) -> ::std::os::raw::c_int;
+    ) -> c_int;
 }
 extern "C" {
     pub fn AiAOVSampleIteratorGetAOVUInt(
         iter: *const AtAOVSampleIterator,
         name: AtString,
-    ) -> ::std::os::raw::c_uint;
+    ) -> c_uint;
 }
 extern "C" {
     pub fn AiAOVSampleIteratorGetAOVFlt(iter: *const AtAOVSampleIterator, name: AtString) -> f32;
@@ -170,5 +172,5 @@ extern "C" {
     pub fn AiAOVSampleIteratorGetAOVPtr(
         iter: *const AtAOVSampleIterator,
         name: AtString,
-    ) -> *const ::std::os::raw::c_void;
+    ) -> *const c_void;
 }

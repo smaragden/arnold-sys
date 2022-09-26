@@ -1,3 +1,5 @@
+use ::std::{os::raw::{c_int, c_void, c_uint}, option::Option};
+
 use super::{ai_map::AtParamValueMap, ai_nodes::AtNode, ai_universe::AtUniverse};
 
 #[doc = " Procedural init method."]
@@ -16,11 +18,11 @@ use super::{ai_map::AtParamValueMap, ai_nodes::AtNode, ai_universe::AtUniverse};
 #[doc = " \\param[out] user_ptr  This is a general-purpose, user-supplied data pointer that"]
 #[doc = "                       Arnold will pass along to the other procedural methods."]
 #[doc = " \\return               true upon success"]
-pub type AtProcInit = ::std::option::Option<
+pub type AtProcInit = Option<
     unsafe extern "C" fn(
         node: *mut AtNode,
-        user_ptr: *mut *mut ::std::os::raw::c_void,
-    ) -> ::std::os::raw::c_int,
+        user_ptr: *mut *mut c_void,
+    ) -> c_int,
 >;
 #[doc = " Procedural cleanup method."]
 #[doc = ""]
@@ -34,11 +36,11 @@ pub type AtProcInit = ::std::option::Option<
 #[doc = " \\param node      This is the procedural node itself"]
 #[doc = " \\param user_ptr  User data pointer, as returned from \\ref AtProcInit"]
 #[doc = " \\return          true upon success"]
-pub type AtProcCleanup = ::std::option::Option<
+pub type AtProcCleanup = Option<
     unsafe extern "C" fn(
         node: *const AtNode,
-        user_ptr: *mut ::std::os::raw::c_void,
-    ) -> ::std::os::raw::c_int,
+        user_ptr: *mut c_void,
+    ) -> c_int,
 >;
 #[doc = " Procedural node count method."]
 #[doc = ""]
@@ -54,11 +56,11 @@ pub type AtProcCleanup = ::std::option::Option<
 #[doc = " \\param node      This is the procedural node itself"]
 #[doc = " \\param user_ptr  User data pointer, as returned from \\ref AtProcInit"]
 #[doc = " \\return          The number of nodes in the procedural"]
-pub type AtProcNumNodes = ::std::option::Option<
+pub type AtProcNumNodes = Option<
     unsafe extern "C" fn(
         node: *const AtNode,
-        user_ptr: *mut ::std::os::raw::c_void,
-    ) -> ::std::os::raw::c_int,
+        user_ptr: *mut c_void,
+    ) -> c_int,
 >;
 #[doc = " Procedural node fetching method."]
 #[doc = ""]
@@ -76,18 +78,18 @@ pub type AtProcNumNodes = ::std::option::Option<
 #[doc = " \\param user_ptr  User data pointer, as returned from \\ref AtProcInit"]
 #[doc = " \\param i         Node index, in the range 0 to \\ref AtProcNumNodes - 1"]
 #[doc = " \\return          The i'th node in the procedural"]
-pub type AtProcGetNode = ::std::option::Option<
+pub type AtProcGetNode = Option<
     unsafe extern "C" fn(
         node: *const AtNode,
-        user_ptr: *mut ::std::os::raw::c_void,
-        i: ::std::os::raw::c_int,
+        user_ptr: *mut c_void,
+        i: c_int,
     ) -> *mut AtNode,
 >;
 pub const AtProcViewportMode_AI_PROC_BOXES: AtProcViewportMode = 0;
 pub const AtProcViewportMode_AI_PROC_POINTS: AtProcViewportMode = 1;
 pub const AtProcViewportMode_AI_PROC_POLYGONS: AtProcViewportMode = 2;
 #[doc = " Enum with the different modes available for a procedural viewport representation"]
-pub type AtProcViewportMode = ::std::os::raw::c_uint;
+pub type AtProcViewportMode = c_uint;
 #[doc = " Procedural viewport representation method."]
 #[doc = ""]
 #[doc = " This method can be called to obtain a simplified representation of a procedural, made up of nodes that will be"]
@@ -112,13 +114,13 @@ pub type AtProcViewportMode = ::std::os::raw::c_uint;
 #[doc = " \\param mode              The type of primitives used for the viewport representation"]
 #[doc = " \\param params            List of optional parameters to be interpreted by the procedurals"]
 #[doc = " \\return                  \\c AI_SUCCESS if no error, an error value otherwise"]
-pub type AtProcViewport = ::std::option::Option<
+pub type AtProcViewport = Option<
     unsafe extern "C" fn(
         node: *const AtNode,
         universe: *mut AtUniverse,
         mode: AtProcViewportMode,
         params: *const AtParamValueMap,
-    ) -> ::std::os::raw::c_int,
+    ) -> c_int,
 >;
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -140,8 +142,8 @@ pub struct AtProceduralNodeMethods {
 #[doc = ""]
 #[doc = " \\param[out] methods  List of procedural methods (some of which are optional) to be supplied by the user"]
 #[doc = " \\return              true upon success"]
-pub type AtProcFuncPtr = ::std::option::Option<
-    unsafe extern "C" fn(methods: *mut AtProceduralNodeMethods) -> ::std::os::raw::c_int,
+pub type AtProcFuncPtr = Option<
+    unsafe extern "C" fn(methods: *mut AtProceduralNodeMethods) -> c_int,
 >;
 extern "C" {
     #[doc = " Procedural viewport representation method."]
@@ -188,5 +190,5 @@ extern "C" {
         universe: *mut AtUniverse,
         mode: AtProcViewportMode,
         params: *const AtParamValueMap,
-    ) -> ::std::os::raw::c_int;
+    ) -> c_int;
 }

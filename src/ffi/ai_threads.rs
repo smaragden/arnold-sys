@@ -1,3 +1,5 @@
+use ::std::{os::raw::{c_void, c_uint, c_int}, option::Option};
+
 pub const AI_MAX_THREADS: u32 = 256;
 pub const AI_PRIORITY_LOWEST: u32 = 0;
 pub const AI_PRIORITY_LOW: u32 = 1;
@@ -10,19 +12,19 @@ extern "C" {
     #[doc = ""]
     #[doc = " \\{"]
     pub fn AiThreadCreate(
-        fn_: ::std::option::Option<
-            unsafe extern "C" fn(arg1: *mut ::std::os::raw::c_void) -> ::std::os::raw::c_uint,
+        fn_: Option<
+            unsafe extern "C" fn(arg1: *mut c_void) -> c_uint,
         >,
-        data: *mut ::std::os::raw::c_void,
-        priority: ::std::os::raw::c_int,
-    ) -> *mut ::std::os::raw::c_void;
+        data: *mut c_void,
+        priority: c_int,
+    ) -> *mut c_void;
 }
 extern "C" {
-    pub fn AiThreadClose(thread: *mut ::std::os::raw::c_void);
+    pub fn AiThreadClose(thread: *mut c_void);
 }
 extern "C" {
-    pub fn AiThreadWait(thread: *mut ::std::os::raw::c_void);
+    pub fn AiThreadWait(thread: *mut c_void);
 }
 extern "C" {
-    pub fn AiThreadSelf() -> *mut ::std::os::raw::c_void;
+    pub fn AiThreadSelf() -> *mut c_void;
 }

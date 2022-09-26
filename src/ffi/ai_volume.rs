@@ -1,3 +1,5 @@
+use ::std::{os::raw::{c_void, c_char, c_int}, option::Option};
+
 use super::{
     ai_array::AtArray, ai_bbox::AtBBox, ai_nodes::AtNode, ai_params::AtParamValue,
     ai_shaderglobals::AtShaderGlobals, ai_string::AtString, ai_vector::AtVector,
@@ -11,7 +13,7 @@ pub const AI_VOLUME_INTERP_TRICUBIC: u32 = 2;
 #[repr(C)]
 pub struct AtVolumeData {
     #[doc = "< Volume plugin private data, used how the plugin likes"]
-    pub private_info: *mut ::std::os::raw::c_void,
+    pub private_info: *mut c_void,
     #[doc = "< Bounding box for this volume, plugin is responsible for also including volume_padding from the node"]
     pub bbox: AtBBox,
     #[doc = "< Recommended step size for ray marching through this data"]
@@ -34,11 +36,11 @@ extern "C" {
     );
 }
 extern "C" {
-    pub fn AiVolumeFileGetChannels(filename: *const ::std::os::raw::c_char) -> *mut AtArray;
+    pub fn AiVolumeFileGetChannels(filename: *const c_char) -> *mut AtArray;
 }
 extern "C" {
     pub fn AiVolumeFileGetBBox(
-        filename: *const ::std::os::raw::c_char,
+        filename: *const c_char,
         channels: *const AtArray,
     ) -> AtBBox;
 }
@@ -49,7 +51,7 @@ extern "C" {
 #[doc = " \\param      node         Owner node where the volume was requested"]
 #[doc = " \\param[out] data         Volume data with all fields to be set by the callback"]
 #[doc = " \\return                  true if volume creation succeeded"]
-pub type AtVolumeCreate = ::std::option::Option<
+pub type AtVolumeCreate = Option<
     unsafe extern "C" fn(node: *const AtNode, data: *mut AtVolumeData) -> bool,
 >;
 #[doc = " Volume plugin volume update."]
@@ -61,7 +63,7 @@ pub type AtVolumeCreate = ::std::option::Option<
 #[doc = " \\param      node         Owner node where the volume was requested"]
 #[doc = " \\param[out] data         Volume data with all fields to be set by the callback"]
 #[doc = " \\return                  true if volume data was modified"]
-pub type AtVolumeUpdate = ::std::option::Option<
+pub type AtVolumeUpdate = Option<
     unsafe extern "C" fn(node: *const AtNode, data: *mut AtVolumeData) -> bool,
 >;
 #[doc = " Volume plugin volume cleanup method."]
@@ -71,7 +73,7 @@ pub type AtVolumeUpdate = ::std::option::Option<
 #[doc = ""]
 #[doc = " \\param data      Volume data returned from \\ref AtVolumeCreate"]
 #[doc = " \\return          true upon success"]
-pub type AtVolumeCleanup = ::std::option::Option<
+pub type AtVolumeCleanup = Option<
     unsafe extern "C" fn(node: *const AtNode, data: *mut AtVolumeData) -> bool,
 >;
 #[doc = " Volume plugin sample method."]
@@ -87,12 +89,12 @@ pub type AtVolumeCleanup = ::std::option::Option<
 #[doc = " \\param[out] value     Resulting sampled value, matching the type output in out_type"]
 #[doc = " \\param[out] type      Resulting value type, one of \\c AI_TYPE_FLOAT, \\c AI_TYPE_VECTOR2, \\c AI_TYPE_RGB, \\c AI_TYPE_RGBA, or \\c AI_TYPE_VECTOR"]
 #[doc = " \\return               true upon success"]
-pub type AtVolumeSample = ::std::option::Option<
+pub type AtVolumeSample = Option<
     unsafe extern "C" fn(
         data: *const AtVolumeData,
         channel: AtString,
         sg: *const AtShaderGlobals,
-        interp: ::std::os::raw::c_int,
+        interp: c_int,
         value: *mut AtParamValue,
         type_: *mut u8,
     ) -> bool,
@@ -112,12 +114,12 @@ pub type AtVolumeSample = ::std::option::Option<
 #[doc = " \\param      interp    Volume interpolation quality, one of \\c AI_VOLUME_INTERP_*"]
 #[doc = " \\param[out] gradient  Resulting sampled gradient"]
 #[doc = " \\return               true upon success"]
-pub type AtVolumeGradient = ::std::option::Option<
+pub type AtVolumeGradient = Option<
     unsafe extern "C" fn(
         data: *const AtVolumeData,
         channel: AtString,
         sg: *const AtShaderGlobals,
-        interp: ::std::os::raw::c_int,
+        interp: c_int,
         gradient: *mut AtVector,
     ) -> bool,
 >;
@@ -144,7 +146,7 @@ pub type AtVolumeGradient = ::std::option::Option<
 #[doc = " \\param direction Ray direction, normalized and in object space"]
 #[doc = " \\param t0        Start of the source ray interval in which to check for extents"]
 #[doc = " \\param t1        End of the source ray interval in which to check for extents"]
-pub type AtVolumeRayExtents = ::std::option::Option<
+pub type AtVolumeRayExtents = Option<
     unsafe extern "C" fn(
         data: *const AtVolumeData,
         info: *const AtVolumeIntersectionInfo,

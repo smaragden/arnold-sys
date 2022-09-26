@@ -1,4 +1,7 @@
+use ::std::os::raw::c_int;
+
 use super::ai_vector::AtVector;
+
 #[doc = " 3D axis-aligned bounding box (uses single-precision)"]
 #[repr(C)]
 pub struct AtBBox {
@@ -9,10 +12,10 @@ pub struct AtBBox {
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct AtBBox2 {
-    pub minx: ::std::os::raw::c_int,
-    pub miny: ::std::os::raw::c_int,
-    pub maxx: ::std::os::raw::c_int,
-    pub maxy: ::std::os::raw::c_int,
+    pub minx: c_int,
+    pub miny: c_int,
+    pub maxx: c_int,
+    pub maxy: c_int,
 }
 extern "C" {
     #[doc = " \\name Constants"]

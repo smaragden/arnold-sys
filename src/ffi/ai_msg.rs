@@ -1,3 +1,5 @@
+use ::std::{option::Option, os::raw::{c_int, c_char, c_void, c_uint, c_ulong}};
+
 use super::{ai_map::AtParamValueMap, ai_universe::AtUniverse};
 
 pub const AI_SEVERITY_INFO: u32 = 0;
@@ -21,12 +23,12 @@ pub const AI_LOG_COLOR: u32 = 4096;
 pub const AI_LOG_ALL: u32 = 8191;
 
 #[doc = " Custom message callback, as passed to AiMsgSetCallback()"]
-pub type AtMsgCallBack = ::std::option::Option<
+pub type AtMsgCallBack = Option<
     unsafe extern "C" fn(
-        logmask: ::std::os::raw::c_int,
-        severity: ::std::os::raw::c_int,
-        msg_string: *const ::std::os::raw::c_char,
-        tabs: ::std::os::raw::c_int,
+        logmask: c_int,
+        severity: c_int,
+        msg_string: *const c_char,
+        tabs: c_int,
     ),
 >;
 #[doc = " Custom message callback, as passed to AiMsgRegisterCallback()"]
@@ -37,32 +39,32 @@ pub type AtMsgCallBack = ::std::option::Option<
 #[doc = "  <tr><th>Name<th>Type<th>Description"]
 #[doc = "  <tr><td>universe<td> Universe*<td>Universe this log message refers to"]
 #[doc = "  </table>"]
-pub type AtMsgExtendedCallBack = ::std::option::Option<
+pub type AtMsgExtendedCallBack = Option<
     unsafe extern "C" fn(
-        logmask: ::std::os::raw::c_int,
-        severity: ::std::os::raw::c_int,
-        msg_string: *const ::std::os::raw::c_char,
+        logmask: c_int,
+        severity: c_int,
+        msg_string: *const c_char,
         metadata: *mut AtParamValueMap,
-        user_ptr: *mut ::std::os::raw::c_void,
+        user_ptr: *mut c_void,
     ),
 >;
 extern "C" {
-    pub fn AiMsgSetLogFileName(filename: *const ::std::os::raw::c_char);
+    pub fn AiMsgSetLogFileName(filename: *const c_char);
 }
 extern "C" {
-    pub fn AiMsgSetLogFileFlags(universe: *const AtUniverse, flags: ::std::os::raw::c_int);
+    pub fn AiMsgSetLogFileFlags(universe: *const AtUniverse, flags: c_int);
 }
 extern "C" {
-    pub fn AiMsgSetConsoleFlags(universe: *const AtUniverse, flags: ::std::os::raw::c_int);
+    pub fn AiMsgSetConsoleFlags(universe: *const AtUniverse, flags: c_int);
 }
 extern "C" {
-    pub fn AiMsgGetLogFileFlags(universe: *const AtUniverse) -> ::std::os::raw::c_int;
+    pub fn AiMsgGetLogFileFlags(universe: *const AtUniverse) -> c_int;
 }
 extern "C" {
-    pub fn AiMsgGetConsoleFlags(universe: *const AtUniverse) -> ::std::os::raw::c_int;
+    pub fn AiMsgGetConsoleFlags(universe: *const AtUniverse) -> c_int;
 }
 extern "C" {
-    pub fn AiMsgSetMaxWarnings(max_warnings: ::std::os::raw::c_int);
+    pub fn AiMsgSetMaxWarnings(max_warnings: c_int);
 }
 extern "C" {
     pub fn AiMsgSetCallback(func: AtMsgCallBack);
@@ -76,39 +78,39 @@ extern "C" {
 extern "C" {
     pub fn AiMsgRegisterCallback(
         func: AtMsgExtendedCallBack,
-        mask: ::std::os::raw::c_int,
-        user_ptr: *mut ::std::os::raw::c_void,
-    ) -> ::std::os::raw::c_uint;
+        mask: c_int,
+        user_ptr: *mut c_void,
+    ) -> c_uint;
 }
 extern "C" {
-    pub fn AiMsgDeregisterCallback(callback_id: ::std::os::raw::c_uint);
+    pub fn AiMsgDeregisterCallback(callback_id: c_uint);
 }
 extern "C" {
-    pub fn AiMsgSetCallbackMask(callback_id: ::std::os::raw::c_uint, mask: ::std::os::raw::c_int);
+    pub fn AiMsgSetCallbackMask(callback_id: c_uint, mask: c_int);
 }
 extern "C" {
-    pub fn AiMsgGetCallbackMask(callback_id: ::std::os::raw::c_uint) -> ::std::os::raw::c_int;
+    pub fn AiMsgGetCallbackMask(callback_id: c_uint) -> c_int;
 }
 extern "C" {
-    pub fn AiMsgInfo(format: *const ::std::os::raw::c_char, ...);
+    pub fn AiMsgInfo(format: *const c_char, ...);
 }
 extern "C" {
-    pub fn AiMsgDebug(format: *const ::std::os::raw::c_char, ...);
+    pub fn AiMsgDebug(format: *const c_char, ...);
 }
 extern "C" {
-    pub fn AiMsgWarning(format: *const ::std::os::raw::c_char, ...);
+    pub fn AiMsgWarning(format: *const c_char, ...);
 }
 extern "C" {
-    pub fn AiMsgError(format: *const ::std::os::raw::c_char, ...);
+    pub fn AiMsgError(format: *const c_char, ...);
 }
 extern "C" {
-    pub fn AiMsgFatal(format: *const ::std::os::raw::c_char, ...);
+    pub fn AiMsgFatal(format: *const c_char, ...);
 }
 extern "C" {
-    pub fn AiMsgTab(tabinc: ::std::os::raw::c_int);
+    pub fn AiMsgTab(tabinc: c_int);
 }
 extern "C" {
-    pub fn AiMsgUtilGetUsedMemory() -> ::std::os::raw::c_ulong;
+    pub fn AiMsgUtilGetUsedMemory() -> c_ulong;
 }
 extern "C" {
     pub fn AiMsgUtilGetElapsedTime() -> u32;

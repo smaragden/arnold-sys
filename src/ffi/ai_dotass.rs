@@ -1,3 +1,5 @@
+use ::std::os::raw::{c_char, c_int};
+
 use super::{ai_metadata::AtMetadataStore, ai_universe::AtUniverse};
 
 extern "C" {
@@ -24,26 +26,26 @@ extern "C" {
     #[doc = " \\{"]
     pub fn AiASSWrite(
         universe: *mut AtUniverse,
-        filename: *const ::std::os::raw::c_char,
-        mask: ::std::os::raw::c_int,
+        filename: *const c_char,
+        mask: c_int,
         open_procs: bool,
         binary: bool,
-    ) -> ::std::os::raw::c_int;
+    ) -> c_int;
 }
 extern "C" {
     pub fn AiASSWriteWithMetadata(
         universe: *mut AtUniverse,
-        filename: *const ::std::os::raw::c_char,
-        mask: ::std::os::raw::c_int,
+        filename: *const c_char,
+        mask: c_int,
         open_procs: bool,
         binary: bool,
         mds: *const AtMetadataStore,
-    ) -> ::std::os::raw::c_int;
+    ) -> c_int;
 }
 extern "C" {
     pub fn AiASSLoad(
         universe: *mut AtUniverse,
-        filename: *const ::std::os::raw::c_char,
-        mask: ::std::os::raw::c_int,
-    ) -> ::std::os::raw::c_int;
+        filename: *const c_char,
+        mask: c_int,
+    ) -> c_int;
 }

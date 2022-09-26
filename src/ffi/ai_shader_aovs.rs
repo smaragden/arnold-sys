@@ -1,3 +1,5 @@
+use ::std::os::raw::{c_int, c_void, c_char};
+
 use super::{
     ai_color::{AtRGB, AtRGBA},
     ai_matrix::AtMatrix,
@@ -43,7 +45,7 @@ extern "C" {
     pub fn AiAOVSetInt(
         sg: *mut AtShaderGlobals,
         name: AtString,
-        val: ::std::os::raw::c_int,
+        val: c_int,
     ) -> bool;
 }
 extern "C" {
@@ -68,7 +70,7 @@ extern "C" {
     pub fn AiAOVSetPtr(
         sg: *mut AtShaderGlobals,
         name: AtString,
-        val: *mut ::std::os::raw::c_void,
+        val: *mut c_void,
     ) -> bool;
 }
 extern "C" {
@@ -90,7 +92,7 @@ extern "C" {
     pub fn AiAOVGetInt(
         sg: *const AtShaderGlobals,
         name: AtString,
-        val: *mut ::std::os::raw::c_int,
+        val: *mut c_int,
     ) -> bool;
 }
 extern "C" {
@@ -115,7 +117,7 @@ extern "C" {
     pub fn AiAOVGetPtr(
         sg: *const AtShaderGlobals,
         name: AtString,
-        val: *mut *mut ::std::os::raw::c_void,
+        val: *mut *mut c_void,
     ) -> bool;
 }
 extern "C" {
@@ -123,8 +125,8 @@ extern "C" {
 }
 extern "C" {
     pub fn AiAOVRegister(
-        name: *const ::std::os::raw::c_char,
+        name: *const c_char,
         type_: u8,
-        blend_mode: ::std::os::raw::c_int,
+        blend_mode: c_int,
     ) -> bool;
 }

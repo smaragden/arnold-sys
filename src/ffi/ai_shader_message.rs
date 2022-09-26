@@ -1,3 +1,5 @@
+use ::std::os::raw::{c_int, c_uint, c_void};
+
 use super::{
     ai_array::AtArray,
     ai_color::{AtRGB, AtRGBA},
@@ -20,7 +22,7 @@ extern "C" {
     pub fn AiMessageIteratorGetNext(
         iterator: *mut AtMessageIterator,
         msg_name: *mut AtString,
-        msg_type: *mut ::std::os::raw::c_int,
+        msg_type: *mut c_int,
     ) -> bool;
 }
 extern "C" {
@@ -53,14 +55,14 @@ extern "C" {
     pub fn AiMessageGetIntFunc(
         arg1: *const AtShaderGlobals,
         arg2: AtString,
-        arg3: *mut ::std::os::raw::c_int,
+        arg3: *mut c_int,
     ) -> bool;
 }
 extern "C" {
     pub fn AiMessageSetIntFunc(
         arg1: *mut AtShaderGlobals,
         arg2: AtString,
-        arg3: ::std::os::raw::c_int,
+        arg3: c_int,
     ) -> bool;
 }
 extern "C" {
@@ -70,14 +72,14 @@ extern "C" {
     pub fn AiMessageGetUIntFunc(
         arg1: *const AtShaderGlobals,
         arg2: AtString,
-        arg3: *mut ::std::os::raw::c_uint,
+        arg3: *mut c_uint,
     ) -> bool;
 }
 extern "C" {
     pub fn AiMessageSetUIntFunc(
         arg1: *mut AtShaderGlobals,
         arg2: AtString,
-        arg3: ::std::os::raw::c_uint,
+        arg3: c_uint,
     ) -> bool;
 }
 extern "C" {
@@ -169,14 +171,14 @@ extern "C" {
     pub fn AiMessageGetPtrFunc(
         arg1: *const AtShaderGlobals,
         arg2: AtString,
-        arg3: *mut *mut ::std::os::raw::c_void,
+        arg3: *mut *mut c_void,
     ) -> bool;
 }
 extern "C" {
     pub fn AiMessageSetPtrFunc(
         arg1: *mut AtShaderGlobals,
         arg2: AtString,
-        arg3: *mut ::std::os::raw::c_void,
+        arg3: *mut c_void,
     ) -> bool;
 }
 extern "C" {

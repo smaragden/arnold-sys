@@ -1,3 +1,5 @@
+use ::std::os::raw::c_char;
+
 use super::{ai_map::AtParamValueMap, ai_metadata::AtMetadataStore, ai_universe::AtUniverse};
 
 extern "C" {
@@ -28,7 +30,7 @@ extern "C" {
     #[doc = "  \\return            true if the file was loaded succesfully, false otherwise"]
     pub fn AiSceneLoad(
         universe: *mut AtUniverse,
-        filename: *const ::std::os::raw::c_char,
+        filename: *const c_char,
         params: *const AtParamValueMap,
     ) -> bool;
 }
@@ -76,7 +78,7 @@ extern "C" {
     #[doc = "  \\return            true if the file was written succesfully, false otherwise"]
     pub fn AiSceneWrite(
         universe: *mut AtUniverse,
-        filename: *const ::std::os::raw::c_char,
+        filename: *const c_char,
         params: *const AtParamValueMap,
         mds: *const AtMetadataStore,
     ) -> bool;
@@ -86,7 +88,7 @@ extern "C" {
     #[doc = ""]
     #[doc = "  \\param extension   scene file extension to check for support (should start with \".\")"]
     #[doc = "  \\return            true if the format is supported, false otherwise"]
-    pub fn AiSceneFormatSupported(extension: *const ::std::os::raw::c_char) -> bool;
+    pub fn AiSceneFormatSupported(extension: *const c_char) -> bool;
 }
 #[doc = " \\struct AtSceneFormatIterator"]
 #[doc = ""]
@@ -162,7 +164,7 @@ extern "C" {
     #[doc = " \\return     Next supported extension"]
     pub fn AiSceneFormatExtensionIteratorGetNext(
         iter: *mut AtSceneFormatExtensionIterator,
-    ) -> *const ::std::os::raw::c_char;
+    ) -> *const c_char;
 }
 extern "C" {
     #[doc = " Check if there are more scene formats extensions to iterate over"]
@@ -180,7 +182,7 @@ extern "C" {
     #[doc = " \\return            Name of the scene format"]
     pub fn AiSceneFormatGetName(
         format_data: *const AtSceneFormatData,
-    ) -> *const ::std::os::raw::c_char;
+    ) -> *const c_char;
 }
 extern "C" {
     #[doc = " Get a description of the scene format"]
@@ -189,7 +191,7 @@ extern "C" {
     #[doc = " \\return            Description of the scene format"]
     pub fn AiSceneFormatGetDescription(
         format_data: *const AtSceneFormatData,
-    ) -> *const ::std::os::raw::c_char;
+    ) -> *const c_char;
 }
 extern "C" {
     #[doc = " True if the scene format supports reading from file"]

@@ -1,3 +1,5 @@
+use ::std::os::raw::c_uint;
+
 use super::{
     ai_closure::AtBSDF, ai_color::AtRGB, ai_nodes::AtNode, ai_shaderglobals::AtShaderGlobals,
     ai_string::AtString, ai_vector::AtVector,
@@ -90,8 +92,8 @@ extern "C" {
     #[doc = " \\{"]
     pub fn AiLightIESLoad(
         filename: AtString,
-        width: ::std::os::raw::c_uint,
-        height: ::std::os::raw::c_uint,
+        width: c_uint,
+        height: c_uint,
         max_intensity: *mut f32,
         data: *mut f32,
     ) -> bool;

@@ -1,3 +1,5 @@
+use ::std::{mem::transmute, os::raw::{c_char, c_uint, c_void}};
+
 use super::{
     ai_color::AtRGBA, ai_matrix::AtMatrix, ai_shaderglobals::AtShaderGlobals, ai_string::AtString,
     ai_universe::AtUniverse,
@@ -128,34 +130,34 @@ pub struct AtTextureParams {
 impl AtTextureParams {
     #[inline]
     pub fn filter(&self) -> u8 {
-        unsafe { ::std::mem::transmute(self._bitfield_1.get(0usize, 2u8) as u8) }
+        unsafe { transmute(self._bitfield_1.get(0usize, 2u8) as u8) }
     }
     #[inline]
     pub fn set_filter(&mut self, val: u8) {
         unsafe {
-            let val: u8 = ::std::mem::transmute(val);
+            let val: u8 = transmute(val);
             self._bitfield_1.set(0usize, 2u8, val as u64)
         }
     }
     #[inline]
     pub fn wrap_s(&self) -> u8 {
-        unsafe { ::std::mem::transmute(self._bitfield_1.get(2usize, 3u8) as u8) }
+        unsafe { transmute(self._bitfield_1.get(2usize, 3u8) as u8) }
     }
     #[inline]
     pub fn set_wrap_s(&mut self, val: u8) {
         unsafe {
-            let val: u8 = ::std::mem::transmute(val);
+            let val: u8 = transmute(val);
             self._bitfield_1.set(2usize, 3u8, val as u64)
         }
     }
     #[inline]
     pub fn wrap_t(&self) -> u8 {
-        unsafe { ::std::mem::transmute(self._bitfield_1.get(5usize, 3u8) as u8) }
+        unsafe { transmute(self._bitfield_1.get(5usize, 3u8) as u8) }
     }
     #[inline]
     pub fn set_wrap_t(&mut self, val: u8) {
         unsafe {
-            let val: u8 = ::std::mem::transmute(val);
+            let val: u8 = transmute(val);
             self._bitfield_1.set(5usize, 3u8, val as u64)
         }
     }
@@ -167,71 +169,71 @@ impl AtTextureParams {
     ) -> __BindgenBitfieldUnit<[u8; 1usize]> {
         let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 1usize]> = Default::default();
         __bindgen_bitfield_unit.set(0usize, 2u8, {
-            let filter: u8 = unsafe { ::std::mem::transmute(filter) };
+            let filter: u8 = unsafe { transmute(filter) };
             filter as u64
         });
         __bindgen_bitfield_unit.set(2usize, 3u8, {
-            let wrap_s: u8 = unsafe { ::std::mem::transmute(wrap_s) };
+            let wrap_s: u8 = unsafe { transmute(wrap_s) };
             wrap_s as u64
         });
         __bindgen_bitfield_unit.set(5usize, 3u8, {
-            let wrap_t: u8 = unsafe { ::std::mem::transmute(wrap_t) };
+            let wrap_t: u8 = unsafe { transmute(wrap_t) };
             wrap_t as u64
         });
         __bindgen_bitfield_unit
     }
     #[inline]
     pub fn mipmap_mode(&self) -> u8 {
-        unsafe { ::std::mem::transmute(self._bitfield_2.get(0usize, 3u8) as u8) }
+        unsafe { transmute(self._bitfield_2.get(0usize, 3u8) as u8) }
     }
     #[inline]
     pub fn set_mipmap_mode(&mut self, val: u8) {
         unsafe {
-            let val: u8 = ::std::mem::transmute(val);
+            let val: u8 = transmute(val);
             self._bitfield_2.set(0usize, 3u8, val as u64)
         }
     }
     #[inline]
     pub fn single_channel(&self) -> bool {
-        unsafe { ::std::mem::transmute(self._bitfield_2.get(3usize, 1u8) as u8) }
+        unsafe { transmute(self._bitfield_2.get(3usize, 1u8) as u8) }
     }
     #[inline]
     pub fn set_single_channel(&mut self, val: bool) {
         unsafe {
-            let val: u8 = ::std::mem::transmute(val);
+            let val: u8 = transmute(val);
             self._bitfield_2.set(3usize, 1u8, val as u64)
         }
     }
     #[inline]
     pub fn flip_s(&self) -> bool {
-        unsafe { ::std::mem::transmute(self._bitfield_2.get(4usize, 1u8) as u8) }
+        unsafe { transmute(self._bitfield_2.get(4usize, 1u8) as u8) }
     }
     #[inline]
     pub fn set_flip_s(&mut self, val: bool) {
         unsafe {
-            let val: u8 = ::std::mem::transmute(val);
+            let val: u8 = transmute(val);
             self._bitfield_2.set(4usize, 1u8, val as u64)
         }
     }
     #[inline]
     pub fn flip_t(&self) -> bool {
-        unsafe { ::std::mem::transmute(self._bitfield_2.get(5usize, 1u8) as u8) }
+        unsafe { transmute(self._bitfield_2.get(5usize, 1u8) as u8) }
     }
     #[inline]
     pub fn set_flip_t(&mut self, val: bool) {
         unsafe {
-            let val: u8 = ::std::mem::transmute(val);
+            let val: u8 = transmute(val);
             self._bitfield_2.set(5usize, 1u8, val as u64)
         }
     }
     #[inline]
     pub fn swap_st(&self) -> bool {
-        unsafe { ::std::mem::transmute(self._bitfield_2.get(6usize, 1u8) as u8) }
+        unsafe { transmute(self._bitfield_2.get(6usize, 1u8) as u8) }
     }
     #[inline]
     pub fn set_swap_st(&mut self, val: bool) {
         unsafe {
-            let val: u8 = ::std::mem::transmute(val);
+            let val: u8 = transmute(val);
             self._bitfield_2.set(6usize, 1u8, val as u64)
         }
     }
@@ -245,23 +247,23 @@ impl AtTextureParams {
     ) -> __BindgenBitfieldUnit<[u8; 1usize]> {
         let mut __bindgen_bitfield_unit: __BindgenBitfieldUnit<[u8; 1usize]> = Default::default();
         __bindgen_bitfield_unit.set(0usize, 3u8, {
-            let mipmap_mode: u8 = unsafe { ::std::mem::transmute(mipmap_mode) };
+            let mipmap_mode: u8 = unsafe { transmute(mipmap_mode) };
             mipmap_mode as u64
         });
         __bindgen_bitfield_unit.set(3usize, 1u8, {
-            let single_channel: u8 = unsafe { ::std::mem::transmute(single_channel) };
+            let single_channel: u8 = unsafe { transmute(single_channel) };
             single_channel as u64
         });
         __bindgen_bitfield_unit.set(4usize, 1u8, {
-            let flip_s: u8 = unsafe { ::std::mem::transmute(flip_s) };
+            let flip_s: u8 = unsafe { transmute(flip_s) };
             flip_s as u64
         });
         __bindgen_bitfield_unit.set(5usize, 1u8, {
-            let flip_t: u8 = unsafe { ::std::mem::transmute(flip_t) };
+            let flip_t: u8 = unsafe { transmute(flip_t) };
             flip_t as u64
         });
         __bindgen_bitfield_unit.set(6usize, 1u8, {
-            let swap_st: u8 = unsafe { ::std::mem::transmute(swap_st) };
+            let swap_st: u8 = unsafe { transmute(swap_st) };
             swap_st as u64
         });
         __bindgen_bitfield_unit
@@ -284,7 +286,7 @@ pub struct AtTextureHandle {
 }
 extern "C" {
     pub fn AiTextureHandleCreate(
-        filename: *const ::std::os::raw::c_char,
+        filename: *const c_char,
         color_space: AtString,
     ) -> *mut AtTextureHandle;
 }
@@ -312,50 +314,50 @@ extern "C" {
     pub fn AiTextureLoad(
         filename: AtString,
         use_float: bool,
-        miplevel: ::std::os::raw::c_uint,
-        image: *mut ::std::os::raw::c_void,
+        miplevel: c_uint,
+        image: *mut c_void,
     ) -> bool;
 }
 extern "C" {
     pub fn AiTextureGetResolution(
-        filename: *const ::std::os::raw::c_char,
-        width: *mut ::std::os::raw::c_uint,
-        height: *mut ::std::os::raw::c_uint,
+        filename: *const c_char,
+        width: *mut c_uint,
+        height: *mut c_uint,
     ) -> bool;
 }
 extern "C" {
     pub fn AiTextureGetNumChannels(
-        filename: *const ::std::os::raw::c_char,
-        num_channels: *mut ::std::os::raw::c_uint,
+        filename: *const c_char,
+        num_channels: *mut c_uint,
     ) -> bool;
 }
 extern "C" {
     pub fn AiTextureGetChannelName(
-        filename: *const ::std::os::raw::c_char,
-        channel_index: ::std::os::raw::c_uint,
-    ) -> *const ::std::os::raw::c_char;
+        filename: *const c_char,
+        channel_index: c_uint,
+    ) -> *const c_char;
 }
 extern "C" {
     pub fn AiTextureGetFormat(
-        filename: *const ::std::os::raw::c_char,
-        format: *mut ::std::os::raw::c_uint,
+        filename: *const c_char,
+        format: *mut c_uint,
     ) -> bool;
 }
 extern "C" {
     pub fn AiTextureGetBitDepth(
-        filename: *const ::std::os::raw::c_char,
-        bit_depth: *mut ::std::os::raw::c_uint,
+        filename: *const c_char,
+        bit_depth: *mut c_uint,
     ) -> bool;
 }
 extern "C" {
     pub fn AiTextureGetMatrices(
-        filename: *const ::std::os::raw::c_char,
+        filename: *const c_char,
         world_to_screen: *mut AtMatrix,
         world_to_camera: *mut AtMatrix,
     ) -> bool;
 }
 extern "C" {
-    pub fn AiTextureInvalidate(filename: *const ::std::os::raw::c_char);
+    pub fn AiTextureInvalidate(filename: *const c_char);
 }
 pub const AtMakeTxStatus_AiTxPending: AtMakeTxStatus = 0;
 pub const AtMakeTxStatus_AiTxError: AtMakeTxStatus = 1;
@@ -363,25 +365,25 @@ pub const AtMakeTxStatus_AiTxUpdated: AtMakeTxStatus = 2;
 pub const AtMakeTxStatus_AiTxUpdate_unneeded: AtMakeTxStatus = 3;
 pub const AtMakeTxStatus_AiTxAborted: AtMakeTxStatus = 4;
 #[doc = " Status of AiMakeTx jobs."]
-pub type AtMakeTxStatus = ::std::os::raw::c_uint;
+pub type AtMakeTxStatus = c_uint;
 extern "C" {
     pub fn AiMakeTx(
-        filename: *const ::std::os::raw::c_char,
-        flags: *const ::std::os::raw::c_char,
+        filename: *const c_char,
+        flags: *const c_char,
         universe: *const AtUniverse,
     );
 }
 extern "C" {
     pub fn AiMakeTxWaitJob(
         statuses: *mut *mut AtMakeTxStatus,
-        source_files: *mut *mut *const ::std::os::raw::c_char,
-        num_submitted_textures: *mut ::std::os::raw::c_uint,
-    ) -> ::std::os::raw::c_uint;
+        source_files: *mut *mut *const c_char,
+        num_submitted_textures: *mut c_uint,
+    ) -> c_uint;
 }
 extern "C" {
     pub fn AiMakeTxAbort(
         statuses: *mut *mut AtMakeTxStatus,
-        source_files: *mut *mut *const ::std::os::raw::c_char,
-        num_submitted_textures: *mut ::std::os::raw::c_uint,
+        source_files: *mut *mut *const c_char,
+        num_submitted_textures: *mut c_uint,
     );
 }

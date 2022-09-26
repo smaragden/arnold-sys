@@ -1,3 +1,5 @@
+use ::std::os::raw::{c_char, c_int, c_void, c_uint};
+
 use super::{
     ai_array::AtArray,
     ai_color::{AtRGB, AtRGBA},
@@ -41,7 +43,7 @@ extern "C" {
     pub fn AiNodeDeclare(
         node: *mut AtNode,
         param: AtString,
-        declaration: *const ::std::os::raw::c_char,
+        declaration: *const c_char,
     ) -> bool;
 }
 extern "C" {
@@ -57,7 +59,7 @@ extern "C" {
     pub fn AiNodeReset(node: *mut AtNode);
 }
 extern "C" {
-    pub fn AiNodeResetParameter(node: *mut AtNode, param: *const ::std::os::raw::c_char);
+    pub fn AiNodeResetParameter(node: *mut AtNode, param: *const c_char);
 }
 extern "C" {
     pub fn AiNodeClone(
@@ -75,53 +77,53 @@ extern "C" {
 extern "C" {
     pub fn AiNodeLink(
         src: *mut AtNode,
-        input: *const ::std::os::raw::c_char,
+        input: *const c_char,
         target: *mut AtNode,
     ) -> bool;
 }
 extern "C" {
     pub fn AiNodeLinkOutput(
         src: *mut AtNode,
-        output: *const ::std::os::raw::c_char,
+        output: *const c_char,
         target: *mut AtNode,
-        input: *const ::std::os::raw::c_char,
+        input: *const c_char,
     ) -> bool;
 }
 extern "C" {
-    pub fn AiNodeUnlink(node: *mut AtNode, input: *const ::std::os::raw::c_char) -> bool;
+    pub fn AiNodeUnlink(node: *mut AtNode, input: *const c_char) -> bool;
 }
 extern "C" {
-    pub fn AiNodeIsLinked(node: *const AtNode, input: *const ::std::os::raw::c_char) -> bool;
+    pub fn AiNodeIsLinked(node: *const AtNode, input: *const c_char) -> bool;
 }
 extern "C" {
     pub fn AiNodeGetLink(
         node: *const AtNode,
-        input: *const ::std::os::raw::c_char,
-        comp: *mut ::std::os::raw::c_int,
+        input: *const c_char,
+        comp: *mut c_int,
     ) -> *mut AtNode;
 }
 extern "C" {
     pub fn AiNodeGetLinkOutput(
         node: *const AtNode,
-        input: *const ::std::os::raw::c_char,
-        output_param: *mut ::std::os::raw::c_int,
-        output_comp: *mut ::std::os::raw::c_int,
+        input: *const c_char,
+        output_param: *mut c_int,
+        output_comp: *mut c_int,
     ) -> *mut AtNode;
 }
 extern "C" {
-    pub fn AiNodeGetName(node: *const AtNode) -> *const ::std::os::raw::c_char;
+    pub fn AiNodeGetName(node: *const AtNode) -> *const c_char;
 }
 extern "C" {
     pub fn AiNodeGetNodeEntry(node: *const AtNode) -> *const AtNodeEntry;
 }
 extern "C" {
-    pub fn AiNodeGetLocalData(node: *const AtNode) -> *mut ::std::os::raw::c_void;
+    pub fn AiNodeGetLocalData(node: *const AtNode) -> *mut c_void;
 }
 extern "C" {
-    pub fn AiNodeSetLocalData(node: *mut AtNode, data: *mut ::std::os::raw::c_void);
+    pub fn AiNodeSetLocalData(node: *mut AtNode, data: *mut c_void);
 }
 extern "C" {
-    pub fn AiNodeGetPluginData(node: *const AtNode) -> *mut ::std::os::raw::c_void;
+    pub fn AiNodeGetPluginData(node: *const AtNode) -> *mut c_void;
 }
 extern "C" {
     pub fn AiNodeSetDisabled(node: *mut AtNode, disabled: bool);
@@ -155,10 +157,10 @@ extern "C" {
     pub fn AiNodeSetByte(node: *mut AtNode, param: AtString, val: u8);
 }
 extern "C" {
-    pub fn AiNodeSetInt(node: *mut AtNode, param: AtString, val: ::std::os::raw::c_int);
+    pub fn AiNodeSetInt(node: *mut AtNode, param: AtString, val: c_int);
 }
 extern "C" {
-    pub fn AiNodeSetUInt(node: *mut AtNode, param: AtString, val: ::std::os::raw::c_uint);
+    pub fn AiNodeSetUInt(node: *mut AtNode, param: AtString, val: c_uint);
 }
 extern "C" {
     pub fn AiNodeSetBool(node: *mut AtNode, param: AtString, val: bool);
@@ -167,7 +169,7 @@ extern "C" {
     pub fn AiNodeSetFlt(node: *mut AtNode, param: AtString, val: f32);
 }
 extern "C" {
-    pub fn AiNodeSetPtr(node: *mut AtNode, param: AtString, val: *mut ::std::os::raw::c_void);
+    pub fn AiNodeSetPtr(node: *mut AtNode, param: AtString, val: *mut c_void);
 }
 extern "C" {
     pub fn AiNodeSetArray(node: *mut AtNode, param: AtString, val: *mut AtArray);
@@ -191,7 +193,7 @@ extern "C" {
     pub fn AiNodeSetVec2(node: *mut AtNode, param: AtString, x: f32, y: f32);
 }
 extern "C" {
-    pub fn AiNodeSetAttributes(node: *mut AtNode, attributes: *const ::std::os::raw::c_char);
+    pub fn AiNodeSetAttributes(node: *mut AtNode, attributes: *const c_char);
 }
 extern "C" {
     #[doc = " \\name Parameter Readers"]
@@ -199,10 +201,10 @@ extern "C" {
     pub fn AiNodeGetByte(node: *const AtNode, param: AtString) -> u8;
 }
 extern "C" {
-    pub fn AiNodeGetInt(node: *const AtNode, param: AtString) -> ::std::os::raw::c_int;
+    pub fn AiNodeGetInt(node: *const AtNode, param: AtString) -> c_int;
 }
 extern "C" {
-    pub fn AiNodeGetUInt(node: *const AtNode, param: AtString) -> ::std::os::raw::c_uint;
+    pub fn AiNodeGetUInt(node: *const AtNode, param: AtString) -> c_uint;
 }
 extern "C" {
     pub fn AiNodeGetBool(node: *const AtNode, param: AtString) -> bool;
@@ -226,7 +228,7 @@ extern "C" {
     pub fn AiNodeGetStr(node: *const AtNode, param: AtString) -> AtString;
 }
 extern "C" {
-    pub fn AiNodeGetPtr(node: *const AtNode, param: AtString) -> *mut ::std::os::raw::c_void;
+    pub fn AiNodeGetPtr(node: *const AtNode, param: AtString) -> *mut c_void;
 }
 extern "C" {
     pub fn AiNodeGetArray(node: *const AtNode, param: AtString) -> *mut AtArray;

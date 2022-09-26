@@ -1,3 +1,5 @@
+use ::std::{option::Option, os::raw::{c_void, c_char, c_int}};
+
 use super::{
     ai_nodes::AtNode,
     ai_params::AtList,
@@ -47,16 +49,16 @@ pub struct AtNodeEntry {
 #[derive(Debug, Copy, Clone)]
 pub struct AtCommonMethods {
     pub PluginInitialize:
-        ::std::option::Option<unsafe extern "C" fn(arg1: *mut *mut ::std::os::raw::c_void) -> bool>,
+        Option<unsafe extern "C" fn(arg1: *mut *mut c_void) -> bool>,
     pub PluginCleanup:
-        ::std::option::Option<unsafe extern "C" fn(arg1: *mut ::std::os::raw::c_void)>,
+        Option<unsafe extern "C" fn(arg1: *mut c_void)>,
     pub Parameters:
-        ::std::option::Option<unsafe extern "C" fn(arg1: *mut AtList, arg2: *mut AtNodeEntry)>,
+        Option<unsafe extern "C" fn(arg1: *mut AtList, arg2: *mut AtNodeEntry)>,
     pub Initialize:
-        ::std::option::Option<unsafe extern "C" fn(arg1: *mut AtRenderSession, arg2: *mut AtNode)>,
+        Option<unsafe extern "C" fn(arg1: *mut AtRenderSession, arg2: *mut AtNode)>,
     pub Update:
-        ::std::option::Option<unsafe extern "C" fn(arg1: *mut AtRenderSession, arg2: *mut AtNode)>,
-    pub Finish: ::std::option::Option<unsafe extern "C" fn(arg1: *mut AtNode)>,
+        Option<unsafe extern "C" fn(arg1: *mut AtRenderSession, arg2: *mut AtNode)>,
+    pub Finish: Option<unsafe extern "C" fn(arg1: *mut AtNode)>,
 }
 #[doc = " Node methods"]
 #[repr(C)]
@@ -65,7 +67,7 @@ pub struct AtNodeMethods {
     #[doc = "< common methods"]
     pub cmethods: *const AtCommonMethods,
     #[doc = "< derived methods"]
-    pub dmethods: *const ::std::os::raw::c_void,
+    pub dmethods: *const c_void,
 }
 #[repr(C)]
 pub struct AtMetaDataEntry {
@@ -80,44 +82,44 @@ extern "C" {
     pub fn AiNodeEntryLookUp(name: AtString) -> *const AtNodeEntry;
 }
 extern "C" {
-    pub fn AiNodeEntryGetName(nentry: *const AtNodeEntry) -> *const ::std::os::raw::c_char;
+    pub fn AiNodeEntryGetName(nentry: *const AtNodeEntry) -> *const c_char;
 }
 extern "C" {
     pub fn AiNodeEntryGetNameAtString(nentry: *const AtNodeEntry) -> AtString;
 }
 extern "C" {
-    pub fn AiNodeEntryGetType(nentry: *const AtNodeEntry) -> ::std::os::raw::c_int;
+    pub fn AiNodeEntryGetType(nentry: *const AtNodeEntry) -> c_int;
 }
 extern "C" {
-    pub fn AiNodeEntryGetTypeName(nentry: *const AtNodeEntry) -> *const ::std::os::raw::c_char;
+    pub fn AiNodeEntryGetTypeName(nentry: *const AtNodeEntry) -> *const c_char;
 }
 extern "C" {
-    pub fn AiNodeEntryGetDerivedType(nentry: *const AtNodeEntry) -> ::std::os::raw::c_int;
+    pub fn AiNodeEntryGetDerivedType(nentry: *const AtNodeEntry) -> c_int;
 }
 extern "C" {
     pub fn AiNodeEntryGetDerivedTypeName(
         nentry: *const AtNodeEntry,
-    ) -> *const ::std::os::raw::c_char;
+    ) -> *const c_char;
 }
 extern "C" {
-    pub fn AiNodeEntryGetOutputType(nentry: *const AtNodeEntry) -> ::std::os::raw::c_int;
+    pub fn AiNodeEntryGetOutputType(nentry: *const AtNodeEntry) -> c_int;
 }
 extern "C" {
-    pub fn AiNodeEntryGetFilename(nentry: *const AtNodeEntry) -> *const ::std::os::raw::c_char;
+    pub fn AiNodeEntryGetFilename(nentry: *const AtNodeEntry) -> *const c_char;
 }
 extern "C" {
-    pub fn AiNodeEntryGetVersion(nentry: *const AtNodeEntry) -> *const ::std::os::raw::c_char;
+    pub fn AiNodeEntryGetVersion(nentry: *const AtNodeEntry) -> *const c_char;
 }
 extern "C" {
-    pub fn AiNodeEntryGetCount(nentry: *const AtNodeEntry) -> ::std::os::raw::c_int;
+    pub fn AiNodeEntryGetCount(nentry: *const AtNodeEntry) -> c_int;
 }
 extern "C" {
-    pub fn AiNodeEntryGetNumParams(nentry: *const AtNodeEntry) -> ::std::os::raw::c_int;
+    pub fn AiNodeEntryGetNumParams(nentry: *const AtNodeEntry) -> c_int;
 }
 extern "C" {
     pub fn AiNodeEntryGetParameter(
         nentry: *const AtNodeEntry,
-        i: ::std::os::raw::c_int,
+        i: c_int,
     ) -> *const AtParamEntry;
 }
 extern "C" {
@@ -127,12 +129,12 @@ extern "C" {
     ) -> *const AtParamEntry;
 }
 extern "C" {
-    pub fn AiNodeEntryGetNumOutputs(nentry: *const AtNodeEntry) -> ::std::os::raw::c_int;
+    pub fn AiNodeEntryGetNumOutputs(nentry: *const AtNodeEntry) -> c_int;
 }
 extern "C" {
     pub fn AiNodeEntryGetOutput(
         nentry: *const AtNodeEntry,
-        i: ::std::os::raw::c_int,
+        i: c_int,
     ) -> *const AtParamEntry;
 }
 extern "C" {
@@ -147,21 +149,21 @@ extern "C" {
 extern "C" {
     pub fn AiNodeEntryGetMetaDataIterator(
         nentry: *const AtNodeEntry,
-        param: *const ::std::os::raw::c_char,
+        param: *const c_char,
     ) -> *mut AtMetaDataIterator;
 }
 extern "C" {
     pub fn AiNodeEntryInstall(
-        type_: ::std::os::raw::c_int,
+        type_: c_int,
         output_type: u8,
-        name: *const ::std::os::raw::c_char,
-        filename: *const ::std::os::raw::c_char,
+        name: *const c_char,
+        filename: *const c_char,
         methods: *const AtNodeMethods,
-        version: *const ::std::os::raw::c_char,
+        version: *const c_char,
     );
 }
 extern "C" {
-    pub fn AiNodeEntryUninstall(name: *const ::std::os::raw::c_char);
+    pub fn AiNodeEntryUninstall(name: *const c_char);
 }
 extern "C" {
     #[doc = " \\name AtParamIterator Methods"]

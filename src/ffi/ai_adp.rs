@@ -1,3 +1,5 @@
+use ::std::os::raw::c_char;
+
 use super::{ai_map::AtParamValueMap, ai_string::AtString};
 
 extern "C" {
@@ -62,7 +64,7 @@ extern "C" {
     #[doc = " \"learnMoreText\" link, and the \"privacyURL\" and associated \"privacyText\" link."]
     pub fn AiADPDialogStrings(
         strings: *mut AtParamValueMap,
-        custom_optin_command: *const ::std::os::raw::c_char,
+        custom_optin_command: *const c_char,
     );
 }
 extern "C" {
