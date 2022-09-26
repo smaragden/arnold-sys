@@ -1,4 +1,7 @@
-use ::std::{os::raw::{c_void, c_uint, c_int}, option::Option};
+use ::std::{
+    option::Option,
+    os::raw::{c_int, c_uint, c_void},
+};
 
 pub const AI_MAX_THREADS: u32 = 256;
 pub const AI_PRIORITY_LOWEST: u32 = 0;
@@ -12,9 +15,7 @@ extern "C" {
     #[doc = ""]
     #[doc = " \\{"]
     pub fn AiThreadCreate(
-        fn_: Option<
-            unsafe extern "C" fn(arg1: *mut c_void) -> c_uint,
-        >,
+        fn_: Option<unsafe extern "C" fn(arg1: *mut c_void) -> c_uint>,
         data: *mut c_void,
         priority: c_int,
     ) -> *mut c_void;

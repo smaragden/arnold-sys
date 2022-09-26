@@ -1,4 +1,7 @@
-use ::std::{os::raw::{c_uint, c_int, c_void, c_char}, option::Option};
+use ::std::{
+    option::Option,
+    os::raw::{c_char, c_int, c_uint, c_void},
+};
 
 use super::{
     ai_array::AtArray,
@@ -57,10 +60,7 @@ extern "C" {
 }
 extern "C" {
     #[doc = " Returns the name of a device"]
-    pub fn AiDeviceGetName(
-        device_type: AtDeviceType,
-        device_id: c_uint,
-    ) -> AtString;
+    pub fn AiDeviceGetName(device_type: AtDeviceType, device_id: c_uint) -> AtString;
 }
 extern "C" {
     #[doc = " Returns memory information of a device"]

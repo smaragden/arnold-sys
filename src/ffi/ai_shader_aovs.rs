@@ -1,4 +1,4 @@
-use ::std::os::raw::{c_int, c_void, c_char};
+use ::std::os::raw::{c_char, c_int, c_void};
 
 use super::{
     ai_color::{AtRGB, AtRGBA},
@@ -42,11 +42,7 @@ extern "C" {
     pub fn AiAOVSetBool(sg: *mut AtShaderGlobals, name: AtString, val: bool) -> bool;
 }
 extern "C" {
-    pub fn AiAOVSetInt(
-        sg: *mut AtShaderGlobals,
-        name: AtString,
-        val: c_int,
-    ) -> bool;
+    pub fn AiAOVSetInt(sg: *mut AtShaderGlobals, name: AtString, val: c_int) -> bool;
 }
 extern "C" {
     pub fn AiAOVSetFlt(sg: *mut AtShaderGlobals, name: AtString, val: f32) -> bool;
@@ -67,11 +63,7 @@ extern "C" {
     pub fn AiAOVSetMatrix(sg: *mut AtShaderGlobals, name: AtString, val: AtMatrix) -> bool;
 }
 extern "C" {
-    pub fn AiAOVSetPtr(
-        sg: *mut AtShaderGlobals,
-        name: AtString,
-        val: *mut c_void,
-    ) -> bool;
+    pub fn AiAOVSetPtr(sg: *mut AtShaderGlobals, name: AtString, val: *mut c_void) -> bool;
 }
 extern "C" {
     #[doc = " \\name AOV-reading Functions"]
@@ -89,11 +81,7 @@ extern "C" {
     pub fn AiAOVGetBool(sg: *const AtShaderGlobals, name: AtString, val: *mut bool) -> bool;
 }
 extern "C" {
-    pub fn AiAOVGetInt(
-        sg: *const AtShaderGlobals,
-        name: AtString,
-        val: *mut c_int,
-    ) -> bool;
+    pub fn AiAOVGetInt(sg: *const AtShaderGlobals, name: AtString, val: *mut c_int) -> bool;
 }
 extern "C" {
     pub fn AiAOVGetFlt(sg: *const AtShaderGlobals, name: AtString, val: *mut f32) -> bool;
@@ -114,19 +102,11 @@ extern "C" {
     pub fn AiAOVGetMatrix(sg: *const AtShaderGlobals, name: AtString, val: *mut AtMatrix) -> bool;
 }
 extern "C" {
-    pub fn AiAOVGetPtr(
-        sg: *const AtShaderGlobals,
-        name: AtString,
-        val: *mut *mut c_void,
-    ) -> bool;
+    pub fn AiAOVGetPtr(sg: *const AtShaderGlobals, name: AtString, val: *mut *mut c_void) -> bool;
 }
 extern "C" {
     pub fn AiAOVEnabled(name: AtString, type_: u8) -> bool;
 }
 extern "C" {
-    pub fn AiAOVRegister(
-        name: *const c_char,
-        type_: u8,
-        blend_mode: c_int,
-    ) -> bool;
+    pub fn AiAOVRegister(name: *const c_char, type_: u8, blend_mode: c_int) -> bool;
 }

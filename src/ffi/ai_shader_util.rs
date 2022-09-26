@@ -1,4 +1,7 @@
-use ::std::{option::Option, os::raw::{c_void, c_int}};
+use ::std::{
+    option::Option,
+    os::raw::{c_int, c_void},
+};
 
 use super::{
     ai_bbox::AtBBox,
@@ -127,9 +130,8 @@ extern "C" {
 #[doc = " \\param sg    the current shading context"]
 #[doc = " \\param data  user-defined data pointer"]
 #[doc = " \\return bump/displacement height for the current shading context"]
-pub type AtFloatBumpEvaluator = Option<
-    unsafe extern "C" fn(sg: *mut AtShaderGlobals, data: *mut c_void) -> f32,
->;
+pub type AtFloatBumpEvaluator =
+    Option<unsafe extern "C" fn(sg: *mut AtShaderGlobals, data: *mut c_void) -> f32>;
 extern "C" {
     #[doc = " \\name Utility Functions"]
     #[doc = " \\{"]
@@ -220,10 +222,7 @@ extern "C" {
     pub fn AiShaderGlobalsUnsetTraceSet(sg: *mut AtShaderGlobals);
 }
 extern "C" {
-    pub fn AiShaderGlobalsQuickAlloc(
-        sg: *const AtShaderGlobals,
-        size: u32,
-    ) -> *mut c_void;
+    pub fn AiShaderGlobalsQuickAlloc(sg: *const AtShaderGlobals, size: u32) -> *mut c_void;
 }
 extern "C" {
     pub fn AiShaderGlobalsEvaluateBump(

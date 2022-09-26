@@ -1,4 +1,7 @@
-use ::std::{option::Option, os::raw::{c_void, c_char, c_int, c_uint}};
+use ::std::{
+    option::Option,
+    os::raw::{c_char, c_int, c_uint, c_void},
+};
 
 use super::{
     ai_color::{AtRGB, AtRGBA},
@@ -17,8 +20,7 @@ pub struct AtAOVSampleIterator {
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct AtFilterNodeMethods {
-    pub FilterOutputType:
-        Option<unsafe extern "C" fn(arg1: *const AtNode, arg2: u8) -> u8>,
+    pub FilterOutputType: Option<unsafe extern "C" fn(arg1: *const AtNode, arg2: u8) -> u8>,
     pub FilterPixel: Option<
         unsafe extern "C" fn(
             arg1: *mut AtNode,
@@ -43,11 +45,7 @@ extern "C" {
 extern "C" {
     #[doc = " \\name API Methods to Loop over Samples"]
     #[doc = " \\{"]
-    pub fn AiAOVSampleIteratorInitPixel(
-        iter: *mut AtAOVSampleIterator,
-        x: c_int,
-        y: c_int,
-    );
+    pub fn AiAOVSampleIteratorInitPixel(iter: *mut AtAOVSampleIterator, x: c_int, y: c_int);
 }
 extern "C" {
     pub fn AiAOVSampleIteratorGetPixel(
@@ -117,9 +115,7 @@ extern "C" {
     pub fn AiAOVSampleIteratorGetMatrix(iter: *const AtAOVSampleIterator) -> AtMatrix;
 }
 extern "C" {
-    pub fn AiAOVSampleIteratorGetPtr(
-        iter: *const AtAOVSampleIterator,
-    ) -> *const c_void;
+    pub fn AiAOVSampleIteratorGetPtr(iter: *const AtAOVSampleIterator) -> *const c_void;
 }
 extern "C" {
     #[doc = " \\name API Methods to Get Sample Value from Iterator for an Arbitrary AOV"]
@@ -127,10 +123,7 @@ extern "C" {
     pub fn AiAOVSampleIteratorGetAOVBool(iter: *const AtAOVSampleIterator, name: AtString) -> bool;
 }
 extern "C" {
-    pub fn AiAOVSampleIteratorGetAOVInt(
-        iter: *const AtAOVSampleIterator,
-        name: AtString,
-    ) -> c_int;
+    pub fn AiAOVSampleIteratorGetAOVInt(iter: *const AtAOVSampleIterator, name: AtString) -> c_int;
 }
 extern "C" {
     pub fn AiAOVSampleIteratorGetAOVUInt(

@@ -10,14 +10,8 @@ use ::std::os::raw::{c_char, c_int};
 #[doc = " beginning with a digit will be interpreted as a number."]
 pub type AtEnum = *mut *const c_char;
 extern "C" {
-    pub fn AiEnumGetValue(
-        enum_type: AtEnum,
-        string: *const c_char,
-    ) -> c_int;
+    pub fn AiEnumGetValue(enum_type: AtEnum, string: *const c_char) -> c_int;
 }
 extern "C" {
-    pub fn AiEnumGetString(
-        enum_type: AtEnum,
-        index: c_int,
-    ) -> *const c_char;
+    pub fn AiEnumGetString(enum_type: AtEnum, index: c_int) -> *const c_char;
 }

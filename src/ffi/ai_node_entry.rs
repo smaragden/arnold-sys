@@ -1,4 +1,7 @@
-use ::std::{option::Option, os::raw::{c_void, c_char, c_int}};
+use ::std::{
+    option::Option,
+    os::raw::{c_char, c_int, c_void},
+};
 
 use super::{
     ai_nodes::AtNode,
@@ -48,16 +51,11 @@ pub struct AtNodeEntry {
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct AtCommonMethods {
-    pub PluginInitialize:
-        Option<unsafe extern "C" fn(arg1: *mut *mut c_void) -> bool>,
-    pub PluginCleanup:
-        Option<unsafe extern "C" fn(arg1: *mut c_void)>,
-    pub Parameters:
-        Option<unsafe extern "C" fn(arg1: *mut AtList, arg2: *mut AtNodeEntry)>,
-    pub Initialize:
-        Option<unsafe extern "C" fn(arg1: *mut AtRenderSession, arg2: *mut AtNode)>,
-    pub Update:
-        Option<unsafe extern "C" fn(arg1: *mut AtRenderSession, arg2: *mut AtNode)>,
+    pub PluginInitialize: Option<unsafe extern "C" fn(arg1: *mut *mut c_void) -> bool>,
+    pub PluginCleanup: Option<unsafe extern "C" fn(arg1: *mut c_void)>,
+    pub Parameters: Option<unsafe extern "C" fn(arg1: *mut AtList, arg2: *mut AtNodeEntry)>,
+    pub Initialize: Option<unsafe extern "C" fn(arg1: *mut AtRenderSession, arg2: *mut AtNode)>,
+    pub Update: Option<unsafe extern "C" fn(arg1: *mut AtRenderSession, arg2: *mut AtNode)>,
     pub Finish: Option<unsafe extern "C" fn(arg1: *mut AtNode)>,
 }
 #[doc = " Node methods"]
@@ -97,9 +95,7 @@ extern "C" {
     pub fn AiNodeEntryGetDerivedType(nentry: *const AtNodeEntry) -> c_int;
 }
 extern "C" {
-    pub fn AiNodeEntryGetDerivedTypeName(
-        nentry: *const AtNodeEntry,
-    ) -> *const c_char;
+    pub fn AiNodeEntryGetDerivedTypeName(nentry: *const AtNodeEntry) -> *const c_char;
 }
 extern "C" {
     pub fn AiNodeEntryGetOutputType(nentry: *const AtNodeEntry) -> c_int;
@@ -117,10 +113,7 @@ extern "C" {
     pub fn AiNodeEntryGetNumParams(nentry: *const AtNodeEntry) -> c_int;
 }
 extern "C" {
-    pub fn AiNodeEntryGetParameter(
-        nentry: *const AtNodeEntry,
-        i: c_int,
-    ) -> *const AtParamEntry;
+    pub fn AiNodeEntryGetParameter(nentry: *const AtNodeEntry, i: c_int) -> *const AtParamEntry;
 }
 extern "C" {
     pub fn AiNodeEntryLookUpParameter(
@@ -132,10 +125,7 @@ extern "C" {
     pub fn AiNodeEntryGetNumOutputs(nentry: *const AtNodeEntry) -> c_int;
 }
 extern "C" {
-    pub fn AiNodeEntryGetOutput(
-        nentry: *const AtNodeEntry,
-        i: c_int,
-    ) -> *const AtParamEntry;
+    pub fn AiNodeEntryGetOutput(nentry: *const AtNodeEntry, i: c_int) -> *const AtParamEntry;
 }
 extern "C" {
     pub fn AiNodeEntryLookUpOutput(

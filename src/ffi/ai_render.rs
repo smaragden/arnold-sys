@@ -1,4 +1,7 @@
-use ::std::{os::raw::{c_uint, c_void}, option::Option};
+use ::std::{
+    option::Option,
+    os::raw::{c_uint, c_void},
+};
 
 use super::{
     ai_api::AtBlockingCall, ai_array::AtArray, ai_nodes::AtNode, ai_string::AtString,

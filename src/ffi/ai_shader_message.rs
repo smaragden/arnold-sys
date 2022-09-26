@@ -59,11 +59,7 @@ extern "C" {
     ) -> bool;
 }
 extern "C" {
-    pub fn AiMessageSetIntFunc(
-        arg1: *mut AtShaderGlobals,
-        arg2: AtString,
-        arg3: c_int,
-    ) -> bool;
+    pub fn AiMessageSetIntFunc(arg1: *mut AtShaderGlobals, arg2: AtString, arg3: c_int) -> bool;
 }
 extern "C" {
     pub fn AiMessageUnsetIntFunc(arg1: *mut AtShaderGlobals, arg2: AtString) -> bool;
@@ -76,11 +72,7 @@ extern "C" {
     ) -> bool;
 }
 extern "C" {
-    pub fn AiMessageSetUIntFunc(
-        arg1: *mut AtShaderGlobals,
-        arg2: AtString,
-        arg3: c_uint,
-    ) -> bool;
+    pub fn AiMessageSetUIntFunc(arg1: *mut AtShaderGlobals, arg2: AtString, arg3: c_uint) -> bool;
 }
 extern "C" {
     pub fn AiMessageUnsetUIntFunc(arg1: *mut AtShaderGlobals, arg2: AtString) -> bool;

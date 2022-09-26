@@ -1,4 +1,7 @@
-use ::std::{os::raw::{c_void, c_char, c_int}, option::Option};
+use ::std::{
+    option::Option,
+    os::raw::{c_char, c_int, c_void},
+};
 
 use super::{
     ai_array::AtArray, ai_bbox::AtBBox, ai_nodes::AtNode, ai_params::AtParamValue,
@@ -39,10 +42,7 @@ extern "C" {
     pub fn AiVolumeFileGetChannels(filename: *const c_char) -> *mut AtArray;
 }
 extern "C" {
-    pub fn AiVolumeFileGetBBox(
-        filename: *const c_char,
-        channels: *const AtArray,
-    ) -> AtBBox;
+    pub fn AiVolumeFileGetBBox(filename: *const c_char, channels: *const AtArray) -> AtBBox;
 }
 #[doc = " Volume plugin volume creation."]
 #[doc = ""]
@@ -51,9 +51,8 @@ extern "C" {
 #[doc = " \\param      node         Owner node where the volume was requested"]
 #[doc = " \\param[out] data         Volume data with all fields to be set by the callback"]
 #[doc = " \\return                  true if volume creation succeeded"]
-pub type AtVolumeCreate = Option<
-    unsafe extern "C" fn(node: *const AtNode, data: *mut AtVolumeData) -> bool,
->;
+pub type AtVolumeCreate =
+    Option<unsafe extern "C" fn(node: *const AtNode, data: *mut AtVolumeData) -> bool>;
 #[doc = " Volume plugin volume update."]
 #[doc = ""]
 #[doc = " This method will be called for each volume node before each render"]
@@ -63,9 +62,8 @@ pub type AtVolumeCreate = Option<
 #[doc = " \\param      node         Owner node where the volume was requested"]
 #[doc = " \\param[out] data         Volume data with all fields to be set by the callback"]
 #[doc = " \\return                  true if volume data was modified"]
-pub type AtVolumeUpdate = Option<
-    unsafe extern "C" fn(node: *const AtNode, data: *mut AtVolumeData) -> bool,
->;
+pub type AtVolumeUpdate =
+    Option<unsafe extern "C" fn(node: *const AtNode, data: *mut AtVolumeData) -> bool>;
 #[doc = " Volume plugin volume cleanup method."]
 #[doc = ""]
 #[doc = " This method will be called once for each volume that was created by a call to"]
@@ -73,9 +71,8 @@ pub type AtVolumeUpdate = Option<
 #[doc = ""]
 #[doc = " \\param data      Volume data returned from \\ref AtVolumeCreate"]
 #[doc = " \\return          true upon success"]
-pub type AtVolumeCleanup = Option<
-    unsafe extern "C" fn(node: *const AtNode, data: *mut AtVolumeData) -> bool,
->;
+pub type AtVolumeCleanup =
+    Option<unsafe extern "C" fn(node: *const AtNode, data: *mut AtVolumeData) -> bool>;
 #[doc = " Volume plugin sample method."]
 #[doc = ""]
 #[doc = " This method will be called concurrently to sample data from a given channel"]

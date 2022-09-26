@@ -1,4 +1,4 @@
-use ::std::os::raw::{c_char, c_int, c_void, c_uint};
+use ::std::os::raw::{c_char, c_int, c_uint, c_void};
 
 use super::{
     ai_array::AtArray,
@@ -40,11 +40,7 @@ extern "C" {
     ) -> *mut AtNode;
 }
 extern "C" {
-    pub fn AiNodeDeclare(
-        node: *mut AtNode,
-        param: AtString,
-        declaration: *const c_char,
-    ) -> bool;
+    pub fn AiNodeDeclare(node: *mut AtNode, param: AtString, declaration: *const c_char) -> bool;
 }
 extern "C" {
     pub fn AiNodeLookUpUserParameter(
@@ -75,11 +71,7 @@ extern "C" {
     pub fn AiNodeReplace(old_node: *mut AtNode, new_node: *mut AtNode, remove: bool);
 }
 extern "C" {
-    pub fn AiNodeLink(
-        src: *mut AtNode,
-        input: *const c_char,
-        target: *mut AtNode,
-    ) -> bool;
+    pub fn AiNodeLink(src: *mut AtNode, input: *const c_char, target: *mut AtNode) -> bool;
 }
 extern "C" {
     pub fn AiNodeLinkOutput(

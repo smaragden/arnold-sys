@@ -1,4 +1,7 @@
-use ::std::{os::raw::{c_uint, c_int, c_ulong, c_void}, option::Option};
+use ::std::{
+    option::Option,
+    os::raw::{c_int, c_uint, c_ulong, c_void},
+};
 
 use super::{
     ai_closure::{AtBSDF, AtClosureList},
@@ -46,8 +49,7 @@ pub struct AtBSDFLobeSample {
 #[derive(Debug, Copy, Clone)]
 pub struct AtBSDFMethods {
     pub version: c_int,
-    pub Init:
-        Option<unsafe extern "C" fn(sg: *const AtShaderGlobals, bsdf: *mut AtBSDF)>,
+    pub Init: Option<unsafe extern "C" fn(sg: *const AtShaderGlobals, bsdf: *mut AtBSDF)>,
     pub Eval: Option<
         unsafe extern "C" fn(
             bsdf: *const AtBSDF,
@@ -76,9 +78,7 @@ pub struct AtBSDFMethods {
             lobe_mask: AtBSDFLobeMask,
         ) -> AtRGB,
     >,
-    pub Merge: Option<
-        unsafe extern "C" fn(bsdf: *mut AtBSDF, other_bsdf: *const AtBSDF) -> bool,
-    >,
+    pub Merge: Option<unsafe extern "C" fn(bsdf: *mut AtBSDF, other_bsdf: *const AtBSDF) -> bool>,
     pub Interior: Option<
         unsafe extern "C" fn(sg: *const AtShaderGlobals, bsdf: *mut AtBSDF) -> AtClosureList,
     >,
@@ -119,11 +119,7 @@ extern "C" {
     );
 }
 extern "C" {
-    pub fn AiBSDFInitLobes(
-        bsdf: *mut AtBSDF,
-        lobes: *const AtBSDFLobeInfo,
-        num_lobes: c_int,
-    );
+    pub fn AiBSDFInitLobes(bsdf: *mut AtBSDF, lobes: *const AtBSDFLobeInfo, num_lobes: c_int);
 }
 extern "C" {
     pub fn AiBSDFInitNormal(bsdf: *mut AtBSDF, N: *const AtVector, bounding: bool);

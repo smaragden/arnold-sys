@@ -16,19 +16,10 @@ extern "C" {
 extern "C" {
     #[doc = " \\name Periodic Perlin Noise"]
     #[doc = " \\{"]
-    pub fn AiPeriodicPerlin2(
-        p: AtVector2,
-        periodx: c_int,
-        periody: c_int,
-    ) -> f32;
+    pub fn AiPeriodicPerlin2(p: AtVector2, periodx: c_int, periody: c_int) -> f32;
 }
 extern "C" {
-    pub fn AiPeriodicPerlin3(
-        p: AtVector,
-        periodx: c_int,
-        periody: c_int,
-        periodz: c_int,
-    ) -> f32;
+    pub fn AiPeriodicPerlin3(p: AtVector, periodx: c_int, periody: c_int, periodz: c_int) -> f32;
 }
 extern "C" {
     pub fn AiPeriodicPerlin4(
@@ -43,20 +34,10 @@ extern "C" {
 extern "C" {
     #[doc = " \\name Summed-Noise"]
     #[doc = " \\{"]
-    pub fn AiNoise2(
-        p: AtVector2,
-        octaves: c_int,
-        distortion: f32,
-        lacunarity: f32,
-    ) -> f32;
+    pub fn AiNoise2(p: AtVector2, octaves: c_int, distortion: f32, lacunarity: f32) -> f32;
 }
 extern "C" {
-    pub fn AiNoise3(
-        p: AtVector,
-        octaves: c_int,
-        distortion: f32,
-        lacunarity: f32,
-    ) -> f32;
+    pub fn AiNoise3(p: AtVector, octaves: c_int, distortion: f32, lacunarity: f32) -> f32;
 }
 extern "C" {
     pub fn AiNoise4(
@@ -68,20 +49,10 @@ extern "C" {
     ) -> f32;
 }
 extern "C" {
-    pub fn AiVNoise2(
-        p: AtVector2,
-        octaves: c_int,
-        distortion: f32,
-        lacunarity: f32,
-    ) -> AtVector2;
+    pub fn AiVNoise2(p: AtVector2, octaves: c_int, distortion: f32, lacunarity: f32) -> AtVector2;
 }
 extern "C" {
-    pub fn AiVNoise3(
-        p: AtVector,
-        octaves: c_int,
-        distortion: f32,
-        lacunarity: f32,
-    ) -> AtVector;
+    pub fn AiVNoise3(p: AtVector, octaves: c_int, distortion: f32, lacunarity: f32) -> AtVector;
 }
 extern "C" {
     pub fn AiVNoise4(

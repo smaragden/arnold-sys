@@ -17,11 +17,7 @@ pub struct AtSamplerIterator {
     _unused: [u8; 0],
 }
 extern "C" {
-    pub fn AiSampler(
-        seed: u32,
-        nsamples: c_int,
-        ndim: c_int,
-    ) -> *mut AtSampler;
+    pub fn AiSampler(seed: u32, nsamples: c_int, ndim: c_int) -> *mut AtSampler;
 }
 extern "C" {
     pub fn AiSamplerIterator(

@@ -25,11 +25,8 @@ extern "C" {
     pub fn AiUserGetByteFunc(arg1: AtString, arg2: *const AtShaderGlobals, arg3: *mut u8) -> bool;
 }
 extern "C" {
-    pub fn AiUserGetIntFunc(
-        arg1: AtString,
-        arg2: *const AtShaderGlobals,
-        arg3: *mut c_int,
-    ) -> bool;
+    pub fn AiUserGetIntFunc(arg1: AtString, arg2: *const AtShaderGlobals, arg3: *mut c_int)
+        -> bool;
 }
 extern "C" {
     pub fn AiUserGetUIntFunc(

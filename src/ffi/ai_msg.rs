@@ -1,4 +1,7 @@
-use ::std::{option::Option, os::raw::{c_int, c_char, c_void, c_uint, c_ulong}};
+use ::std::{
+    option::Option,
+    os::raw::{c_char, c_int, c_uint, c_ulong, c_void},
+};
 
 use super::{ai_map::AtParamValueMap, ai_universe::AtUniverse};
 
@@ -24,12 +27,7 @@ pub const AI_LOG_ALL: u32 = 8191;
 
 #[doc = " Custom message callback, as passed to AiMsgSetCallback()"]
 pub type AtMsgCallBack = Option<
-    unsafe extern "C" fn(
-        logmask: c_int,
-        severity: c_int,
-        msg_string: *const c_char,
-        tabs: c_int,
-    ),
+    unsafe extern "C" fn(logmask: c_int, severity: c_int, msg_string: *const c_char, tabs: c_int),
 >;
 #[doc = " Custom message callback, as passed to AiMsgRegisterCallback()"]
 #[doc = ""]

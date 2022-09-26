@@ -1,4 +1,4 @@
-use ::std::os::raw::{c_int, c_void, c_ulong};
+use ::std::os::raw::{c_int, c_ulong, c_void};
 
 use super::{
     ai_color::{AtRGB, AtRGBA},
@@ -37,8 +37,7 @@ extern "C" {
     pub fn AiArrayCopy(array: *const AtArray) -> *mut AtArray;
 }
 extern "C" {
-    pub fn AiArraySetKey(array: *mut AtArray, key: u8, data: *const c_void)
-        -> bool;
+    pub fn AiArraySetKey(array: *mut AtArray, key: u8, data: *const c_void) -> bool;
 }
 extern "C" {
     pub fn AiArrayMap(array: *mut AtArray) -> *mut c_void;

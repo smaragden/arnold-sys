@@ -238,11 +238,7 @@ extern "C" {
     );
 }
 extern "C" {
-    pub fn AiNodeParamClosure(
-        params: *mut AtList,
-        varoffset: c_int,
-        pname: *const c_char,
-    );
+    pub fn AiNodeParamClosure(params: *mut AtList, varoffset: c_int, pname: *const c_char);
 }
 extern "C" {
     pub fn AiNodeOutputByte(params: *mut AtList, pname: *const c_char);
@@ -281,21 +277,13 @@ extern "C" {
     pub fn AiNodeOutputNode(params: *mut AtList, pname: *const c_char);
 }
 extern "C" {
-    pub fn AiNodeOutputArray(
-        params: *mut AtList,
-        pname: *const c_char,
-        array_type: c_int,
-    );
+    pub fn AiNodeOutputArray(params: *mut AtList, pname: *const c_char, array_type: c_int);
 }
 extern "C" {
     pub fn AiNodeOutputMtx(params: *mut AtList, pname: *const c_char);
 }
 extern "C" {
-    pub fn AiNodeOutputEnum(
-        params: *mut AtList,
-        pname: *const c_char,
-        enum_type: AtEnum,
-    );
+    pub fn AiNodeOutputEnum(params: *mut AtList, pname: *const c_char, enum_type: AtEnum);
 }
 extern "C" {
     pub fn AiNodeOutputClosure(params: *mut AtList, pname: *const c_char);

@@ -56,10 +56,7 @@ extern "C" {
     pub fn AiUniverseDestroy(universe: *mut AtUniverse);
 }
 extern "C" {
-    pub fn AiUniverseCacheFlush(
-        universe: *const AtUniverse,
-        cache_flags: c_int,
-    ) -> bool;
+    pub fn AiUniverseCacheFlush(universe: *const AtUniverse, cache_flags: c_int) -> bool;
 }
 extern "C" {
     pub fn AiUniverseGetOptions(universe: *const AtUniverse) -> *mut AtNode;
@@ -77,9 +74,7 @@ extern "C" {
     ) -> *mut AtNodeIterator;
 }
 extern "C" {
-    pub fn AiUniverseGetNodeEntryIterator(
-        node_mask: c_uint,
-    ) -> *mut AtNodeEntryIterator;
+    pub fn AiUniverseGetNodeEntryIterator(node_mask: c_uint) -> *mut AtNodeEntryIterator;
 }
 extern "C" {
     pub fn AiUniverseGetAOVIterator(universe: *const AtUniverse) -> *mut AtAOVIterator;

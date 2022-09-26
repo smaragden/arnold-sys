@@ -1,4 +1,7 @@
-use ::std::{option::Option, os::raw::{c_char, c_int, c_void}};
+use ::std::{
+    option::Option,
+    os::raw::{c_char, c_int, c_void},
+};
 
 use super::{
     ai_bbox::AtBBox2, ai_matrix::AtMatrix, ai_node_entry::AtNodeEntry, ai_nodes::AtNode,
@@ -21,8 +24,7 @@ pub struct AtAOVSampleIterator {
 pub struct AtDriverNodeMethods {
     pub DriverSupportsPixelType:
         Option<unsafe extern "C" fn(arg1: *const AtNode, arg2: u8) -> bool>,
-    pub DriverExtension:
-        Option<unsafe extern "C" fn() -> *mut *const c_char>,
+    pub DriverExtension: Option<unsafe extern "C" fn() -> *mut *const c_char>,
     pub DriverOpen: Option<
         unsafe extern "C" fn(
             arg1: *mut AtNode,
@@ -75,8 +77,7 @@ pub struct AtDriverNodeMethods {
             arg7: c_int,
         ),
     >,
-    pub DriverClose:
-        Option<unsafe extern "C" fn(arg1: *mut AtNode, arg2: *mut AtOutputIterator)>,
+    pub DriverClose: Option<unsafe extern "C" fn(arg1: *mut AtNode, arg2: *mut AtOutputIterator)>,
 }
 extern "C" {
     #[doc = " \\name API for Driver Writers"]

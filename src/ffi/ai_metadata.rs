@@ -1,4 +1,4 @@
-use ::std::os::raw::{c_int, c_char};
+use ::std::os::raw::{c_char, c_int};
 
 use super::{
     ai_color::{AtRGB, AtRGBA},
@@ -152,11 +152,7 @@ extern "C" {
     );
 }
 extern "C" {
-    pub fn AiMetadataStoreSetInt(
-        mds: *mut AtMetadataStore,
-        name: AtString,
-        value: c_int,
-    );
+    pub fn AiMetadataStoreSetInt(mds: *mut AtMetadataStore, name: AtString, value: c_int);
 }
 extern "C" {
     pub fn AiMetadataStoreParamSetInt(
@@ -343,10 +339,7 @@ extern "C" {
     #[doc = ""]
     #[doc = " \\param mds     metadata store object where embedded metadata will be loaded"]
     #[doc = " \\param file    filename of the .ass file with the embedded metadata to load"]
-    pub fn AiMetadataStoreLoadFromASS(
-        mds: *mut AtMetadataStore,
-        file: *const c_char,
-    ) -> bool;
+    pub fn AiMetadataStoreLoadFromASS(mds: *mut AtMetadataStore, file: *const c_char) -> bool;
 }
 extern "C" {
     #[doc = " Creates a new metadata iterator that traverses all global metadata."]

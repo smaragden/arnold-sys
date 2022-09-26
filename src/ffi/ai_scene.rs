@@ -180,18 +180,14 @@ extern "C" {
     #[doc = ""]
     #[doc = " \\param format_data Scene format data returned by \\c AiSceneFormatIteratorGetNext"]
     #[doc = " \\return            Name of the scene format"]
-    pub fn AiSceneFormatGetName(
-        format_data: *const AtSceneFormatData,
-    ) -> *const c_char;
+    pub fn AiSceneFormatGetName(format_data: *const AtSceneFormatData) -> *const c_char;
 }
 extern "C" {
     #[doc = " Get a description of the scene format"]
     #[doc = ""]
     #[doc = " \\param format_data Scene format data returned by \\c AiSceneFormatIteratorGetNext"]
     #[doc = " \\return            Description of the scene format"]
-    pub fn AiSceneFormatGetDescription(
-        format_data: *const AtSceneFormatData,
-    ) -> *const c_char;
+    pub fn AiSceneFormatGetDescription(format_data: *const AtSceneFormatData) -> *const c_char;
 }
 extern "C" {
     #[doc = " True if the scene format supports reading from file"]

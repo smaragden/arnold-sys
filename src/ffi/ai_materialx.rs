@@ -1,4 +1,4 @@
-use ::std::os::raw::{c_uint, c_char};
+use ::std::os::raw::{c_char, c_uint};
 
 use super::{
     ai_array::AtArray, ai_map::AtParamValueMap, ai_nodes::AtNode, ai_universe::AtUniverse,

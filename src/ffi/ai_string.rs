@@ -2,9 +2,7 @@ use ::std::os::raw::{c_char, c_ulong};
 
 extern "C" {
     #[doc = " @cond internal"]
-    pub fn AiCreateAtStringData_private(
-        arg1: *const c_char,
-    ) -> *const c_char;
+    pub fn AiCreateAtStringData_private(arg1: *const c_char) -> *const c_char;
 }
 extern "C" {
     pub fn AiAtStringLength(arg1: *const c_char) -> c_ulong;

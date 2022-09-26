@@ -1,4 +1,7 @@
-use ::std::{mem::transmute, os::raw::{c_char, c_uint, c_void}};
+use ::std::{
+    mem::transmute,
+    os::raw::{c_char, c_uint, c_void},
+};
 
 use super::{
     ai_color::AtRGBA, ai_matrix::AtMatrix, ai_shaderglobals::AtShaderGlobals, ai_string::AtString,
@@ -326,28 +329,17 @@ extern "C" {
     ) -> bool;
 }
 extern "C" {
-    pub fn AiTextureGetNumChannels(
-        filename: *const c_char,
-        num_channels: *mut c_uint,
-    ) -> bool;
+    pub fn AiTextureGetNumChannels(filename: *const c_char, num_channels: *mut c_uint) -> bool;
 }
 extern "C" {
-    pub fn AiTextureGetChannelName(
-        filename: *const c_char,
-        channel_index: c_uint,
-    ) -> *const c_char;
+    pub fn AiTextureGetChannelName(filename: *const c_char, channel_index: c_uint)
+        -> *const c_char;
 }
 extern "C" {
-    pub fn AiTextureGetFormat(
-        filename: *const c_char,
-        format: *mut c_uint,
-    ) -> bool;
+    pub fn AiTextureGetFormat(filename: *const c_char, format: *mut c_uint) -> bool;
 }
 extern "C" {
-    pub fn AiTextureGetBitDepth(
-        filename: *const c_char,
-        bit_depth: *mut c_uint,
-    ) -> bool;
+    pub fn AiTextureGetBitDepth(filename: *const c_char, bit_depth: *mut c_uint) -> bool;
 }
 extern "C" {
     pub fn AiTextureGetMatrices(
@@ -367,11 +359,7 @@ pub const AtMakeTxStatus_AiTxAborted: AtMakeTxStatus = 4;
 #[doc = " Status of AiMakeTx jobs."]
 pub type AtMakeTxStatus = c_uint;
 extern "C" {
-    pub fn AiMakeTx(
-        filename: *const c_char,
-        flags: *const c_char,
-        universe: *const AtUniverse,
-    );
+    pub fn AiMakeTx(filename: *const c_char, flags: *const c_char, universe: *const AtUniverse);
 }
 extern "C" {
     pub fn AiMakeTxWaitJob(

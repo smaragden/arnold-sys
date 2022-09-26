@@ -1,4 +1,7 @@
-use ::std::{os::raw::{c_ulong, c_void, c_int, c_char}, option::Option};
+use ::std::{
+    option::Option,
+    os::raw::{c_char, c_int, c_ulong, c_void},
+};
 
 use super::{ai_bbox::AtBBox2, ai_nodes::AtNode, ai_string::AtString};
 
@@ -26,12 +29,10 @@ pub struct AtColorManagerNodeMethods {
             arg9: *const AtChannelLayout,
         ) -> bool,
     >,
-    pub ColorManagerGetDefaults: Option<
-        unsafe extern "C" fn(arg1: *mut AtNode, arg2: *mut AtString, arg3: *mut AtString),
-    >,
-    pub ColorManagerGetChromaticities: Option<
-        unsafe extern "C" fn(arg1: *mut AtNode, arg2: AtString, arg3: *mut f32) -> bool,
-    >,
+    pub ColorManagerGetDefaults:
+        Option<unsafe extern "C" fn(arg1: *mut AtNode, arg2: *mut AtString, arg3: *mut AtString)>,
+    pub ColorManagerGetChromaticities:
+        Option<unsafe extern "C" fn(arg1: *mut AtNode, arg2: AtString, arg3: *mut f32) -> bool>,
     pub ColorManagerGetCustomAttributes: Option<
         unsafe extern "C" fn(
             arg1: *mut AtNode,
@@ -40,21 +41,13 @@ pub struct AtColorManagerNodeMethods {
             arg4: *mut *const c_char,
         ),
     >,
-    pub ColorManagerGetNumColorSpaces: Option<
-        unsafe extern "C" fn(arg1: *mut AtNode, arg2: AtString) -> c_int,
-    >,
-    pub ColorManagerGetColorSpaceNameByIndex: Option<
-        unsafe extern "C" fn(
-            arg1: *mut AtNode,
-            i: c_int,
-            arg2: AtString,
-        ) -> AtString,
-    >,
-    pub ColorManagerGetNumFamilies:
-        Option<unsafe extern "C" fn(arg1: *mut AtNode) -> c_int>,
-    pub ColorManagerGetFamilyNameByIndex: Option<
-        unsafe extern "C" fn(arg1: *mut AtNode, arg2: c_int) -> AtString,
-    >,
+    pub ColorManagerGetNumColorSpaces:
+        Option<unsafe extern "C" fn(arg1: *mut AtNode, arg2: AtString) -> c_int>,
+    pub ColorManagerGetColorSpaceNameByIndex:
+        Option<unsafe extern "C" fn(arg1: *mut AtNode, i: c_int, arg2: AtString) -> AtString>,
+    pub ColorManagerGetNumFamilies: Option<unsafe extern "C" fn(arg1: *mut AtNode) -> c_int>,
+    pub ColorManagerGetFamilyNameByIndex:
+        Option<unsafe extern "C" fn(arg1: *mut AtNode, arg2: c_int) -> AtString>,
     pub ColorManagerColorSpaceIsLinear:
         Option<unsafe extern "C" fn(arg1: *mut AtNode, arg2: AtString) -> bool>,
 }
@@ -90,10 +83,7 @@ extern "C" {
     );
 }
 extern "C" {
-    pub fn AiColorManagerGetNumColorSpaces(
-        node: *mut AtNode,
-        family: AtString,
-    ) -> c_int;
+    pub fn AiColorManagerGetNumColorSpaces(node: *mut AtNode, family: AtString) -> c_int;
 }
 extern "C" {
     pub fn AiColorManagerGetColorSpaceNameByIndex(
@@ -106,10 +96,7 @@ extern "C" {
     pub fn AiColorManagerGetNumFamilies(node: *mut AtNode) -> c_int;
 }
 extern "C" {
-    pub fn AiColorManagerGetFamilyNameByIndex(
-        node: *mut AtNode,
-        i: c_int,
-    ) -> AtString;
+    pub fn AiColorManagerGetFamilyNameByIndex(node: *mut AtNode, i: c_int) -> AtString;
 }
 extern "C" {
     pub fn AiColorManagerColorSpaceIsLinear(node: *mut AtNode, cs: AtString) -> bool;

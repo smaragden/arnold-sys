@@ -43,9 +43,5 @@ extern "C" {
     ) -> c_int;
 }
 extern "C" {
-    pub fn AiASSLoad(
-        universe: *mut AtUniverse,
-        filename: *const c_char,
-        mask: c_int,
-    ) -> c_int;
+    pub fn AiASSLoad(universe: *mut AtUniverse, filename: *const c_char, mask: c_int) -> c_int;
 }

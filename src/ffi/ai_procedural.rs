@@ -1,4 +1,7 @@
-use ::std::{os::raw::{c_int, c_void, c_uint}, option::Option};
+use ::std::{
+    option::Option,
+    os::raw::{c_int, c_uint, c_void},
+};
 
 use super::{ai_map::AtParamValueMap, ai_nodes::AtNode, ai_universe::AtUniverse};
 
@@ -18,12 +21,8 @@ use super::{ai_map::AtParamValueMap, ai_nodes::AtNode, ai_universe::AtUniverse};
 #[doc = " \\param[out] user_ptr  This is a general-purpose, user-supplied data pointer that"]
 #[doc = "                       Arnold will pass along to the other procedural methods."]
 #[doc = " \\return               true upon success"]
-pub type AtProcInit = Option<
-    unsafe extern "C" fn(
-        node: *mut AtNode,
-        user_ptr: *mut *mut c_void,
-    ) -> c_int,
->;
+pub type AtProcInit =
+    Option<unsafe extern "C" fn(node: *mut AtNode, user_ptr: *mut *mut c_void) -> c_int>;
 #[doc = " Procedural cleanup method."]
 #[doc = ""]
 #[doc = " This method will be called last and should perform any cleanup required"]
@@ -36,12 +35,8 @@ pub type AtProcInit = Option<
 #[doc = " \\param node      This is the procedural node itself"]
 #[doc = " \\param user_ptr  User data pointer, as returned from \\ref AtProcInit"]
 #[doc = " \\return          true upon success"]
-pub type AtProcCleanup = Option<
-    unsafe extern "C" fn(
-        node: *const AtNode,
-        user_ptr: *mut c_void,
-    ) -> c_int,
->;
+pub type AtProcCleanup =
+    Option<unsafe extern "C" fn(node: *const AtNode, user_ptr: *mut c_void) -> c_int>;
 #[doc = " Procedural node count method."]
 #[doc = ""]
 #[doc = " This method will be called after initialization and should report the exact"]
@@ -56,12 +51,8 @@ pub type AtProcCleanup = Option<
 #[doc = " \\param node      This is the procedural node itself"]
 #[doc = " \\param user_ptr  User data pointer, as returned from \\ref AtProcInit"]
 #[doc = " \\return          The number of nodes in the procedural"]
-pub type AtProcNumNodes = Option<
-    unsafe extern "C" fn(
-        node: *const AtNode,
-        user_ptr: *mut c_void,
-    ) -> c_int,
->;
+pub type AtProcNumNodes =
+    Option<unsafe extern "C" fn(node: *const AtNode, user_ptr: *mut c_void) -> c_int>;
 #[doc = " Procedural node fetching method."]
 #[doc = ""]
 #[doc = " This method will be called once for each node to be created (as determined by"]
@@ -79,11 +70,7 @@ pub type AtProcNumNodes = Option<
 #[doc = " \\param i         Node index, in the range 0 to \\ref AtProcNumNodes - 1"]
 #[doc = " \\return          The i'th node in the procedural"]
 pub type AtProcGetNode = Option<
-    unsafe extern "C" fn(
-        node: *const AtNode,
-        user_ptr: *mut c_void,
-        i: c_int,
-    ) -> *mut AtNode,
+    unsafe extern "C" fn(node: *const AtNode, user_ptr: *mut c_void, i: c_int) -> *mut AtNode,
 >;
 pub const AtProcViewportMode_AI_PROC_BOXES: AtProcViewportMode = 0;
 pub const AtProcViewportMode_AI_PROC_POINTS: AtProcViewportMode = 1;
@@ -142,9 +129,8 @@ pub struct AtProceduralNodeMethods {
 #[doc = ""]
 #[doc = " \\param[out] methods  List of procedural methods (some of which are optional) to be supplied by the user"]
 #[doc = " \\return              true upon success"]
-pub type AtProcFuncPtr = Option<
-    unsafe extern "C" fn(methods: *mut AtProceduralNodeMethods) -> c_int,
->;
+pub type AtProcFuncPtr =
+    Option<unsafe extern "C" fn(methods: *mut AtProceduralNodeMethods) -> c_int>;
 extern "C" {
     #[doc = " Procedural viewport representation method."]
     #[doc = ""]
