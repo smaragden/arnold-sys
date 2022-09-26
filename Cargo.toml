@@ -1,0 +1,8 @@
+[package]
+name = "arnold-sys"
+version = "7.1.1"
+edition = "2021"
+links="ai"
+
+[build-dependencies]
+bindgen = "0.60"
