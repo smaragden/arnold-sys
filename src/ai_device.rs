@@ -71,9 +71,9 @@ extern "C" {
     ) -> c_uint;
 }
 /// GPU cache population report callback.
-/// 
+///
 /// This callback provides:
-/// 
+///
 /// | Syntax        | Description                                        |
 /// | ------------- | -------------------------------------------------- |
 /// | user_ptr      | the user data pointer passed to AiGPUCachePopulate |
