@@ -1,3 +1,5 @@
+use ::std::os::raw::{c_char, c_int};
+
 #[doc = " String-based enumerated data type"]
 #[doc = ""]
 #[doc = " \\ref AtNode parameters of type \\c AI_TYPE_ENUM are stored as \\ref AtEnum."]
@@ -6,16 +8,10 @@
 #[doc = ""]
 #[doc = " Note that, in order to keep backwards compatibility, any value strings"]
 #[doc = " beginning with a digit will be interpreted as a number."]
-pub type AtEnum = *mut *const ::std::os::raw::c_char;
+pub type AtEnum = *mut *const c_char;
 extern "C" {
-    pub fn AiEnumGetValue(
-        enum_type: AtEnum,
-        string: *const ::std::os::raw::c_char,
-    ) -> ::std::os::raw::c_int;
+    pub fn AiEnumGetValue(enum_type: AtEnum, string: *const c_char) -> c_int;
 }
 extern "C" {
-    pub fn AiEnumGetString(
-        enum_type: AtEnum,
-        index: ::std::os::raw::c_int,
-    ) -> *const ::std::os::raw::c_char;
+    pub fn AiEnumGetString(enum_type: AtEnum, index: c_int) -> *const c_char;
 }

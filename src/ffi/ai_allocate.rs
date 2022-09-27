@@ -1,3 +1,5 @@
+use ::std::os::raw::c_void;
+
 use super::ai_string::AtString;
 
 extern "C" {
@@ -6,14 +8,13 @@ extern "C" {
     #[doc = " Memory allocation and deallocation."]
     #[doc = ""]
     #[doc = " \\{"]
-    pub fn AiMalloc(size: usize) -> *mut ::std::os::raw::c_void;
+    pub fn AiMalloc(size: usize) -> *mut c_void;
 }
 extern "C" {
-    pub fn AiRealloc(addr: *mut ::std::os::raw::c_void, size: usize)
-        -> *mut ::std::os::raw::c_void;
+    pub fn AiRealloc(addr: *mut c_void, size: usize) -> *mut c_void;
 }
 extern "C" {
-    pub fn AiFree(addr: *mut ::std::os::raw::c_void);
+    pub fn AiFree(addr: *mut c_void);
 }
 extern "C" {
     pub fn AiAddMemUsage(size: i64, category: AtString);

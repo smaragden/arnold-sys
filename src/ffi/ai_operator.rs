@@ -1,3 +1,8 @@
+use ::std::{
+    option::Option,
+    os::raw::{c_int, c_uint, c_void},
+};
+
 use super::{ai_array::AtArray, ai_nodes::AtNode, ai_string::AtString, ai_universe::AtUniverse};
 
 #[repr(C)]
@@ -35,8 +40,7 @@ pub struct AtCookContext {
 #[doc = " It is therefore important that the code in an operator node is designed to be re-entrant."]
 #[doc = ""]
 #[doc = " \\{"]
-pub type AtOpCleanupChildData =
-    ::std::option::Option<unsafe extern "C" fn(child_data: *mut ::std::os::raw::c_void) -> bool>;
+pub type AtOpCleanupChildData = Option<unsafe extern "C" fn(child_data: *mut c_void) -> bool>;
 extern "C" {
     pub fn AiOpSetTarget(universe: *mut AtUniverse, node: *mut AtNode) -> bool;
 }
@@ -47,10 +51,10 @@ extern "C" {
     pub fn AiOpGetInputs(op: *mut AtNode) -> *mut AtArray;
 }
 extern "C" {
-    pub fn AiOpLink(from: *mut AtNode, to: *mut AtNode, index: ::std::os::raw::c_int) -> bool;
+    pub fn AiOpLink(from: *mut AtNode, to: *mut AtNode, index: c_int) -> bool;
 }
 extern "C" {
-    pub fn AiOpUnlinkInputByIndex(to: *mut AtNode, index: ::std::os::raw::c_uint) -> bool;
+    pub fn AiOpUnlinkInputByIndex(to: *mut AtNode, index: c_uint) -> bool;
 }
 extern "C" {
     pub fn AiOpUnlink(from: *mut AtNode, to: *mut AtNode) -> bool;
@@ -58,7 +62,7 @@ extern "C" {
 extern "C" {
     pub fn AiOpSetChildData(
         op: *mut AtNode,
-        child_data: *mut ::std::os::raw::c_void,
+        child_data: *mut c_void,
         cleanup: AtOpCleanupChildData,
     );
 }
@@ -86,9 +90,8 @@ extern "C" {
 #[doc = " @param user_data  general-purpose, user-supplied data pointer that Arnold"]
 #[doc = "                   will pass along to the other operator methods"]
 #[doc = " @return           true if successful, false otherwise"]
-pub type AtOpInit = ::std::option::Option<
-    unsafe extern "C" fn(op: *mut AtNode, user_data: *mut *mut ::std::os::raw::c_void) -> bool,
->;
+pub type AtOpInit =
+    Option<unsafe extern "C" fn(op: *mut AtNode, user_data: *mut *mut c_void) -> bool>;
 #[doc = " Operator cleanup method."]
 #[doc = ""]
 #[doc = " This method is called if the operator node is deleted or if the render session"]
@@ -99,9 +102,8 @@ pub type AtOpInit = ::std::option::Option<
 #[doc = " @param user_data  general-purpose, user-supplied data pointer as returned from"]
 #[doc = "                   \\ref AtOpInit."]
 #[doc = " @return           true if successful, false otherwise"]
-pub type AtOpCleanup = ::std::option::Option<
-    unsafe extern "C" fn(op: *mut AtNode, user_data: *mut ::std::os::raw::c_void) -> bool,
->;
+pub type AtOpCleanup =
+    Option<unsafe extern "C" fn(op: *mut AtNode, user_data: *mut c_void) -> bool>;
 #[doc = " Operator cook method which operates on the cooked node. The cooked node is either"]
 #[doc = " the operator itself (no selection parameter), or any node in the scene which matches"]
 #[doc = " the selection expression."]
@@ -130,12 +132,12 @@ pub type AtOpCleanup = ::std::option::Option<
 #[doc = " @param cook_context     context specific information about the cook (see e.g."]
 #[doc = "                         \\ref AtOpCookContextGetCookReference)"]
 #[doc = " @return                 true if successful, false otherwise"]
-pub type AtOpCook = ::std::option::Option<
+pub type AtOpCook = Option<
     unsafe extern "C" fn(
         node: *mut AtNode,
         op: *mut AtNode,
-        child_data: *mut ::std::os::raw::c_void,
-        user_data: *mut ::std::os::raw::c_void,
+        child_data: *mut c_void,
+        user_data: *mut c_void,
         matching_params: *const AtArray,
         cook_context: *mut AtCookContext,
     ) -> bool,
@@ -148,9 +150,8 @@ pub type AtOpCook = ::std::option::Option<
 #[doc = " @param user_data  general-purpose, user-supplied data pointer as returned from"]
 #[doc = "                   \\ref AtOpInit."]
 #[doc = " @return           true if successful, false otherwise"]
-pub type AtOpPostCook = ::std::option::Option<
-    unsafe extern "C" fn(op: *mut AtNode, user_data: *mut ::std::os::raw::c_void) -> bool,
->;
+pub type AtOpPostCook =
+    Option<unsafe extern "C" fn(op: *mut AtNode, user_data: *mut c_void) -> bool>;
 #[doc = " Cleanup method for child data which is passed to other operators. The lifetime of"]
 #[doc = " the child data may differ from the operator that created it so we need to provide"]
 #[doc = " this function to perform the cleanup when calling \\ref AiOpSetChildData."]
@@ -169,6 +170,4 @@ pub struct AtOperatorNodeMethods {
 #[doc = ""]
 #[doc = " \\param[out] methods  List of operator methods"]
 #[doc = " \\return              true upon success"]
-pub type AtOpFuncPtr = ::std::option::Option<
-    unsafe extern "C" fn(methods: *mut AtOperatorNodeMethods) -> ::std::os::raw::c_int,
->;
+pub type AtOpFuncPtr = Option<unsafe extern "C" fn(methods: *mut AtOperatorNodeMethods) -> c_int>;

@@ -1,3 +1,5 @@
+use ::std::os::raw::c_int;
+
 use super::ai_shaderglobals::AtShaderGlobals;
 
 #[doc = " \\struct AtSampler"]
@@ -15,11 +17,7 @@ pub struct AtSamplerIterator {
     _unused: [u8; 0],
 }
 extern "C" {
-    pub fn AiSampler(
-        seed: u32,
-        nsamples: ::std::os::raw::c_int,
-        ndim: ::std::os::raw::c_int,
-    ) -> *mut AtSampler;
+    pub fn AiSampler(seed: u32, nsamples: c_int, ndim: c_int) -> *mut AtSampler;
 }
 extern "C" {
     pub fn AiSamplerIterator(
@@ -31,7 +29,7 @@ extern "C" {
     pub fn AiSamplerGetSample(iterator: *mut AtSamplerIterator, sample: *mut f32) -> bool;
 }
 extern "C" {
-    pub fn AiSamplerGetSampleCount(iterator: *const AtSamplerIterator) -> ::std::os::raw::c_int;
+    pub fn AiSamplerGetSampleCount(iterator: *const AtSamplerIterator) -> c_int;
 }
 extern "C" {
     pub fn AiSamplerGetSampleInvCount(iterator: *const AtSamplerIterator) -> f32;

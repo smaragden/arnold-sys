@@ -1,3 +1,5 @@
+use ::std::os::raw::{c_char, c_int, c_uint, c_void};
+
 use super::{
     ai_array::AtArray, ai_enum::AtEnum, ai_matrix::AtMatrix, ai_nodes::AtNode, ai_string::AtString,
 };
@@ -66,10 +68,10 @@ extern "C" {
     pub fn AiParamGetEnum(pentry: *const AtParamEntry) -> AtEnum;
 }
 extern "C" {
-    pub fn AiParamGetTypeName(type_: u8) -> *const ::std::os::raw::c_char;
+    pub fn AiParamGetTypeName(type_: u8) -> *const c_char;
 }
 extern "C" {
-    pub fn AiParamGetTypeSize(type_: u8) -> ::std::os::raw::c_int;
+    pub fn AiParamGetTypeSize(type_: u8) -> c_int;
 }
 #[doc = " This represents a user-declared parameter in Arnold (user-data)."]
 #[doc = ""]
@@ -83,7 +85,7 @@ pub struct AtUserParamEntry {
 extern "C" {
     #[doc = " \\name AtUserParamEntry Methods"]
     #[doc = " \\{"]
-    pub fn AiUserParamGetName(upentry: *const AtUserParamEntry) -> *const ::std::os::raw::c_char;
+    pub fn AiUserParamGetName(upentry: *const AtUserParamEntry) -> *const c_char;
 }
 extern "C" {
     pub fn AiUserParamGetType(upentry: *const AtUserParamEntry) -> u8;
@@ -109,48 +111,48 @@ extern "C" {
 extern "C" {
     pub fn AiNodeParamByte(
         params: *mut AtList,
-        varoffset: ::std::os::raw::c_int,
-        pname: *const ::std::os::raw::c_char,
+        varoffset: c_int,
+        pname: *const c_char,
         pdefault: u8,
     );
 }
 extern "C" {
     pub fn AiNodeParamInt(
         params: *mut AtList,
-        varoffset: ::std::os::raw::c_int,
-        pname: *const ::std::os::raw::c_char,
-        pdefault: ::std::os::raw::c_int,
+        varoffset: c_int,
+        pname: *const c_char,
+        pdefault: c_int,
     );
 }
 extern "C" {
     pub fn AiNodeParamUInt(
         params: *mut AtList,
-        varoffset: ::std::os::raw::c_int,
-        pname: *const ::std::os::raw::c_char,
-        pdefault: ::std::os::raw::c_uint,
+        varoffset: c_int,
+        pname: *const c_char,
+        pdefault: c_uint,
     );
 }
 extern "C" {
     pub fn AiNodeParamBool(
         params: *mut AtList,
-        varoffset: ::std::os::raw::c_int,
-        pname: *const ::std::os::raw::c_char,
+        varoffset: c_int,
+        pname: *const c_char,
         pdefault: bool,
     );
 }
 extern "C" {
     pub fn AiNodeParamFlt(
         params: *mut AtList,
-        varoffset: ::std::os::raw::c_int,
-        pname: *const ::std::os::raw::c_char,
+        varoffset: c_int,
+        pname: *const c_char,
         pdefault: f32,
     );
 }
 extern "C" {
     pub fn AiNodeParamRGB(
         params: *mut AtList,
-        varoffset: ::std::os::raw::c_int,
-        pname: *const ::std::os::raw::c_char,
+        varoffset: c_int,
+        pname: *const c_char,
         r: f32,
         g: f32,
         b: f32,
@@ -159,8 +161,8 @@ extern "C" {
 extern "C" {
     pub fn AiNodeParamRGBA(
         params: *mut AtList,
-        varoffset: ::std::os::raw::c_int,
-        pname: *const ::std::os::raw::c_char,
+        varoffset: c_int,
+        pname: *const c_char,
         r: f32,
         g: f32,
         b: f32,
@@ -170,8 +172,8 @@ extern "C" {
 extern "C" {
     pub fn AiNodeParamVec(
         params: *mut AtList,
-        varoffset: ::std::os::raw::c_int,
-        pname: *const ::std::os::raw::c_char,
+        varoffset: c_int,
+        pname: *const c_char,
         x: f32,
         y: f32,
         z: f32,
@@ -180,8 +182,8 @@ extern "C" {
 extern "C" {
     pub fn AiNodeParamVec2(
         params: *mut AtList,
-        varoffset: ::std::os::raw::c_int,
-        pname: *const ::std::os::raw::c_char,
+        varoffset: c_int,
+        pname: *const c_char,
         x: f32,
         y: f32,
     );
@@ -189,112 +191,100 @@ extern "C" {
 extern "C" {
     pub fn AiNodeParamStr(
         params: *mut AtList,
-        varoffset: ::std::os::raw::c_int,
-        pname: *const ::std::os::raw::c_char,
-        pdefault: *const ::std::os::raw::c_char,
+        varoffset: c_int,
+        pname: *const c_char,
+        pdefault: *const c_char,
     );
 }
 extern "C" {
     pub fn AiNodeParamPtr(
         params: *mut AtList,
-        varoffset: ::std::os::raw::c_int,
-        pname: *const ::std::os::raw::c_char,
-        pdefault: *mut ::std::os::raw::c_void,
+        varoffset: c_int,
+        pname: *const c_char,
+        pdefault: *mut c_void,
     );
 }
 extern "C" {
     pub fn AiNodeParamNode(
         params: *mut AtList,
-        varoffset: ::std::os::raw::c_int,
-        pname: *const ::std::os::raw::c_char,
+        varoffset: c_int,
+        pname: *const c_char,
         pdefault: *mut AtNode,
     );
 }
 extern "C" {
     pub fn AiNodeParamArray(
         params: *mut AtList,
-        varoffset: ::std::os::raw::c_int,
-        pname: *const ::std::os::raw::c_char,
+        varoffset: c_int,
+        pname: *const c_char,
         pdefault: *mut AtArray,
     );
 }
 extern "C" {
     pub fn AiNodeParamMtx(
         params: *mut AtList,
-        varoffset: ::std::os::raw::c_int,
-        pname: *const ::std::os::raw::c_char,
+        varoffset: c_int,
+        pname: *const c_char,
         matrix: AtMatrix,
     );
 }
 extern "C" {
     pub fn AiNodeParamEnum(
         params: *mut AtList,
-        varoffset: ::std::os::raw::c_int,
-        pname: *const ::std::os::raw::c_char,
-        pdefault: ::std::os::raw::c_int,
+        varoffset: c_int,
+        pname: *const c_char,
+        pdefault: c_int,
         enum_type: AtEnum,
     );
 }
 extern "C" {
-    pub fn AiNodeParamClosure(
-        params: *mut AtList,
-        varoffset: ::std::os::raw::c_int,
-        pname: *const ::std::os::raw::c_char,
-    );
+    pub fn AiNodeParamClosure(params: *mut AtList, varoffset: c_int, pname: *const c_char);
 }
 extern "C" {
-    pub fn AiNodeOutputByte(params: *mut AtList, pname: *const ::std::os::raw::c_char);
+    pub fn AiNodeOutputByte(params: *mut AtList, pname: *const c_char);
 }
 extern "C" {
-    pub fn AiNodeOutputInt(params: *mut AtList, pname: *const ::std::os::raw::c_char);
+    pub fn AiNodeOutputInt(params: *mut AtList, pname: *const c_char);
 }
 extern "C" {
-    pub fn AiNodeOutputUInt(params: *mut AtList, pname: *const ::std::os::raw::c_char);
+    pub fn AiNodeOutputUInt(params: *mut AtList, pname: *const c_char);
 }
 extern "C" {
-    pub fn AiNodeOutputBool(params: *mut AtList, pname: *const ::std::os::raw::c_char);
+    pub fn AiNodeOutputBool(params: *mut AtList, pname: *const c_char);
 }
 extern "C" {
-    pub fn AiNodeOutputFlt(params: *mut AtList, pname: *const ::std::os::raw::c_char);
+    pub fn AiNodeOutputFlt(params: *mut AtList, pname: *const c_char);
 }
 extern "C" {
-    pub fn AiNodeOutputRGB(params: *mut AtList, pname: *const ::std::os::raw::c_char);
+    pub fn AiNodeOutputRGB(params: *mut AtList, pname: *const c_char);
 }
 extern "C" {
-    pub fn AiNodeOutputRGBA(params: *mut AtList, pname: *const ::std::os::raw::c_char);
+    pub fn AiNodeOutputRGBA(params: *mut AtList, pname: *const c_char);
 }
 extern "C" {
-    pub fn AiNodeOutputVec(params: *mut AtList, pname: *const ::std::os::raw::c_char);
+    pub fn AiNodeOutputVec(params: *mut AtList, pname: *const c_char);
 }
 extern "C" {
-    pub fn AiNodeOutputVec2(params: *mut AtList, pname: *const ::std::os::raw::c_char);
+    pub fn AiNodeOutputVec2(params: *mut AtList, pname: *const c_char);
 }
 extern "C" {
-    pub fn AiNodeOutputStr(params: *mut AtList, pname: *const ::std::os::raw::c_char);
+    pub fn AiNodeOutputStr(params: *mut AtList, pname: *const c_char);
 }
 extern "C" {
-    pub fn AiNodeOutputPtr(params: *mut AtList, pname: *const ::std::os::raw::c_char);
+    pub fn AiNodeOutputPtr(params: *mut AtList, pname: *const c_char);
 }
 extern "C" {
-    pub fn AiNodeOutputNode(params: *mut AtList, pname: *const ::std::os::raw::c_char);
+    pub fn AiNodeOutputNode(params: *mut AtList, pname: *const c_char);
 }
 extern "C" {
-    pub fn AiNodeOutputArray(
-        params: *mut AtList,
-        pname: *const ::std::os::raw::c_char,
-        array_type: ::std::os::raw::c_int,
-    );
+    pub fn AiNodeOutputArray(params: *mut AtList, pname: *const c_char, array_type: c_int);
 }
 extern "C" {
-    pub fn AiNodeOutputMtx(params: *mut AtList, pname: *const ::std::os::raw::c_char);
+    pub fn AiNodeOutputMtx(params: *mut AtList, pname: *const c_char);
 }
 extern "C" {
-    pub fn AiNodeOutputEnum(
-        params: *mut AtList,
-        pname: *const ::std::os::raw::c_char,
-        enum_type: AtEnum,
-    );
+    pub fn AiNodeOutputEnum(params: *mut AtList, pname: *const c_char, enum_type: AtEnum);
 }
 extern "C" {
-    pub fn AiNodeOutputClosure(params: *mut AtList, pname: *const ::std::os::raw::c_char);
+    pub fn AiNodeOutputClosure(params: *mut AtList, pname: *const c_char);
 }

@@ -1,3 +1,5 @@
+use ::std::os::raw::{c_int, c_uint};
+
 use super::{
     ai_bbox::AtBBox, ai_map::AtParamValueMap, ai_node_entry::AtNodeEntry, ai_nodes::AtNode,
     ai_render::AtRenderSession, ai_string::AtString,
@@ -31,7 +33,7 @@ pub struct AtAOVEntry {
     #[doc = "< Data type"]
     pub type_: u8,
     #[doc = "< Blend mode"]
-    pub blend_mode: ::std::os::raw::c_int,
+    pub blend_mode: c_int,
     #[doc = "< Optional light path expression"]
     pub expression: AtString,
 }
@@ -54,10 +56,7 @@ extern "C" {
     pub fn AiUniverseDestroy(universe: *mut AtUniverse);
 }
 extern "C" {
-    pub fn AiUniverseCacheFlush(
-        universe: *const AtUniverse,
-        cache_flags: ::std::os::raw::c_int,
-    ) -> bool;
+    pub fn AiUniverseCacheFlush(universe: *const AtUniverse, cache_flags: c_int) -> bool;
 }
 extern "C" {
     pub fn AiUniverseGetOptions(universe: *const AtUniverse) -> *mut AtNode;
@@ -71,13 +70,11 @@ extern "C" {
 extern "C" {
     pub fn AiUniverseGetNodeIterator(
         universe: *const AtUniverse,
-        node_mask: ::std::os::raw::c_uint,
+        node_mask: c_uint,
     ) -> *mut AtNodeIterator;
 }
 extern "C" {
-    pub fn AiUniverseGetNodeEntryIterator(
-        node_mask: ::std::os::raw::c_uint,
-    ) -> *mut AtNodeEntryIterator;
+    pub fn AiUniverseGetNodeEntryIterator(node_mask: c_uint) -> *mut AtNodeEntryIterator;
 }
 extern "C" {
     pub fn AiUniverseGetAOVIterator(universe: *const AtUniverse) -> *mut AtAOVIterator;

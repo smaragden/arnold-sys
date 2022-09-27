@@ -1,3 +1,5 @@
+use ::std::os::raw::{c_int, c_ulong, c_void};
+
 use super::{
     ai_color::{AtRGB, AtRGBA},
     ai_matrix::AtMatrix,
@@ -12,7 +14,7 @@ pub struct AtArray {
     _unused: [u8; 0],
 }
 extern "C" {
-    pub fn AiArray(nelements: u32, nkeys: u8, type_: ::std::os::raw::c_int, ...) -> *mut AtArray;
+    pub fn AiArray(nelements: u32, nkeys: u8, type_: c_int, ...) -> *mut AtArray;
 }
 extern "C" {
     pub fn AiArrayAllocate(nelements: u32, nkeys: u8, type_: u8) -> *mut AtArray;
@@ -25,7 +27,7 @@ extern "C" {
         nelements: u32,
         nkeys: u8,
         type_: u8,
-        data: *const ::std::os::raw::c_void,
+        data: *const c_void,
     ) -> *mut AtArray;
 }
 extern "C" {
@@ -35,14 +37,13 @@ extern "C" {
     pub fn AiArrayCopy(array: *const AtArray) -> *mut AtArray;
 }
 extern "C" {
-    pub fn AiArraySetKey(array: *mut AtArray, key: u8, data: *const ::std::os::raw::c_void)
-        -> bool;
+    pub fn AiArraySetKey(array: *mut AtArray, key: u8, data: *const c_void) -> bool;
 }
 extern "C" {
-    pub fn AiArrayMap(array: *mut AtArray) -> *mut ::std::os::raw::c_void;
+    pub fn AiArrayMap(array: *mut AtArray) -> *mut c_void;
 }
 extern "C" {
-    pub fn AiArrayMapKey(array: *mut AtArray, key: u8) -> *mut ::std::os::raw::c_void;
+    pub fn AiArrayMapKey(array: *mut AtArray, key: u8) -> *mut c_void;
 }
 extern "C" {
     pub fn AiArrayUnmap(array: *mut AtArray);
@@ -57,10 +58,10 @@ extern "C" {
     pub fn AiArrayGetType(array: *const AtArray) -> u8;
 }
 extern "C" {
-    pub fn AiArrayGetDataSize(array: *const AtArray) -> ::std::os::raw::c_ulong;
+    pub fn AiArrayGetDataSize(array: *const AtArray) -> c_ulong;
 }
 extern "C" {
-    pub fn AiArrayGetKeySize(array: *const AtArray) -> ::std::os::raw::c_ulong;
+    pub fn AiArrayGetKeySize(array: *const AtArray) -> c_ulong;
 }
 extern "C" {
     pub fn AiArrayInterpolateVec(array: *const AtArray, time: f32, idx: u32) -> AtVector;
@@ -91,7 +92,7 @@ extern "C" {
     pub fn AiArrayGetByte(a: *const AtArray, i: u32) -> u8;
 }
 extern "C" {
-    pub fn AiArrayGetInt(a: *const AtArray, i: u32) -> ::std::os::raw::c_int;
+    pub fn AiArrayGetInt(a: *const AtArray, i: u32) -> c_int;
 }
 extern "C" {
     pub fn AiArrayGetUInt(a: *const AtArray, i: u32) -> u32;
@@ -118,7 +119,7 @@ extern "C" {
     pub fn AiArrayGetStr(a: *const AtArray, i: u32) -> AtString;
 }
 extern "C" {
-    pub fn AiArrayGetPtr(a: *const AtArray, i: u32) -> *mut ::std::os::raw::c_void;
+    pub fn AiArrayGetPtr(a: *const AtArray, i: u32) -> *mut c_void;
 }
 extern "C" {
     pub fn AiArrayGetArray(a: *const AtArray, i: u32) -> *mut AtArray;
@@ -138,7 +139,7 @@ extern "C" {
     pub fn AiArraySetByte(a: *mut AtArray, i: u32, val: u8) -> bool;
 }
 extern "C" {
-    pub fn AiArraySetInt(a: *mut AtArray, i: u32, val: ::std::os::raw::c_int) -> bool;
+    pub fn AiArraySetInt(a: *mut AtArray, i: u32, val: c_int) -> bool;
 }
 extern "C" {
     pub fn AiArraySetUInt(a: *mut AtArray, i: u32, val: u32) -> bool;
@@ -165,7 +166,7 @@ extern "C" {
     pub fn AiArraySetStr(a: *mut AtArray, i: u32, val: AtString) -> bool;
 }
 extern "C" {
-    pub fn AiArraySetPtr(a: *mut AtArray, i: u32, val: *mut ::std::os::raw::c_void) -> bool;
+    pub fn AiArraySetPtr(a: *mut AtArray, i: u32, val: *mut c_void) -> bool;
 }
 extern "C" {
     pub fn AiArraySetArray(a: *mut AtArray, i: u32, val: *mut AtArray) -> bool;

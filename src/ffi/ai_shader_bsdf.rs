@@ -1,3 +1,8 @@
+use ::std::{
+    option::Option,
+    os::raw::{c_int, c_uint, c_ulong, c_void},
+};
+
 use super::{
     ai_closure::{AtBSDF, AtClosureList},
     ai_color::AtRGB,
@@ -17,7 +22,7 @@ pub const AtBSDFLobeFlags_AI_BSDF_LOBE_EXIT_BACKGROUND: AtBSDFLobeFlags = 4;
 #[doc = "< If ray depth exceeded, use white color"]
 pub const AtBSDFLobeFlags_AI_BSDF_LOBE_EXIT_WHITE: AtBSDFLobeFlags = 8;
 #[doc = " BSDF Lobe flags"]
-pub type AtBSDFLobeFlags = ::std::os::raw::c_uint;
+pub type AtBSDFLobeFlags = c_uint;
 #[doc = " BSDF lobe information"]
 #[repr(C)]
 pub struct AtBSDFLobeInfo {
@@ -43,10 +48,9 @@ pub struct AtBSDFLobeSample {
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct AtBSDFMethods {
-    pub version: ::std::os::raw::c_int,
-    pub Init:
-        ::std::option::Option<unsafe extern "C" fn(sg: *const AtShaderGlobals, bsdf: *mut AtBSDF)>,
-    pub Eval: ::std::option::Option<
+    pub version: c_int,
+    pub Init: Option<unsafe extern "C" fn(sg: *const AtShaderGlobals, bsdf: *mut AtBSDF)>,
+    pub Eval: Option<
         unsafe extern "C" fn(
             bsdf: *const AtBSDF,
             wi: *const AtVector,
@@ -55,7 +59,7 @@ pub struct AtBSDFMethods {
             out_lobes: *mut AtBSDFLobeSample,
         ) -> AtBSDFLobeMask,
     >,
-    pub Sample: ::std::option::Option<
+    pub Sample: Option<
         unsafe extern "C" fn(
             bsdf: *const AtBSDF,
             rnd: AtVector,
@@ -63,21 +67,19 @@ pub struct AtBSDFMethods {
             lobe_mask: AtBSDFLobeMask,
             need_pdf: bool,
             out_wi: *mut AtVectorDv,
-            out_lobe_index: *mut ::std::os::raw::c_int,
+            out_lobe_index: *mut c_int,
             out_lobes: *mut AtBSDFLobeSample,
         ) -> AtBSDFLobeMask,
     >,
-    pub Albedo: ::std::option::Option<
+    pub Albedo: Option<
         unsafe extern "C" fn(
             bsdf: *const AtBSDF,
             sg: *const AtShaderGlobals,
             lobe_mask: AtBSDFLobeMask,
         ) -> AtRGB,
     >,
-    pub Merge: ::std::option::Option<
-        unsafe extern "C" fn(bsdf: *mut AtBSDF, other_bsdf: *const AtBSDF) -> bool,
-    >,
-    pub Interior: ::std::option::Option<
+    pub Merge: Option<unsafe extern "C" fn(bsdf: *mut AtBSDF, other_bsdf: *const AtBSDF) -> bool>,
+    pub Interior: Option<
         unsafe extern "C" fn(sg: *const AtShaderGlobals, bsdf: *mut AtBSDF) -> AtClosureList,
     >,
 }
@@ -88,20 +90,20 @@ extern "C" {
         sg: *const AtShaderGlobals,
         weight: *const AtRGB,
         methods: *const AtBSDFMethods,
-        data_size: ::std::os::raw::c_ulong,
+        data_size: c_ulong,
     ) -> *mut AtBSDF;
 }
 extern "C" {
     pub fn AiBSDFGetMethods(bsdf: *const AtBSDF) -> *const AtBSDFMethods;
 }
 extern "C" {
-    pub fn AiBSDFGetData(bsdf: *const AtBSDF) -> *mut ::std::os::raw::c_void;
+    pub fn AiBSDFGetData(bsdf: *const AtBSDF) -> *mut c_void;
 }
 extern "C" {
     pub fn AiBSDFGetLobes(bsdf: *const AtBSDF) -> *const AtBSDFLobeInfo;
 }
 extern "C" {
-    pub fn AiBSDFGetNumLobes(bsdf: *const AtBSDF) -> ::std::os::raw::c_int;
+    pub fn AiBSDFGetNumLobes(bsdf: *const AtBSDF) -> c_int;
 }
 extern "C" {
     pub fn AiBSDFGetWeight(bsdf: *const AtBSDF) -> AtRGB;
@@ -117,11 +119,7 @@ extern "C" {
     );
 }
 extern "C" {
-    pub fn AiBSDFInitLobes(
-        bsdf: *mut AtBSDF,
-        lobes: *const AtBSDFLobeInfo,
-        num_lobes: ::std::os::raw::c_int,
-    );
+    pub fn AiBSDFInitLobes(bsdf: *mut AtBSDF, lobes: *const AtBSDFLobeInfo, num_lobes: c_int);
 }
 extern "C" {
     pub fn AiBSDFInitNormal(bsdf: *mut AtBSDF, N: *const AtVector, bounding: bool);
@@ -148,7 +146,7 @@ extern "C" {
     pub fn AiMicrofacetBSDF(
         sg: *const AtShaderGlobals,
         weight: *const AtRGB,
-        distribution: ::std::os::raw::c_int,
+        distribution: c_int,
         N: *const AtVector,
         U: *const AtVector,
         eta: f32,
@@ -162,7 +160,7 @@ extern "C" {
     pub fn AiMicrofacetBSDF_private(
         sg: *const AtShaderGlobals,
         weight: *const AtRGB,
-        distribution: ::std::os::raw::c_int,
+        distribution: c_int,
         N: *const AtVector,
         U: *const AtVector,
         ior: f32,
@@ -177,7 +175,7 @@ extern "C" {
     pub fn AiMicrofacetRefractionBSDF(
         sg: *const AtShaderGlobals,
         weight: *const AtRGB,
-        distribution: ::std::os::raw::c_int,
+        distribution: c_int,
         N: *const AtVector,
         U: *const AtVector,
         ior: f32,
@@ -194,7 +192,7 @@ extern "C" {
     pub fn AiMicrofacetRefractionBSDF_private(
         sg: *const AtShaderGlobals,
         weight: *const AtRGB,
-        distribution: ::std::os::raw::c_int,
+        distribution: c_int,
         N: *const AtVector,
         U: *const AtVector,
         ior: f32,
@@ -212,7 +210,7 @@ extern "C" {
     pub fn AiMicrofacetThinWallRefractionBSDF(
         sg: *const AtShaderGlobals,
         weight: *const AtRGB,
-        distribution: ::std::os::raw::c_int,
+        distribution: c_int,
         N: *const AtVector,
         U: *const AtVector,
         eta: f32,
@@ -229,7 +227,7 @@ extern "C" {
     pub fn AiMetalBSDF(
         sg: *const AtShaderGlobals,
         weight: *const AtRGB,
-        distribution: ::std::os::raw::c_int,
+        distribution: c_int,
         N: *const AtVector,
         U: *const AtVector,
         n: *const AtRGB,

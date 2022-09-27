@@ -1,3 +1,5 @@
+use ::std::os::raw::{c_char, c_int};
+
 use super::{
     ai_color::{AtRGB, AtRGBA},
     ai_node_entry::{AtMetaDataIterator, AtNodeEntry},
@@ -28,7 +30,7 @@ extern "C" {
         nentry: *mut AtNodeEntry,
         param: AtString,
         name: AtString,
-        value: ::std::os::raw::c_int,
+        value: c_int,
     );
 }
 extern "C" {
@@ -87,7 +89,7 @@ extern "C" {
         nentry: *const AtNodeEntry,
         param: AtString,
         name: AtString,
-        value: *mut ::std::os::raw::c_int,
+        value: *mut c_int,
     ) -> bool;
 }
 extern "C" {
@@ -150,18 +152,14 @@ extern "C" {
     );
 }
 extern "C" {
-    pub fn AiMetadataStoreSetInt(
-        mds: *mut AtMetadataStore,
-        name: AtString,
-        value: ::std::os::raw::c_int,
-    );
+    pub fn AiMetadataStoreSetInt(mds: *mut AtMetadataStore, name: AtString, value: c_int);
 }
 extern "C" {
     pub fn AiMetadataStoreParamSetInt(
         mds: *mut AtMetadataStore,
         param: AtString,
         name: AtString,
-        value: ::std::os::raw::c_int,
+        value: c_int,
     );
 }
 extern "C" {
@@ -238,7 +236,7 @@ extern "C" {
     pub fn AiMetadataStoreGetInt(
         mds: *const AtMetadataStore,
         name: AtString,
-        value: *mut ::std::os::raw::c_int,
+        value: *mut c_int,
     ) -> bool;
 }
 extern "C" {
@@ -246,7 +244,7 @@ extern "C" {
         mds: *const AtMetadataStore,
         param: AtString,
         name: AtString,
-        value: *mut ::std::os::raw::c_int,
+        value: *mut c_int,
     ) -> bool;
 }
 extern "C" {
@@ -341,10 +339,7 @@ extern "C" {
     #[doc = ""]
     #[doc = " \\param mds     metadata store object where embedded metadata will be loaded"]
     #[doc = " \\param file    filename of the .ass file with the embedded metadata to load"]
-    pub fn AiMetadataStoreLoadFromASS(
-        mds: *mut AtMetadataStore,
-        file: *const ::std::os::raw::c_char,
-    ) -> bool;
+    pub fn AiMetadataStoreLoadFromASS(mds: *mut AtMetadataStore, file: *const c_char) -> bool;
 }
 extern "C" {
     #[doc = " Creates a new metadata iterator that traverses all global metadata."]
@@ -362,7 +357,7 @@ extern "C" {
     #[doc = " \\return           an iterator over all metadata in a metadata store"]
     pub fn AiMetadataStoreGetIteratorRecursive(
         mds: *const AtMetadataStore,
-        param: *const ::std::os::raw::c_char,
+        param: *const c_char,
         recursive: bool,
     ) -> *mut AtMetaDataIterator;
 }
@@ -383,5 +378,5 @@ extern "C" {
     #[doc = ""]
     #[doc = " \\param filename    the full path of the metadata file to load"]
     #[doc = " \\return            true when the file could be read succesfully"]
-    pub fn AiMetaDataLoadFile(filename: *const ::std::os::raw::c_char) -> bool;
+    pub fn AiMetaDataLoadFile(filename: *const c_char) -> bool;
 }

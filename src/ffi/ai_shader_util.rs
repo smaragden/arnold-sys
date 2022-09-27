@@ -1,3 +1,8 @@
+use ::std::{
+    option::Option,
+    os::raw::{c_int, c_void},
+};
+
 use super::{
     ai_bbox::AtBBox,
     ai_color::AtRGB,
@@ -125,22 +130,21 @@ extern "C" {
 #[doc = " \\param sg    the current shading context"]
 #[doc = " \\param data  user-defined data pointer"]
 #[doc = " \\return bump/displacement height for the current shading context"]
-pub type AtFloatBumpEvaluator = ::std::option::Option<
-    unsafe extern "C" fn(sg: *mut AtShaderGlobals, data: *mut ::std::os::raw::c_void) -> f32,
->;
+pub type AtFloatBumpEvaluator =
+    Option<unsafe extern "C" fn(sg: *mut AtShaderGlobals, data: *mut c_void) -> f32>;
 extern "C" {
     #[doc = " \\name Utility Functions"]
     #[doc = " \\{"]
     pub fn AiShaderGlobalsGetTriangle(
         sg: *const AtShaderGlobals,
-        key: ::std::os::raw::c_int,
+        key: c_int,
         p: *mut AtVector,
     ) -> bool;
 }
 extern "C" {
     pub fn AiShaderGlobalsGetVertexNormals(
         sg: *const AtShaderGlobals,
-        key: ::std::os::raw::c_int,
+        key: c_int,
         n: *mut AtVector,
     ) -> bool;
 }
@@ -154,7 +158,7 @@ extern "C" {
 extern "C" {
     pub fn AiShaderGlobalsGetPolygon(
         sg: *const AtShaderGlobals,
-        key: ::std::os::raw::c_int,
+        key: c_int,
         p: *mut AtVector,
     ) -> u32;
 }
@@ -194,21 +198,21 @@ extern "C" {
     pub fn AiShaderGlobalsTransformNormal(
         sg: *const AtShaderGlobals,
         N: AtVector,
-        space: ::std::os::raw::c_int,
+        space: c_int,
     ) -> AtVector;
 }
 extern "C" {
     pub fn AiShaderGlobalsTransformPoint(
         sg: *const AtShaderGlobals,
         P: AtVector,
-        space: ::std::os::raw::c_int,
+        space: c_int,
     ) -> AtVector;
 }
 extern "C" {
     pub fn AiShaderGlobalsTransformVector(
         sg: *const AtShaderGlobals,
         V: AtVector,
-        space: ::std::os::raw::c_int,
+        space: c_int,
     ) -> AtVector;
 }
 extern "C" {
@@ -218,16 +222,13 @@ extern "C" {
     pub fn AiShaderGlobalsUnsetTraceSet(sg: *mut AtShaderGlobals);
 }
 extern "C" {
-    pub fn AiShaderGlobalsQuickAlloc(
-        sg: *const AtShaderGlobals,
-        size: u32,
-    ) -> *mut ::std::os::raw::c_void;
+    pub fn AiShaderGlobalsQuickAlloc(sg: *const AtShaderGlobals, size: u32) -> *mut c_void;
 }
 extern "C" {
     pub fn AiShaderGlobalsEvaluateBump(
         sg: *mut AtShaderGlobals,
         bump_func: AtFloatBumpEvaluator,
-        data: *mut ::std::os::raw::c_void,
+        data: *mut c_void,
     ) -> AtVector;
 }
 extern "C" {
@@ -247,7 +248,7 @@ extern "C" {
         sg: *const AtShaderGlobals,
         line_width: f32,
         raster_space: bool,
-        edge_type: ::std::os::raw::c_int,
+        edge_type: c_int,
     ) -> f32;
 }
 extern "C" {

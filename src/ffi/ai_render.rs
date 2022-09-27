@@ -1,3 +1,8 @@
+use ::std::{
+    option::Option,
+    os::raw::{c_uint, c_void},
+};
+
 use super::{
     ai_api::AtBlockingCall, ai_array::AtArray, ai_nodes::AtNode, ai_string::AtString,
     ai_universe::AtUniverse,
@@ -19,7 +24,7 @@ pub const AtRenderMode_AI_RENDER_MODE_CAMERA: AtRenderMode = 0;
 #[doc = "< Process arbitrary ray-tracing requests, acting as a \"ray server\""]
 pub const AtRenderMode_AI_RENDER_MODE_FREE: AtRenderMode = 1;
 #[doc = " Render modes"]
-pub type AtRenderMode = ::std::os::raw::c_uint;
+pub type AtRenderMode = c_uint;
 #[doc = "< no error"]
 pub const AtRenderErrorCode_AI_SUCCESS: AtRenderErrorCode = 0;
 #[doc = "< render aborted"]
@@ -41,7 +46,7 @@ pub const AtRenderErrorCode_AI_ERROR_UNAVAILABLE_DEVICE: AtRenderErrorCode = 8;
 #[doc = "< generic error"]
 pub const AtRenderErrorCode_AI_ERROR: AtRenderErrorCode = 9;
 #[doc = " Render error codes"]
-pub type AtRenderErrorCode = ::std::os::raw::c_uint;
+pub type AtRenderErrorCode = c_uint;
 #[doc = "< batch mode, extra (possibly destructive) optimizations allowed"]
 pub const AtSessionMode_AI_SESSION_BATCH: AtSessionMode = 0;
 #[doc = "< interactive mode, can read/write nodes after rendering"]
@@ -54,7 +59,7 @@ pub const AtSessionMode_AI_SESSION_INTERACTIVE: AtSessionMode = 1;
 #[doc = " use AI_SESSION_BATCH mode.  If instead the nodes will be modified after render"]
 #[doc = " or have their parameters accessed for some other reason, and then another"]
 #[doc = " render invoked, use AI_SESSION_INTERACTIVE."]
-pub type AtSessionMode = ::std::os::raw::c_uint;
+pub type AtSessionMode = c_uint;
 #[doc = "< no updates ready; check render status or error code"]
 pub const AtDisplayOutput_AI_DISPLAY_OUTPUT_NONE: AtDisplayOutput = 0;
 #[doc = "< interactive output updated fully, display on screen"]
@@ -70,7 +75,7 @@ pub const AtDisplayOutput_AI_DISPLAY_OUTPUT_ALL: AtDisplayOutput = 3;
 #[doc = " data on the main interactive output to improve responsiveness for the user."]
 #[doc = " If the render gets to keep going, then Arnold will switch over to providing"]
 #[doc = " data for all AOVs/outputs."]
-pub type AtDisplayOutput = ::std::os::raw::c_uint;
+pub type AtDisplayOutput = c_uint;
 #[doc = "< Before \\ref AiRenderBegin(), or after \\ref AiRenderEnd()"]
 pub const AtRenderStatus_AI_RENDER_STATUS_NOT_STARTED: AtRenderStatus = 0;
 #[doc = "< Update callback paused the render or \\ref AiRenderInterrupt() called"]
@@ -84,7 +89,7 @@ pub const AtRenderStatus_AI_RENDER_STATUS_FINISHED: AtRenderStatus = 4;
 #[doc = "< Render failed, \\ref AiRenderEnd() will return the actual error code (\\ref AtRenderErrorCode)"]
 pub const AtRenderStatus_AI_RENDER_STATUS_FAILED: AtRenderStatus = 5;
 #[doc = " Status of the current render"]
-pub type AtRenderStatus = ::std::os::raw::c_uint;
+pub type AtRenderStatus = c_uint;
 #[doc = "< Callback invoked after render is interrupted and paused, can change the scene"]
 pub const AtRenderUpdateType_AI_RENDER_UPDATE_INTERRUPT: AtRenderUpdateType = 0;
 #[doc = "< Callback invoked just before render pass is to begin, can change the scene"]
@@ -100,7 +105,7 @@ pub const AtRenderUpdateType_AI_RENDER_UPDATE_ERROR: AtRenderUpdateType = 5;
 #[doc = "< Callback invoked for an imager update"]
 pub const AtRenderUpdateType_AI_RENDER_UPDATE_IMAGERS: AtRenderUpdateType = 6;
 #[doc = " Reason for invoking the render update callback"]
-pub type AtRenderUpdateType = ::std::os::raw::c_uint;
+pub type AtRenderUpdateType = c_uint;
 #[doc = " \\brief Additional useful information about the render, received in the render callback"]
 #[doc = ""]
 #[doc = " This provides additional information for the render host to decide what to show"]
@@ -197,9 +202,9 @@ pub struct AtRenderUpdateInfo {
 #[doc = " \\param update_type   Indicates when the callback is being called"]
 #[doc = " \\param update_info   Extra pass, sample, and output information"]
 #[doc = " \\return              The next \\ref AtRenderStatus desired"]
-pub type AtRenderUpdateCallback = ::std::option::Option<
+pub type AtRenderUpdateCallback = Option<
     unsafe extern "C" fn(
-        private_data: *mut ::std::os::raw::c_void,
+        private_data: *mut c_void,
         update_type: AtRenderUpdateType,
         update_info: *const AtRenderUpdateInfo,
     ) -> AtRenderStatus,
@@ -327,7 +332,7 @@ extern "C" {
         render_session: *mut AtRenderSession,
         mode: AtRenderMode,
         update_callback: AtRenderUpdateCallback,
-        callback_private_data: *mut ::std::os::raw::c_void,
+        callback_private_data: *mut c_void,
     ) -> AtRenderErrorCode;
 }
 extern "C" {

@@ -1,3 +1,5 @@
+use ::std::os::raw::{c_int, c_uint, c_void};
+
 use super::{
     ai_array::AtArray,
     ai_color::{AtRGB, AtRGBA},
@@ -23,17 +25,14 @@ extern "C" {
     pub fn AiUserGetByteFunc(arg1: AtString, arg2: *const AtShaderGlobals, arg3: *mut u8) -> bool;
 }
 extern "C" {
-    pub fn AiUserGetIntFunc(
-        arg1: AtString,
-        arg2: *const AtShaderGlobals,
-        arg3: *mut ::std::os::raw::c_int,
-    ) -> bool;
+    pub fn AiUserGetIntFunc(arg1: AtString, arg2: *const AtShaderGlobals, arg3: *mut c_int)
+        -> bool;
 }
 extern "C" {
     pub fn AiUserGetUIntFunc(
         arg1: AtString,
         arg2: *const AtShaderGlobals,
-        arg3: *mut ::std::os::raw::c_uint,
+        arg3: *mut c_uint,
     ) -> bool;
 }
 extern "C" {
@@ -75,7 +74,7 @@ extern "C" {
     pub fn AiUserGetPtrFunc(
         arg1: AtString,
         arg2: *const AtShaderGlobals,
-        arg3: *mut *mut ::std::os::raw::c_void,
+        arg3: *mut *mut c_void,
     ) -> bool;
 }
 extern "C" {

@@ -1,3 +1,5 @@
+use ::std::os::raw::c_uint;
+
 use super::{ai_color::AtRGB, ai_shaderglobals::AtShaderGlobals};
 
 extern "C" {
@@ -13,7 +15,7 @@ extern "C" {
         mfp: *const f32,
         albedo: *const f32,
         weight: *const AtRGB,
-        num: ::std::os::raw::c_uint,
+        num: c_uint,
     );
 }
 extern "C" {

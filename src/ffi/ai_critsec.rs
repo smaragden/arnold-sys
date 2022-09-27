@@ -68,8 +68,10 @@ pub type AtMutex = AtProfiledLockable<std_mutex>;
 pub type AtRecursiveMutex = AtProfiledLockable<std_recursive_mutex>;
 */
 
+use ::std::os::raw::c_void;
+
 #[doc = " Opaque data type for a critical section"]
-pub type AtCritSec = *mut ::std::os::raw::c_void;
+pub type AtCritSec = *mut c_void;
 extern "C" {
     pub fn AiCritSecInit(cs: *mut AtCritSec);
 }

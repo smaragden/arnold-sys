@@ -1,3 +1,5 @@
+use ::std::os::raw::c_int;
+
 use super::{
     ai_color::AtRGB, ai_shader_sample::AtScrSample, ai_shaderglobals::AtShaderGlobals,
     ai_string::AtString, ai_vector::AtVector,
@@ -48,9 +50,9 @@ pub struct AtRay {
     #[doc = "< Sub-pixel sample index when supersampling"]
     pub sindex: u16,
     #[doc = "< Raster-space X coordinate"]
-    pub x: ::std::os::raw::c_int,
+    pub x: c_int,
     #[doc = "< Raster-space Y coordinate"]
-    pub y: ::std::os::raw::c_int,
+    pub y: c_int,
     #[doc = "< Subpixel X coordinate in [0,1)"]
     pub px: f32,
     #[doc = "< Subpixel Y coordinate in [0,1)"]

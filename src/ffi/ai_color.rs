@@ -1,3 +1,5 @@
+use ::std::os::raw::c_uint;
+
 #[doc = " RGB color"]
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
@@ -27,7 +29,7 @@ extern "C" {
     pub fn AiColorHeatMap(
         map_colors: *const AtRGB,
         map_values: *const f32,
-        map_length: ::std::os::raw::c_uint,
+        map_length: c_uint,
         lookup: f32,
     ) -> AtRGB;
 }
