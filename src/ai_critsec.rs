@@ -74,16 +74,12 @@ use ::std::os::raw::c_void;
 pub type AtCritSec = *mut c_void;
 extern "C" {
     pub fn AiCritSecInit(cs: *mut AtCritSec);
-}
-extern "C" {
+
     pub fn AiCritSecInitRecursive(cs: *mut AtCritSec);
-}
-extern "C" {
+
     pub fn AiCritSecClose(cs: *mut AtCritSec);
-}
-extern "C" {
+
     pub fn AiCritSecEnter(cs: *mut AtCritSec);
-}
-extern "C" {
+
     pub fn AiCritSecLeave(cs: *mut AtCritSec);
 }

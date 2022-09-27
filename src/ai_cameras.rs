@@ -76,7 +76,6 @@ extern "C" {
     /// \\name API Methods for Camera Writers
     /// \\{
     pub fn AiCameraInitialize(node: *mut AtNode);
-}
-extern "C" {
+
     pub fn AiCameraUpdate(node: *mut AtNode, plane_distance: bool);
 }

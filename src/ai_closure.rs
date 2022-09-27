@@ -35,26 +35,19 @@ pub const AtClosureType_AI_CLOSURE_DIELECTRIC: AtClosureType = 13;
 pub type AtClosureType = c_uint;
 extern "C" {
     pub fn AiClosureType(closure: *mut AtClosureBase) -> AtClosureType;
-}
-extern "C" {
+
     pub fn AiClosureWeight(closure: *mut AtClosureBase) -> AtRGB;
-}
-extern "C" {
+
     pub fn AiClosureSetWeight(closure: *mut AtClosureBase, weight: *const AtRGB);
-}
-extern "C" {
+
     pub fn AiClosureLabel(closure: *mut AtClosureBase) -> AtString;
-}
-extern "C" {
+
     pub fn AiClosureSetLabel(closure: *mut AtClosureBase, label: AtString);
-}
-extern "C" {
+
     pub fn AiClosureNext(closure: *mut AtClosureBase) -> *mut AtClosureBase;
-}
-extern "C" {
+
     pub fn AiClosureSetExtraDepth(closure: *mut AtClosureBase, extra_depth: u8);
-}
-extern "C" {
+
     pub fn AiClosureSetExtraSamples(closure: *mut AtClosureBase, extra_samples: u8);
 }
 #[repr(C)]
@@ -67,8 +60,7 @@ extern "C" {
         listA: *mut AtClosureBase,
         listB: *mut AtClosureBase,
     ) -> *mut AtClosureBase;
-}
-extern "C" {
+
     pub fn AiClosureListWeight(
         list: *mut AtClosureBase,
         weight: *const AtRGB,

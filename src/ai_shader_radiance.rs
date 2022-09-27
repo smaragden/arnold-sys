@@ -9,8 +9,7 @@ extern "C" {
     ///
     /// \\{
     pub fn AiIrradiance(p: *const AtVector, n: *const AtVector, tid: c_int, pid: u32) -> AtRGB;
-}
-extern "C" {
+
     pub fn AiRadiance(
         p: *const AtVector,
         dir: *const AtVector,

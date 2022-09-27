@@ -33,8 +33,7 @@ extern "C" {
         filename: *const c_char,
         params: *const AtParamValueMap,
     ) -> bool;
-}
-extern "C" {
+
     ///  Write all nodes in the given universe to a scene file.
     ///
     ///  This function can selectively write all nodes in a given universe to a scene file,
@@ -82,8 +81,7 @@ extern "C" {
         params: *const AtParamValueMap,
         mds: *const AtMetadataStore,
     ) -> bool;
-}
-extern "C" {
+
     ///  Check if the scene format corresponding to a given filename extension is supported
     ///
     ///  \\param extension   scene file extension to check for support (should start with \".\")
@@ -119,14 +117,12 @@ extern "C" {
     ///
     /// \\return New scene format iterator
     pub fn AiSceneFormatIterator() -> *mut AtSceneFormatIterator;
-}
-extern "C" {
+
     /// Destroys scene format iterator and releases any allocated memory
     ///
     /// \\param iter  Scene format iterator to destroy
     pub fn AiSceneFormatIteratorDestroy(iter: *mut AtSceneFormatIterator);
-}
-extern "C" {
+
     /// Gets the next supported scene format
     ///
     /// \\param iter Scene format iterator
@@ -134,15 +130,13 @@ extern "C" {
     pub fn AiSceneFormatIteratorGetNext(
         iter: *mut AtSceneFormatIterator,
     ) -> *const AtSceneFormatData;
-}
-extern "C" {
+
     /// Check if there are more scene formats to iterate over
     ///
     /// \\param iter Scene format iterator
     /// \\return     true if the iterator reached the last supported scene format
     pub fn AiSceneFormatIteratorFinished(iter: *const AtSceneFormatIterator) -> bool;
-}
-extern "C" {
+
     /// Get an iterator over all supported extensions for this scene format
     ///
     /// \\param format_data Scene format data returned by \\c AiSceneFormatIteratorGetNext
@@ -150,14 +144,12 @@ extern "C" {
     pub fn AiSceneFormatGetExtensionIterator(
         format_data: *const AtSceneFormatData,
     ) -> *mut AtSceneFormatExtensionIterator;
-}
-extern "C" {
+
     /// Destroys scene format extension iterator and releases any allocated memory
     ///
     /// \\param iter  Scene format extension iterator to destroy
     pub fn AiSceneFormatExtensionIteratorDestroy(iter: *mut AtSceneFormatExtensionIterator);
-}
-extern "C" {
+
     /// Gets the next supported scene format extension
     ///
     /// \\param iter Scene format extension iterator
@@ -165,8 +157,7 @@ extern "C" {
     pub fn AiSceneFormatExtensionIteratorGetNext(
         iter: *mut AtSceneFormatExtensionIterator,
     ) -> *const c_char;
-}
-extern "C" {
+
     /// Check if there are more scene formats extensions to iterate over
     ///
     /// \\param iter Scene format extension iterator
@@ -174,36 +165,31 @@ extern "C" {
     pub fn AiSceneFormatExtensionIteratorFinished(
         iter: *const AtSceneFormatExtensionIterator,
     ) -> bool;
-}
-extern "C" {
+
     /// Get the name of the scene format
     ///
     /// \\param format_data Scene format data returned by \\c AiSceneFormatIteratorGetNext
     /// \\return            Name of the scene format
     pub fn AiSceneFormatGetName(format_data: *const AtSceneFormatData) -> *const c_char;
-}
-extern "C" {
+
     /// Get a description of the scene format
     ///
     /// \\param format_data Scene format data returned by \\c AiSceneFormatIteratorGetNext
     /// \\return            Description of the scene format
     pub fn AiSceneFormatGetDescription(format_data: *const AtSceneFormatData) -> *const c_char;
-}
-extern "C" {
+
     /// True if the scene format supports reading from file
     ///
     /// \\param format_data Scene format data returned by \\c AiSceneFormatIteratorGetNext
     /// \\return            true if it can be read from file, false otherwise
     pub fn AiSceneFormatSupportsReading(format_data: *const AtSceneFormatData) -> bool;
-}
-extern "C" {
+
     /// True if the scene format supports writing to a file
     ///
     /// \\param format_data Scene format data returned by \\c AiSceneFormatIteratorGetNext
     /// \\return            true if it can be written to a file, false otherwise
     pub fn AiSceneFormatSupportsWriting(format_data: *const AtSceneFormatData) -> bool;
-}
-extern "C" {
+
     /// Get metadata for the scene format and its optional parameters
     ///
     /// \\param format_data Scene format data returned by \\c AiSceneFormatIteratorGetNext

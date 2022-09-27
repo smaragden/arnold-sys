@@ -9,13 +9,10 @@ extern "C" {
     ///
     /// \\{
     pub fn AiMalloc(size: usize) -> *mut c_void;
-}
-extern "C" {
+
     pub fn AiRealloc(addr: *mut c_void, size: usize) -> *mut c_void;
-}
-extern "C" {
+
     pub fn AiFree(addr: *mut c_void);
-}
-extern "C" {
+
     pub fn AiAddMemUsage(size: i64, category: AtString);
 }

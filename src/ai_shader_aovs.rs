@@ -40,32 +40,23 @@ extern "C" {
     ///              as not from within the trunk of the primary ray-tree).
     /// \\{
     pub fn AiAOVSetBool(sg: *mut AtShaderGlobals, name: AtString, val: bool) -> bool;
-}
-extern "C" {
+
     pub fn AiAOVSetInt(sg: *mut AtShaderGlobals, name: AtString, val: c_int) -> bool;
-}
-extern "C" {
+
     pub fn AiAOVSetFlt(sg: *mut AtShaderGlobals, name: AtString, val: f32) -> bool;
-}
-extern "C" {
+
     pub fn AiAOVSetRGB(sg: *mut AtShaderGlobals, name: AtString, val: AtRGB) -> bool;
-}
-extern "C" {
+
     pub fn AiAOVSetRGBA(sg: *mut AtShaderGlobals, name: AtString, val: AtRGBA) -> bool;
-}
-extern "C" {
+
     pub fn AiAOVSetVec(sg: *mut AtShaderGlobals, name: AtString, val: AtVector) -> bool;
-}
-extern "C" {
+
     pub fn AiAOVSetVec2(sg: *mut AtShaderGlobals, name: AtString, val: AtVector2) -> bool;
-}
-extern "C" {
+
     pub fn AiAOVSetMatrix(sg: *mut AtShaderGlobals, name: AtString, val: AtMatrix) -> bool;
-}
-extern "C" {
+
     pub fn AiAOVSetPtr(sg: *mut AtShaderGlobals, name: AtString, val: *mut c_void) -> bool;
-}
-extern "C" {
+
     /// \\name AOV-reading Functions
     ///
     /// \\details
@@ -79,34 +70,24 @@ extern "C" {
     ///              of the wrong type.
     /// \\{
     pub fn AiAOVGetBool(sg: *const AtShaderGlobals, name: AtString, val: *mut bool) -> bool;
-}
-extern "C" {
+
     pub fn AiAOVGetInt(sg: *const AtShaderGlobals, name: AtString, val: *mut c_int) -> bool;
-}
-extern "C" {
+
     pub fn AiAOVGetFlt(sg: *const AtShaderGlobals, name: AtString, val: *mut f32) -> bool;
-}
-extern "C" {
+
     pub fn AiAOVGetRGB(sg: *const AtShaderGlobals, name: AtString, val: *mut AtRGB) -> bool;
-}
-extern "C" {
+
     pub fn AiAOVGetRGBA(sg: *const AtShaderGlobals, name: AtString, val: *mut AtRGBA) -> bool;
-}
-extern "C" {
+
     pub fn AiAOVGetVec(sg: *const AtShaderGlobals, name: AtString, val: *mut AtVector) -> bool;
-}
-extern "C" {
+
     pub fn AiAOVGetVec2(sg: *const AtShaderGlobals, name: AtString, val: *mut AtVector2) -> bool;
-}
-extern "C" {
+
     pub fn AiAOVGetMatrix(sg: *const AtShaderGlobals, name: AtString, val: *mut AtMatrix) -> bool;
-}
-extern "C" {
+
     pub fn AiAOVGetPtr(sg: *const AtShaderGlobals, name: AtString, val: *mut *mut c_void) -> bool;
-}
-extern "C" {
+
     pub fn AiAOVEnabled(name: AtString, type_: u8) -> bool;
-}
-extern "C" {
+
     pub fn AiAOVRegister(name: *const c_char, type_: u8, blend_mode: c_int) -> bool;
 }

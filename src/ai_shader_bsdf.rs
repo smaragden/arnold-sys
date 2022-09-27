@@ -92,45 +92,33 @@ extern "C" {
         methods: *const AtBSDFMethods,
         data_size: c_ulong,
     ) -> *mut AtBSDF;
-}
-extern "C" {
+
     pub fn AiBSDFGetMethods(bsdf: *const AtBSDF) -> *const AtBSDFMethods;
-}
-extern "C" {
+
     pub fn AiBSDFGetData(bsdf: *const AtBSDF) -> *mut c_void;
-}
-extern "C" {
+
     pub fn AiBSDFGetLobes(bsdf: *const AtBSDF) -> *const AtBSDFLobeInfo;
-}
-extern "C" {
+
     pub fn AiBSDFGetNumLobes(bsdf: *const AtBSDF) -> c_int;
-}
-extern "C" {
+
     pub fn AiBSDFGetWeight(bsdf: *const AtBSDF) -> AtRGB;
-}
-extern "C" {
+
     pub fn AiBSDFSetDirectIndirect(bsdf: *mut AtBSDF, weight_direct: f32, weight_indirect: f32);
-}
-extern "C" {
+
     pub fn AiBSDFGetDirectIndirect(
         bsdf: *const AtBSDF,
         weight_direct: *mut f32,
         weight_indirect: *mut f32,
     );
-}
-extern "C" {
+
     pub fn AiBSDFInitLobes(bsdf: *mut AtBSDF, lobes: *const AtBSDFLobeInfo, num_lobes: c_int);
-}
-extern "C" {
+
     pub fn AiBSDFInitNormal(bsdf: *mut AtBSDF, N: *const AtVector, bounding: bool);
-}
-extern "C" {
+
     pub fn AiBSDFBumpShadow(Ns: *const AtVector, N: *const AtVector, Ld: *const AtVector) -> f32;
-}
-extern "C" {
+
     pub fn AiBSDFMinRoughness(sg: *const AtShaderGlobals) -> f32;
-}
-extern "C" {
+
     /// \\name Built-in BSDFs
     /// \\{
     pub fn AiOrenNayarBSDF(
@@ -141,8 +129,7 @@ extern "C" {
         transmission: bool,
         label: AtString,
     ) -> *mut AtBSDF;
-}
-extern "C" {
+
     pub fn AiMicrofacetBSDF(
         sg: *const AtShaderGlobals,
         weight: *const AtRGB,
@@ -155,8 +142,7 @@ extern "C" {
         exit_type: u8,
         label: AtString,
     ) -> *mut AtBSDF;
-}
-extern "C" {
+
     pub fn AiMicrofacetBSDF_private(
         sg: *const AtShaderGlobals,
         weight: *const AtRGB,
@@ -170,8 +156,7 @@ extern "C" {
         label: AtString,
         dielectric_importance: i32,
     ) -> *mut AtBSDF;
-}
-extern "C" {
+
     pub fn AiMicrofacetRefractionBSDF(
         sg: *const AtShaderGlobals,
         weight: *const AtRGB,
@@ -187,8 +172,7 @@ extern "C" {
         exit_type: u8,
         label: AtString,
     ) -> *mut AtBSDF;
-}
-extern "C" {
+
     pub fn AiMicrofacetRefractionBSDF_private(
         sg: *const AtShaderGlobals,
         weight: *const AtRGB,
@@ -205,8 +189,7 @@ extern "C" {
         label: AtString,
         dielectric_importance: i32,
     ) -> *mut AtBSDF;
-}
-extern "C" {
+
     pub fn AiMicrofacetThinWallRefractionBSDF(
         sg: *const AtShaderGlobals,
         weight: *const AtRGB,
@@ -219,11 +202,9 @@ extern "C" {
         exit_type: u8,
         label: AtString,
     ) -> *mut AtBSDF;
-}
-extern "C" {
+
     pub fn AiMicrofacetSetThinFilm(bsdf: *mut AtBSDF, thickness: f32, eta: f32);
-}
-extern "C" {
+
     pub fn AiMetalBSDF(
         sg: *const AtShaderGlobals,
         weight: *const AtRGB,
@@ -236,8 +217,7 @@ extern "C" {
         ry: f32,
         label: AtString,
     ) -> *mut AtBSDF;
-}
-extern "C" {
+
     pub fn AidEonBSDF(
         sg: *const AtShaderGlobals,
         absorption: *const AtRGB,
@@ -248,16 +228,14 @@ extern "C" {
         tilt: f32,
         label: AtString,
     ) -> *mut AtBSDF;
-}
-extern "C" {
+
     pub fn AiZinkeBSDF(
         sg: *const AtShaderGlobals,
         weight: *const AtRGB,
         tangent: *const AtVector,
         label: AtString,
     ) -> *mut AtBSDF;
-}
-extern "C" {
+
     pub fn AiSheenBSDF(
         sg: *const AtShaderGlobals,
         weight: *const AtRGB,
@@ -265,8 +243,7 @@ extern "C" {
         r: f32,
         label: AtString,
     ) -> *mut AtBSDF;
-}
-extern "C" {
+
     /// \\name BSDF integration
     /// \\{
     pub fn AiBSDFIntegrate(
@@ -275,7 +252,6 @@ extern "C" {
         indirect: *mut AtRGB,
         bsdf: *mut AtBSDF,
     );
-}
-extern "C" {
+
     pub fn AiBSDFAlbedo(sg: *const AtShaderGlobals, bsdf: *mut AtBSDF) -> AtRGB;
 }

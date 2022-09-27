@@ -17,7 +17,6 @@ extern "C" {
         weight: *const AtRGB,
         num: c_uint,
     );
-}
-extern "C" {
+
     pub fn AiShaderGlobalsFromSSS(sg: *const AtShaderGlobals) -> bool;
 }

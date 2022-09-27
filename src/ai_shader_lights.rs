@@ -31,61 +31,47 @@ extern "C" {
     /// This is the API for looping over light source samples.
     /// \\{
     pub fn AiLightsPrepare(sg: *mut AtShaderGlobals);
-}
-extern "C" {
+
     pub fn AiLightsGetSample(sg: *mut AtShaderGlobals, sample: *mut AtLightSample) -> bool;
-}
-extern "C" {
+
     pub fn AiLightsTrace(
         sg: *mut AtShaderGlobals,
         dir: *const AtVector,
         ray_type: u8,
         hits: *mut *mut AtLightSample,
     ) -> u32;
-}
-extern "C" {
+
     pub fn AiLightsTraceRayTypes(sg: *mut AtShaderGlobals) -> u8;
-}
-extern "C" {
+
     pub fn AiLightsResetCache(sg: *mut AtShaderGlobals);
-}
-extern "C" {
+
     pub fn AiLightsIntegrateShadowMatte(sg: *mut AtShaderGlobals, bsdf: *mut AtBSDF) -> AtRGB;
-}
-extern "C" {
+
     /// \\name Light Getter Methods
     /// \\details
     /// These getters are to avoid slow AiNodeGet*() calls to access light parameters.
     /// Only the most common attributes are exposed for now.
     /// \\{
     pub fn AiLightGetColor(node: *const AtNode) -> AtRGB;
-}
-extern "C" {
+
     pub fn AiLightGetIntensity(node: *const AtNode) -> f32;
-}
-extern "C" {
+
     pub fn AiLightGetDiffuse(node: *const AtNode) -> f32;
-}
-extern "C" {
+
     pub fn AiLightGetSpecular(node: *const AtNode) -> f32;
-}
-extern "C" {
+
     pub fn AiLightGetTransmission(node: *const AtNode) -> f32;
-}
-extern "C" {
+
     pub fn AiLightGetSSS(node: *const AtNode) -> f32;
-}
-extern "C" {
+
     pub fn AiLightGetVolume(node: *const AtNode) -> f32;
-}
-extern "C" {
+
     pub fn AiLightGetInfluence(
         sg: *const AtShaderGlobals,
         node: *const AtNode,
         ray_type: u8,
     ) -> f32;
-}
-extern "C" {
+
     /// \\name Light IES Format Parser
     /// \\details
     /// Not a shader specific call, this is called by plugins or host DCCs to parse IES files

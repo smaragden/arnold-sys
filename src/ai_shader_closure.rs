@@ -27,8 +27,7 @@ extern "C" {
         mfp: *const AtVector,
         albedo: *const AtRGB,
     ) -> AtClosure;
-}
-extern "C" {
+
     pub fn AiClosureRandomWalkBSSRDF(
         sg: *const AtShaderGlobals,
         weight: *const AtRGB,
@@ -36,8 +35,7 @@ extern "C" {
         albedo: *const AtRGB,
         g: f32,
     ) -> AtClosure;
-}
-extern "C" {
+
     pub fn AiClosureRandomWalkV2BSSRDF(
         sg: *const AtShaderGlobals,
         weight: *const AtRGB,
@@ -45,39 +43,31 @@ extern "C" {
         albedo: *const AtRGB,
         g: f32,
     ) -> AtClosure;
-}
-extern "C" {
+
     pub fn AiClosureBSSRDFSetDirectIndirect(
         closure: AtClosure,
         weight_direct: f32,
         weight_indirect: f32,
     );
-}
-extern "C" {
+
     pub fn AiClosureEmission(sg: *const AtShaderGlobals, weight: *const AtRGB) -> AtClosure;
-}
-extern "C" {
+
     pub fn AiClosureTransparent(
         sg: *const AtShaderGlobals,
         weight: *const AtRGB,
         interior: AtClosureList,
         importance: i32,
     ) -> AtClosure;
-}
-extern "C" {
+
     pub fn AiClosureMatte(sg: *const AtShaderGlobals, weight: *const AtRGB) -> AtClosure;
-}
-extern "C" {
+
     pub fn AiClosureBackground(sg: *const AtShaderGlobals, weight: *const AtRGB) -> AtClosure;
-}
-extern "C" {
+
     pub fn AiClosureVolumeAbsorption(sg: *const AtShaderGlobals, weight: *const AtRGB)
         -> AtClosure;
-}
-extern "C" {
+
     pub fn AiClosureVolumeEmission(sg: *const AtShaderGlobals, weight: *const AtRGB) -> AtClosure;
-}
-extern "C" {
+
     pub fn AiClosureVolumeHenyeyGreenstein(
         sg: *const AtShaderGlobals,
         absorption: *const AtRGB,
@@ -85,11 +75,9 @@ extern "C" {
         emission: *const AtRGB,
         g: f32,
     ) -> AtClosure;
-}
-extern "C" {
+
     pub fn AiClosureVolumeMatte(sg: *const AtShaderGlobals, weight: *const AtRGB) -> AtClosure;
-}
-extern "C" {
+
     pub fn AiClosureVolumeAtmosphere(
         sg: *const AtShaderGlobals,
         emission: *const AtRGB,

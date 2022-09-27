@@ -63,41 +63,33 @@ extern "C" {
         dst: *mut c_void,
         dst_layout: *const AtChannelLayout,
     ) -> bool;
-}
-extern "C" {
+
     pub fn AiColorManagerGetDefaults(node: *mut AtNode, sRGB: *mut AtString, linear: *mut AtString);
-}
-extern "C" {
+
     pub fn AiColorManagerGetChromaticities(
         node: *mut AtNode,
         space: AtString,
         chromaticities: *mut f32,
     ) -> bool;
-}
-extern "C" {
+
     pub fn AiColorManagerGetCustomAttributes(
         node: *mut AtNode,
         space: AtString,
         num: *mut c_int,
         attributes: *mut *const c_char,
     );
-}
-extern "C" {
+
     pub fn AiColorManagerGetNumColorSpaces(node: *mut AtNode, family: AtString) -> c_int;
-}
-extern "C" {
+
     pub fn AiColorManagerGetColorSpaceNameByIndex(
         node: *mut AtNode,
         i: c_int,
         family: AtString,
     ) -> AtString;
-}
-extern "C" {
+
     pub fn AiColorManagerGetNumFamilies(node: *mut AtNode) -> c_int;
-}
-extern "C" {
+
     pub fn AiColorManagerGetFamilyNameByIndex(node: *mut AtNode, i: c_int) -> AtString;
-}
-extern "C" {
+
     pub fn AiColorManagerColorSpaceIsLinear(node: *mut AtNode, cs: AtString) -> bool;
 }

@@ -10,29 +10,22 @@ pub const AtStatsMode_AI_STATS_MODE_APPEND: AtStatsMode = 1;
 pub type AtStatsMode = c_uint;
 extern "C" {
     pub fn AiStatsGetMode() -> AtStatsMode;
-}
-extern "C" {
+
     pub fn AiStatsGetFileName() -> *const c_char;
-}
-extern "C" {
+
     pub fn AiStatsSetMode(mode: AtStatsMode);
-}
-extern "C" {
+
     pub fn AiStatsSetFileName(filename: *const c_char);
-}
-extern "C" {
+
     /// JSON file to which profiling traces should be written to.  This is written
     /// in the Trace Event format which is viewable in Google Chrome at
     /// chrome://tracing/ . Setting to NULL will disable output.
     pub fn AiProfileSetFileName(filename: *const c_char);
-}
-extern "C" {
+
     /// Get the JSON filename to which profiling traces will be written to.
     /// \\see AiProfileSetFileName()
     pub fn AiProfileGetFileName() -> AtString;
-}
 
-extern "C" {
     /// @private
     /// Finalize profile entry
     ///
@@ -44,8 +37,7 @@ extern "C" {
         name: *const c_char,
         node: *const AtNode,
     );
-}
-extern "C" {
+
     /// @private
     /// Get profile counter
     ///

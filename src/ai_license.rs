@@ -72,9 +72,9 @@ pub struct AtLicenseInfo {
     /// USER_BASED count
     pub ubased: c_int,
 }
+
 extern "C" {
     pub fn AiLicenseGetInfo(licenses: *mut *mut AtLicenseInfo, n: *mut c_uint) -> c_int;
-}
-extern "C" {
+
     pub fn AiLicenseIsAvailable() -> bool;
 }

@@ -31,8 +31,7 @@ extern "C" {
         open_procs: bool,
         binary: bool,
     ) -> c_int;
-}
-extern "C" {
+
     pub fn AiASSWriteWithMetadata(
         universe: *mut AtUniverse,
         filename: *const c_char,
@@ -41,7 +40,6 @@ extern "C" {
         binary: bool,
         mds: *const AtMetadataStore,
     ) -> c_int;
-}
-extern "C" {
+
     pub fn AiASSLoad(universe: *mut AtUniverse, filename: *const c_char, mask: c_int) -> c_int;
 }

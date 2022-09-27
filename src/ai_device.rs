@@ -26,43 +26,35 @@ pub type AtDeviceMemory = c_uint;
 extern "C" {
     /// Returns if a given device is supported on the current system
     pub fn AiDeviceTypeIsSupported(device_type: AtDeviceType, reason: *mut AtString) -> bool;
-}
-extern "C" {
+
     /// Select render device
     pub fn AiDeviceSelect(
         render_session: *mut AtRenderSession,
         device_type: AtDeviceType,
         device_ids: *const AtArray,
     ) -> c_int;
-}
-extern "C" {
+
     /// Automatically select render device based on options
     pub fn AiDeviceAutoSelect(render_session: *mut AtRenderSession) -> c_int;
-}
-extern "C" {
+
     /// Returns the currently selected render device type
     pub fn AiDeviceGetSelectedType(render_session: *const AtRenderSession) -> AtDeviceType;
-}
-extern "C" {
+
     /// Returns the currently selected devices ids of a device type
     pub fn AiDeviceGetSelectedIds(
         render_session: *const AtRenderSession,
         device_type: AtDeviceType,
     ) -> *const AtArray;
-}
-extern "C" {
+
     /// Returns the number of available devices of a given type
     pub fn AiDeviceGetCount(device_type: AtDeviceType) -> c_uint;
-}
-extern "C" {
+
     /// Returns the ids of available devices of a given type
     pub fn AiDeviceGetIds(device_type: AtDeviceType) -> *const AtArray;
-}
-extern "C" {
+
     /// Returns the name of a device
     pub fn AiDeviceGetName(device_type: AtDeviceType, device_id: c_uint) -> AtString;
-}
-extern "C" {
+
     /// Returns memory information of a device
     pub fn AiDeviceGetMemoryMB(
         device_type: AtDeviceType,
@@ -99,24 +91,19 @@ extern "C" {
         report_callback: AtGPUCachePopulateCallback,
         user_ptr: *mut c_void,
     ) -> AtRenderErrorCode;
-}
-extern "C" {
+
     /// Poll for the current status of the GPU cache population
     pub fn AiGPUCachePopulateStatus(fraction_done: *mut f32) -> AtRenderStatus;
-}
-extern "C" {
+
     /// Estimate for how many more seconds remain for the GPU cache population
     pub fn AiGPUCachePopulateRemainingSeconds() -> f32;
-}
-extern "C" {
+
     /// Request immediate termination of the GPU cache population
     pub fn AiGPUCachePopulateTerminate();
-}
-extern "C" {
+
     /// Set the directory where the OptiX cache will be stored
     pub fn AiGPUCacheSetDirectory(dir_path: *const c_char);
-}
-extern "C" {
+
     /// Get the directory specified via AiGPUCacheSetDirectory (or if not specified, the default)
     pub fn AiGPUCacheGetDirectory() -> AtString;
 }
