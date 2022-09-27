@@ -7,11 +7,11 @@ use super::{
     ai_vector::{AtVector, AtVector2},
 };
 
-#[doc = " \\struct AtMetadataStore"]
-#[doc = ""]
-#[doc = " This structure holds a generic list of metadata items, each of which could"]
-#[doc = " optionally be associated to a specific parameter (for node metadata). The actual"]
-#[doc = " contents of this struct are private."]
+/// \\struct AtMetadataStore
+///
+/// This structure holds a generic list of metadata items, each of which could
+/// optionally be associated to a specific parameter (for node metadata). The actual
+/// contents of this struct are private.
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct AtMetadataStore {
@@ -323,38 +323,38 @@ extern "C" {
     ) -> bool;
 }
 extern "C" {
-    #[doc = " Creates a new metadata store."]
-    #[doc = ""]
-    #[doc = " \\return  new metadata store object"]
+    /// Creates a new metadata store.
+    ///
+    /// \\return  new metadata store object
     pub fn AiMetadataStore() -> *mut AtMetadataStore;
 }
 extern "C" {
-    #[doc = " Destroys a metadata store object."]
-    #[doc = ""]
-    #[doc = " \\param mds     metadata store object to be destroyed"]
+    /// Destroys a metadata store object.
+    ///
+    /// \\param mds     metadata store object to be destroyed
     pub fn AiMetadataStoreDestroy(mds: *mut AtMetadataStore);
 }
 extern "C" {
-    #[doc = " Load embedded metadata from an .ass file into a metadata store."]
-    #[doc = ""]
-    #[doc = " \\param mds     metadata store object where embedded metadata will be loaded"]
-    #[doc = " \\param file    filename of the .ass file with the embedded metadata to load"]
+    /// Load embedded metadata from an .ass file into a metadata store.
+    ///
+    /// \\param mds     metadata store object where embedded metadata will be loaded
+    /// \\param file    filename of the .ass file with the embedded metadata to load
     pub fn AiMetadataStoreLoadFromASS(mds: *mut AtMetadataStore, file: *const c_char) -> bool;
 }
 extern "C" {
-    #[doc = " Creates a new metadata iterator that traverses all global metadata."]
-    #[doc = ""]
-    #[doc = " \\param mds     metadata store object to get an iterator for"]
-    #[doc = " \\return        an iterator over all global metadata in a metadata store"]
+    /// Creates a new metadata iterator that traverses all global metadata.
+    ///
+    /// \\param mds     metadata store object to get an iterator for
+    /// \\return        an iterator over all global metadata in a metadata store
     pub fn AiMetadataStoreGetIterator(mds: *const AtMetadataStore) -> *mut AtMetaDataIterator;
 }
 extern "C" {
-    #[doc = " Creates a new metadata iterator pointing at the first matching entry."]
-    #[doc = ""]
-    #[doc = " \\param mds        metadata store object to get an iterator for"]
-    #[doc = " \\param param      request metadata for a specific param (or global metadata if param is NULL)"]
-    #[doc = " \\param recursive  if true and param is NULL, it will traverse both global metadata and param metadata for all params"]
-    #[doc = " \\return           an iterator over all metadata in a metadata store"]
+    /// Creates a new metadata iterator pointing at the first matching entry.
+    ///
+    /// \\param mds        metadata store object to get an iterator for
+    /// \\param param      request metadata for a specific param (or global metadata if param is NULL)
+    /// \\param recursive  if true and param is NULL, it will traverse both global metadata and param metadata for all params
+    /// \\return           an iterator over all metadata in a metadata store
     pub fn AiMetadataStoreGetIteratorRecursive(
         mds: *const AtMetadataStore,
         param: *const c_char,
@@ -362,21 +362,21 @@ extern "C" {
     ) -> *mut AtMetaDataIterator;
 }
 extern "C" {
-    #[doc = " Load a metadata file."]
-    #[doc = ""]
-    #[doc = " Metadata items loaded from this file will be attached to existing"]
-    #[doc = " node entries and their parameters, as especified by the"]
-    #[doc = " <a href=\"https://docs.arnoldrenderer.com/x/kQNEB\">.mtd file format</a>"]
-    #[doc = ""]
-    #[doc = " Usage:"]
-    #[doc = " \\code"]
-    #[doc = " const char* metadata_file = \"my_metadata_file.mtd\";"]
-    #[doc = " bool success = AiMetaDataLoadFile(metadata_file)"]
-    #[doc = " if (!success)"]
-    #[doc = "    printf(\"\\nError loading metadata file %s\", metadata_file);"]
-    #[doc = " \\endcode"]
-    #[doc = ""]
-    #[doc = " \\param filename    the full path of the metadata file to load"]
-    #[doc = " \\return            true when the file could be read succesfully"]
+    /// Load a metadata file.
+    ///
+    /// Metadata items loaded from this file will be attached to existing
+    /// node entries and their parameters, as especified by the
+    /// [.mtd file format](https://docs.arnoldrenderer.com/x/kQNEB\)
+    ///
+    /// Usage:
+    /// ```c
+    /// const char* metadata_file = \"my_metadata_file.mtd\";
+    /// bool success = AiMetaDataLoadFile(metadata_file)
+    /// if (!success)
+    ///    printf(\"\\nError loading metadata file %s\", metadata_file);
+    /// ```
+    ///
+    /// \\param filename    the full path of the metadata file to load
+    /// \\return            true when the file could be read succesfully
     pub fn AiMetaDataLoadFile(filename: *const c_char) -> bool;
 }

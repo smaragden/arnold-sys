@@ -12,7 +12,7 @@ pub struct AtChannelLayout {
     pub x_stride: c_ulong,
     pub y_stride: c_ulong,
 }
-#[doc = " Color Manager Node methods structure"]
+/// Color Manager Node methods structure
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct AtColorManagerNodeMethods {

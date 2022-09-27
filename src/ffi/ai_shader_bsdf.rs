@@ -13,38 +13,38 @@ use super::{
 
 pub const AI_MICROFACET_BECKMANN: u32 = 0;
 pub const AI_MICROFACET_GGX: u32 = 1;
-#[doc = "< Sampling the BSDF always returns the same direction"]
+/// Sampling the BSDF always returns the same direction
 pub const AtBSDFLobeFlags_AI_BSDF_LOBE_SINGULAR: AtBSDFLobeFlags = 1;
-#[doc = "< Sampling the BSDF lobe requires a wavelength"]
+/// Sampling the BSDF lobe requires a wavelength
 pub const AtBSDFLobeFlags_AI_BSDF_LOBE_WAVELENGTH_SAMPLE: AtBSDFLobeFlags = 2;
-#[doc = "< If ray depth exceeded, use background color"]
+/// If ray depth exceeded, use background color
 pub const AtBSDFLobeFlags_AI_BSDF_LOBE_EXIT_BACKGROUND: AtBSDFLobeFlags = 4;
-#[doc = "< If ray depth exceeded, use white color"]
+/// If ray depth exceeded, use white color
 pub const AtBSDFLobeFlags_AI_BSDF_LOBE_EXIT_WHITE: AtBSDFLobeFlags = 8;
-#[doc = " BSDF Lobe flags"]
+/// BSDF Lobe flags
 pub type AtBSDFLobeFlags = c_uint;
-#[doc = " BSDF lobe information"]
+/// BSDF lobe information
 #[repr(C)]
 pub struct AtBSDFLobeInfo {
     pub ray_type: u8,
     pub flags: u8,
     pub label: AtString,
 }
-#[doc = " BSDF lobe bitmask"]
+/// BSDF lobe bitmask
 pub type AtBSDFLobeMask = u32;
 pub const AI_BSDF_LOBE_MASK_NONE: AtBSDFLobeMask = 0;
-#[doc = " BSDF lobe sample"]
+/// BSDF lobe sample
 #[repr(C)]
 pub struct AtBSDFLobeSample {
     pub weight: AtRGB,
     pub reverse_pdf: f32,
     pub pdf: f32,
 }
-#[doc = " BSDF function table"]
-#[doc = ""]
-#[doc = " This structure is used to report the function pointers that the"]
-#[doc = " renderer needs to call at runtime. The version field is used for runtime"]
-#[doc = " compatibility checking."]
+/// BSDF function table
+///
+/// This structure is used to report the function pointers that the
+/// renderer needs to call at runtime. The version field is used for runtime
+/// compatibility checking.
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct AtBSDFMethods {
@@ -84,8 +84,8 @@ pub struct AtBSDFMethods {
     >,
 }
 extern "C" {
-    #[doc = " \\name Functions for implementing custom BSDFs"]
-    #[doc = " \\{"]
+    /// \\name Functions for implementing custom BSDFs
+    /// \\{
     pub fn AiBSDF(
         sg: *const AtShaderGlobals,
         weight: *const AtRGB,
@@ -131,8 +131,8 @@ extern "C" {
     pub fn AiBSDFMinRoughness(sg: *const AtShaderGlobals) -> f32;
 }
 extern "C" {
-    #[doc = " \\name Built-in BSDFs"]
-    #[doc = " \\{"]
+    /// \\name Built-in BSDFs
+    /// \\{
     pub fn AiOrenNayarBSDF(
         sg: *const AtShaderGlobals,
         weight: *const AtRGB,
@@ -267,8 +267,8 @@ extern "C" {
     ) -> *mut AtBSDF;
 }
 extern "C" {
-    #[doc = " \\name BSDF integration"]
-    #[doc = " \\{"]
+    /// \\name BSDF integration
+    /// \\{
     pub fn AiBSDFIntegrate(
         sg: *mut AtShaderGlobals,
         direct: *mut AtRGB,

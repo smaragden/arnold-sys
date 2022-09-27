@@ -24,7 +24,7 @@ extern "C" {
 }
 
 #[repr(u32)]
-#[doc = "Copyright Notice types"]
+///Copyright Notice types
 #[derive(Debug, Copy, Clone, Hash, PartialEq, Eq)]
 pub enum AtCopyrightNoticeType {
     AI_COPYRIGHT_NOTICES_CORE = 0,

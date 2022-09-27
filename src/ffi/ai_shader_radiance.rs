@@ -3,11 +3,11 @@ use ::std::os::raw::c_int;
 use super::{ai_color::AtRGB, ai_nodes::AtNode, ai_vector::AtVector};
 
 extern "C" {
-    #[doc = " \\defgroup ai_shader_radiance Irradiance / Radiance API"]
-    #[doc = ""]
-    #[doc = " Radiance and irradiance lookup functions."]
-    #[doc = ""]
-    #[doc = " \\{"]
+    /// \\defgroup ai_shader_radiance Irradiance / Radiance API
+    ///
+    /// Radiance and irradiance lookup functions.
+    ///
+    /// \\{
     pub fn AiIrradiance(p: *const AtVector, n: *const AtVector, tid: c_int, pid: u32) -> AtRGB;
 }
 extern "C" {

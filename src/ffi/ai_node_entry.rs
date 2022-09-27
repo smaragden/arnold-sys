@@ -37,17 +37,17 @@ pub struct AtParamIterator {
 pub struct AtMetaDataIterator {
     _unused: [u8; 0],
 }
-#[doc = " \\struct AtNodeEntry"]
-#[doc = ""]
-#[doc = " This represents a node type in Arnold. There is a node entry for each"]
-#[doc = " installed node, whether built-in or plug-in. The actual contents of this"]
-#[doc = " struct are private."]
+/// \\struct AtNodeEntry
+///
+/// This represents a node type in Arnold. There is a node entry for each
+/// installed node, whether built-in or plug-in. The actual contents of this
+/// struct are private.
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct AtNodeEntry {
     _unused: [u8; 0],
 }
-#[doc = " Methods common to all nodes"]
+/// Methods common to all nodes
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct AtCommonMethods {
@@ -58,13 +58,13 @@ pub struct AtCommonMethods {
     pub Update: Option<unsafe extern "C" fn(arg1: *mut AtRenderSession, arg2: *mut AtNode)>,
     pub Finish: Option<unsafe extern "C" fn(arg1: *mut AtNode)>,
 }
-#[doc = " Node methods"]
+/// Node methods
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct AtNodeMethods {
-    #[doc = "< common methods"]
+    /// common methods
     pub cmethods: *const AtCommonMethods,
-    #[doc = "< derived methods"]
+    /// derived methods
     pub dmethods: *const c_void,
 }
 #[repr(C)]
@@ -75,8 +75,8 @@ pub struct AtMetaDataEntry {
     pub value: AtParamValue,
 }
 extern "C" {
-    #[doc = " \\name AtNodeEntry Methods"]
-    #[doc = " \\{"]
+    /// \\name AtNodeEntry Methods
+    /// \\{
     pub fn AiNodeEntryLookUp(name: AtString) -> *const AtNodeEntry;
 }
 extern "C" {
@@ -156,8 +156,8 @@ extern "C" {
     pub fn AiNodeEntryUninstall(name: *const c_char);
 }
 extern "C" {
-    #[doc = " \\name AtParamIterator Methods"]
-    #[doc = " \\{"]
+    /// \\name AtParamIterator Methods
+    /// \\{
     pub fn AiParamIteratorDestroy(iter: *mut AtParamIterator);
 }
 extern "C" {
@@ -167,8 +167,8 @@ extern "C" {
     pub fn AiParamIteratorFinished(iter: *const AtParamIterator) -> bool;
 }
 extern "C" {
-    #[doc = " \\name AtMetaDataIterator Methods"]
-    #[doc = " \\{"]
+    /// \\name AtMetaDataIterator Methods
+    /// \\{
     pub fn AiMetaDataIteratorDestroy(iter: *mut AtMetaDataIterator);
 }
 extern "C" {

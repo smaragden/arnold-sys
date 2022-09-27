@@ -12,33 +12,33 @@ pub const AI_AOV_BLEND_NONE: u32 = 0;
 pub const AI_AOV_BLEND_OPACITY: u32 = 1;
 
 extern "C" {
-    #[doc = " \\name AOV-writing Functions"]
-    #[doc = ""]
-    #[doc = " \\details"]
-    #[doc = " These functions allow the user to write AOVs.  Shaders may write"]
-    #[doc = " AOVs indiscriminately without hesitation because the system"]
-    #[doc = " understands the \"context\" in which an AOV write is performed. This means"]
-    #[doc = " Arnold can store AOVs when it \"makes sense\" and ignore writes when"]
-    #[doc = " it doesn't."]
-    #[doc = ""]
-    #[doc = " For example, Arnold will not store \"deep\" AOV values (AOVs which are written"]
-    #[doc = " at different depths for a singe pixel-sample) unless a driver specifically"]
-    #[doc = " requests \"deep\" AOV values.  An example of a driver requiring \"deep\" AOV"]
-    #[doc = " values would be one which writes deep-texture/volume-shadow files."]
-    #[doc = ""]
-    #[doc = " Arnold will only perform AOV writes from within the main"]
-    #[doc = " trunk of a pixel-sample ray-tree.  AOV writes made from inside a side-branch"]
-    #[doc = " of the primary ray's ray-tree (such as a reflection) will be ignored.  Also,"]
-    #[doc = " AOV writes are ignored during shadow evaluations."]
-    #[doc = ""]
-    #[doc = " \\param sg    the current shader globals structure (pixel-sample state)"]
-    #[doc = " \\param name  the name of the AOV to write into"]
-    #[doc = " \\param val   the value to write into the AOV"]
-    #[doc = " \\returns     a boolean indicating whether the write was successfully stored or not."]
-    #[doc = "              A failure could indicate that the AOV is not enabled, or is"]
-    #[doc = "              of the wrong type,  or is being written in the wrong \"state\" (such"]
-    #[doc = "              as not from within the trunk of the primary ray-tree)."]
-    #[doc = " \\{"]
+    /// \\name AOV-writing Functions
+    ///
+    /// \\details
+    /// These functions allow the user to write AOVs.  Shaders may write
+    /// AOVs indiscriminately without hesitation because the system
+    /// understands the \"context\" in which an AOV write is performed. This means
+    /// Arnold can store AOVs when it \"makes sense\" and ignore writes when
+    /// it doesn't.
+    ///
+    /// For example, Arnold will not store \"deep\" AOV values (AOVs which are written
+    /// at different depths for a singe pixel-sample) unless a driver specifically
+    /// requests \"deep\" AOV values.  An example of a driver requiring \"deep\" AOV
+    /// values would be one which writes deep-texture/volume-shadow files.
+    ///
+    /// Arnold will only perform AOV writes from within the main
+    /// trunk of a pixel-sample ray-tree.  AOV writes made from inside a side-branch
+    /// of the primary ray's ray-tree (such as a reflection) will be ignored.  Also,
+    /// AOV writes are ignored during shadow evaluations.
+    ///
+    /// \\param sg    the current shader globals structure (pixel-sample state)
+    /// \\param name  the name of the AOV to write into
+    /// \\param val   the value to write into the AOV
+    /// \\returns     a boolean indicating whether the write was successfully stored or not.
+    ///              A failure could indicate that the AOV is not enabled, or is
+    ///              of the wrong type,  or is being written in the wrong \"state\" (such
+    ///              as not from within the trunk of the primary ray-tree).
+    /// \\{
     pub fn AiAOVSetBool(sg: *mut AtShaderGlobals, name: AtString, val: bool) -> bool;
 }
 extern "C" {
@@ -66,18 +66,18 @@ extern "C" {
     pub fn AiAOVSetPtr(sg: *mut AtShaderGlobals, name: AtString, val: *mut c_void) -> bool;
 }
 extern "C" {
-    #[doc = " \\name AOV-reading Functions"]
-    #[doc = ""]
-    #[doc = " \\details"]
-    #[doc = " These functions allow the user to read AOVs."]
-    #[doc = ""]
-    #[doc = " \\param sg    the current shader globals structure (pixel-sample state)"]
-    #[doc = " \\param name  the name of the AOV to read from"]
-    #[doc = " \\param val   the variable to store the read value"]
-    #[doc = " \\returns     a boolean indicating whether the read was successfully done or not."]
-    #[doc = "              A failure could indicate that the AOV is not enabled, or is"]
-    #[doc = "              of the wrong type."]
-    #[doc = " \\{"]
+    /// \\name AOV-reading Functions
+    ///
+    /// \\details
+    /// These functions allow the user to read AOVs.
+    ///
+    /// \\param sg    the current shader globals structure (pixel-sample state)
+    /// \\param name  the name of the AOV to read from
+    /// \\param val   the variable to store the read value
+    /// \\returns     a boolean indicating whether the read was successfully done or not.
+    ///              A failure could indicate that the AOV is not enabled, or is
+    ///              of the wrong type.
+    /// \\{
     pub fn AiAOVGetBool(sg: *const AtShaderGlobals, name: AtString, val: *mut bool) -> bool;
 }
 extern "C" {

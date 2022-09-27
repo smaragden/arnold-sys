@@ -4,6 +4,4 @@
     non_upper_case_globals,
     non_snake_case
 )]
-mod ffi;
-
-pub use ffi::ai_version::AiGetVersion;
+pub mod ffi;

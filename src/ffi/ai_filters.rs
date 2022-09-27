@@ -16,7 +16,7 @@ use super::{
 pub struct AtAOVSampleIterator {
     _unused: [u8; 0],
 }
-#[doc = " Filter Node methods structure"]
+/// Filter Node methods structure
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct AtFilterNodeMethods {
@@ -31,8 +31,8 @@ pub struct AtFilterNodeMethods {
     >,
 }
 extern "C" {
-    #[doc = " \\name API Methods for Filter Writers"]
-    #[doc = " \\{"]
+    /// \\name API Methods for Filter Writers
+    /// \\{
     pub fn AiFilterInitialize(
         node: *mut AtNode,
         requires_depth: bool,
@@ -43,8 +43,8 @@ extern "C" {
     pub fn AiFilterUpdate(node: *mut AtNode, width: f32);
 }
 extern "C" {
-    #[doc = " \\name API Methods to Loop over Samples"]
-    #[doc = " \\{"]
+    /// \\name API Methods to Loop over Samples
+    /// \\{
     pub fn AiAOVSampleIteratorInitPixel(iter: *mut AtAOVSampleIterator, x: c_int, y: c_int);
 }
 extern "C" {
@@ -86,8 +86,8 @@ extern "C" {
     pub fn AiAOVSampleIteratorGetAOVName(iter: *const AtAOVSampleIterator) -> AtString;
 }
 extern "C" {
-    #[doc = " \\name API Methods to Get Sample Value from Iterator"]
-    #[doc = " \\{"]
+    /// \\name API Methods to Get Sample Value from Iterator
+    /// \\{
     pub fn AiAOVSampleIteratorGetBool(iter: *const AtAOVSampleIterator) -> bool;
 }
 extern "C" {
@@ -118,8 +118,8 @@ extern "C" {
     pub fn AiAOVSampleIteratorGetPtr(iter: *const AtAOVSampleIterator) -> *const c_void;
 }
 extern "C" {
-    #[doc = " \\name API Methods to Get Sample Value from Iterator for an Arbitrary AOV"]
-    #[doc = " \\{"]
+    /// \\name API Methods to Get Sample Value from Iterator for an Arbitrary AOV
+    /// \\{
     pub fn AiAOVSampleIteratorGetAOVBool(iter: *const AtAOVSampleIterator, name: AtString) -> bool;
 }
 extern "C" {

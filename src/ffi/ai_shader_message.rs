@@ -8,8 +8,8 @@ use super::{
     ai_vector::{AtVector, AtVector2},
 };
 
-#[doc = " This represents a message iterator. The actual contents of this struct are"]
-#[doc = " private."]
+/// This represents a message iterator. The actual contents of this struct are
+/// private.
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct AtMessageIterator {

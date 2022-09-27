@@ -2,11 +2,11 @@ use ::std::os::raw::{c_char, c_uint};
 
 use super::{ai_nodes::AtNode, ai_string::AtString};
 
-#[doc = "< Overwrite the file if it exists"]
+/// Overwrite the file if it exists
 pub const AtStatsMode_AI_STATS_MODE_OVERWRITE: AtStatsMode = 0;
-#[doc = "< Append data to existing statistics file"]
+/// Append data to existing statistics file
 pub const AtStatsMode_AI_STATS_MODE_APPEND: AtStatsMode = 1;
-#[doc = " Output mode for structured statistics"]
+/// Output mode for structured statistics
 pub type AtStatsMode = c_uint;
 extern "C" {
     pub fn AiStatsGetMode() -> AtStatsMode;
@@ -21,23 +21,23 @@ extern "C" {
     pub fn AiStatsSetFileName(filename: *const c_char);
 }
 extern "C" {
-    #[doc = " JSON file to which profiling traces should be written to.  This is written"]
-    #[doc = " in the Trace Event format which is viewable in Google Chrome at"]
-    #[doc = " chrome://tracing/ . Setting to NULL will disable output."]
+    /// JSON file to which profiling traces should be written to.  This is written
+    /// in the Trace Event format which is viewable in Google Chrome at
+    /// chrome://tracing/ . Setting to NULL will disable output.
     pub fn AiProfileSetFileName(filename: *const c_char);
 }
 extern "C" {
-    #[doc = " Get the JSON filename to which profiling traces will be written to."]
-    #[doc = " \\see AiProfileSetFileName()"]
+    /// Get the JSON filename to which profiling traces will be written to.
+    /// \\see AiProfileSetFileName()
     pub fn AiProfileGetFileName() -> AtString;
 }
 
 extern "C" {
-    #[doc = " @private"]
-    #[doc = " Finalize profile entry"]
-    #[doc = ""]
-    #[doc = " \\warning Please do not call AiProfileUpdate() directly."]
-    #[doc = " \\see AiProfileEnd()"]
+    /// @private
+    /// Finalize profile entry
+    ///
+    /// \\warning Please do not call AiProfileUpdate() directly.
+    /// \\see AiProfileEnd()
     pub fn AiProfileUpdate(
         start_counter: u64,
         end_counter: u64,
@@ -46,14 +46,14 @@ extern "C" {
     );
 }
 extern "C" {
-    #[doc = " @private"]
-    #[doc = " Get profile counter"]
-    #[doc = ""]
-    #[doc = " \\warning Please use AiProfileBlock() instead of directly using"]
-    #[doc = " AiProfileCounter() and AiProfileEnd()."]
+    /// @private
+    /// Get profile counter
+    ///
+    /// \\warning Please use AiProfileBlock() instead of directly using
+    /// AiProfileCounter() and AiProfileEnd().
     pub fn AiProfileCounter() -> u64;
 }
-#[doc = " @private"]
+/// @private
 #[repr(C)]
 #[derive(Debug)]
 pub struct AiProfileBlockRAII {

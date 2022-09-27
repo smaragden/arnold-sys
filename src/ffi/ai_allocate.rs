@@ -3,11 +3,11 @@ use ::std::os::raw::c_void;
 use super::ai_string::AtString;
 
 extern "C" {
-    #[doc = " \\defgroup ai_allocate Memory Allocation API"]
-    #[doc = ""]
-    #[doc = " Memory allocation and deallocation."]
-    #[doc = ""]
-    #[doc = " \\{"]
+    /// \\defgroup ai_allocate Memory Allocation API
+    ///
+    /// Memory allocation and deallocation.
+    ///
+    /// \\{
     pub fn AiMalloc(size: usize) -> *mut c_void;
 }
 extern "C" {

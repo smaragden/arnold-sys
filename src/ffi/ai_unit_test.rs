@@ -1,8 +1,8 @@
 extern "C" {
-    #[doc = " \\defgroup ai_unit_test Unit Testing API"]
-    #[doc = ""]
-    #[doc = " Unit test execution."]
-    #[doc = ""]
-    #[doc = " \\{"]
+    /// \\defgroup ai_unit_test Unit Testing API
+    ///
+    /// Unit test execution.
+    ///
+    /// \\{
     pub fn AiTest() -> bool;
 }

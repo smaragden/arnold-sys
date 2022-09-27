@@ -9,11 +9,11 @@ pub const AI_PRIORITY_LOW: u32 = 1;
 pub const AI_PRIORITY_NORMAL: u32 = 2;
 pub const AI_PRIORITY_HIGH: u32 = 3;
 extern "C" {
-    #[doc = " \\defgroup ai_threads Thread Management API"]
-    #[doc = ""]
-    #[doc = " Implementation of platform-agnostic CPU threads."]
-    #[doc = ""]
-    #[doc = " \\{"]
+    /// \\defgroup ai_threads Thread Management API
+    ///
+    /// Implementation of platform-agnostic CPU threads.
+    ///
+    /// \\{
     pub fn AiThreadCreate(
         fn_: Option<unsafe extern "C" fn(arg1: *mut c_void) -> c_uint>,
         data: *mut c_void,

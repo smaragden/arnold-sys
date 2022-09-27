@@ -24,8 +24,8 @@ pub struct AtSampler {
     _unused: [u8; 0],
 }
 extern "C" {
-    #[doc = " \\name Lighting Functions"]
-    #[doc = " \\{"]
+    /// \\name Lighting Functions
+    /// \\{
     pub fn AiOcclusion(
         N: *const AtVector,
         Ng: *const AtVector,
@@ -62,8 +62,8 @@ extern "C" {
     ) -> AtRGB;
 }
 extern "C" {
-    #[doc = " \\name BSDF Utility Functions"]
-    #[doc = " \\{"]
+    /// \\name BSDF Utility Functions
+    /// \\{
     pub fn AiReflect(I: *const AtVector, N: *const AtVector) -> AtVector;
 }
 extern "C" {
@@ -119,22 +119,22 @@ extern "C" {
 extern "C" {
     pub fn AiFaceForward(N: *mut AtVector, I: *const AtVector);
 }
-#[doc = " This function pointer points to float-based bump-mapping function for"]
-#[doc = " use by AiShaderGlobalsEvaluateBump()."]
-#[doc = ""]
-#[doc = " This function would return the displacement height for the given shading context."]
-#[doc = " This function would be called three times (on three different shading contexts)."]
-#[doc = " The returned displacements would be used to generate a triangle from which a"]
-#[doc = " normal is calculated."]
-#[doc = ""]
-#[doc = " \\param sg    the current shading context"]
-#[doc = " \\param data  user-defined data pointer"]
-#[doc = " \\return bump/displacement height for the current shading context"]
+/// This function pointer points to float-based bump-mapping function for
+/// use by AiShaderGlobalsEvaluateBump().
+///
+/// This function would return the displacement height for the given shading context.
+/// This function would be called three times (on three different shading contexts).
+/// The returned displacements would be used to generate a triangle from which a
+/// normal is calculated.
+///
+/// \\param sg    the current shading context
+/// \\param data  user-defined data pointer
+/// \\return bump/displacement height for the current shading context
 pub type AtFloatBumpEvaluator =
     Option<unsafe extern "C" fn(sg: *mut AtShaderGlobals, data: *mut c_void) -> f32>;
 extern "C" {
-    #[doc = " \\name Utility Functions"]
-    #[doc = " \\{"]
+    /// \\name Utility Functions
+    /// \\{
     pub fn AiShaderGlobalsGetTriangle(
         sg: *const AtShaderGlobals,
         key: c_int,
@@ -255,8 +255,8 @@ extern "C" {
     pub fn AiShaderGlobalsIsObjectMatte(sg: *const AtShaderGlobals) -> bool;
 }
 extern "C" {
-    #[doc = " \\name Camera Information"]
-    #[doc = " \\{"]
+    /// \\name Camera Information
+    /// \\{
     pub fn AiCameraGetShutterStart() -> f32;
 }
 extern "C" {
@@ -272,8 +272,8 @@ extern "C" {
     pub fn AiWorldToScreenMatrix(node: *const AtNode, time: f32, out: *mut AtMatrix);
 }
 extern "C" {
-    #[doc = " \\name Environment Mappings"]
-    #[doc = " \\{"]
+    /// \\name Environment Mappings
+    /// \\{
     pub fn AiMappingMirroredBall(dir: *const AtVector, u: *mut f32, v: *mut f32);
 }
 extern "C" {
@@ -283,8 +283,8 @@ extern "C" {
     pub fn AiMappingLatLong(dir: *const AtVector, u: *mut f32, v: *mut f32);
 }
 extern "C" {
-    #[doc = " \\name Derivatives for Environment Mappings"]
-    #[doc = " \\{"]
+    /// \\name Derivatives for Environment Mappings
+    /// \\{
     pub fn AiMappingMirroredBallDerivs(
         dir: *const AtVector,
         dDdx: *const AtVector,

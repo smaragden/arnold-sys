@@ -3,8 +3,8 @@ use ::std::os::raw::c_int;
 use super::ai_vector::{AtVector, AtVector2};
 
 extern "C" {
-    #[doc = " \\name Perlin Noise"]
-    #[doc = " \\{"]
+    /// \\name Perlin Noise
+    /// \\{
     pub fn AiPerlin2(p: AtVector2) -> f32;
 }
 extern "C" {
@@ -14,8 +14,8 @@ extern "C" {
     pub fn AiPerlin4(p: AtVector, time: f32) -> f32;
 }
 extern "C" {
-    #[doc = " \\name Periodic Perlin Noise"]
-    #[doc = " \\{"]
+    /// \\name Periodic Perlin Noise
+    /// \\{
     pub fn AiPeriodicPerlin2(p: AtVector2, periodx: c_int, periody: c_int) -> f32;
 }
 extern "C" {
@@ -32,8 +32,8 @@ extern "C" {
     ) -> f32;
 }
 extern "C" {
-    #[doc = " \\name Summed-Noise"]
-    #[doc = " \\{"]
+    /// \\name Summed-Noise
+    /// \\{
     pub fn AiNoise2(p: AtVector2, octaves: c_int, distortion: f32, lacunarity: f32) -> f32;
 }
 extern "C" {
