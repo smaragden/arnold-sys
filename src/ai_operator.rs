@@ -43,38 +43,30 @@ pub struct AtCookContext {
 pub type AtOpCleanupChildData = Option<unsafe extern "C" fn(child_data: *mut c_void) -> bool>;
 extern "C" {
     pub fn AiOpSetTarget(universe: *mut AtUniverse, node: *mut AtNode) -> bool;
-}
-extern "C" {
+
     pub fn AiOpGetTarget(universe: *const AtUniverse) -> *mut AtNode;
-}
-extern "C" {
+
     pub fn AiOpGetInputs(op: *mut AtNode) -> *mut AtArray;
-}
-extern "C" {
+
     pub fn AiOpLink(from: *mut AtNode, to: *mut AtNode, index: c_int) -> bool;
-}
-extern "C" {
+
     pub fn AiOpUnlinkInputByIndex(to: *mut AtNode, index: c_uint) -> bool;
-}
-extern "C" {
+
     pub fn AiOpUnlink(from: *mut AtNode, to: *mut AtNode) -> bool;
-}
-extern "C" {
+
     pub fn AiOpSetChildData(
         op: *mut AtNode,
         child_data: *mut c_void,
         cleanup: AtOpCleanupChildData,
     );
-}
-extern "C" {
+
     pub fn AiOpMatchNodeSelection(
         node: *mut AtNode,
         selection: AtString,
         relative: bool,
         target: *mut AtNode,
     ) -> bool;
-}
-extern "C" {
+
     pub fn AiOpCookContextGetCookScope(cook_context: *mut AtCookContext) -> *mut AtNode;
 }
 /// Operator init method.

@@ -292,19 +292,16 @@ extern "C" {
         filename: *const c_char,
         color_space: AtString,
     ) -> *mut AtTextureHandle;
-}
-extern "C" {
+
     pub fn AiTextureHandleAccess(
         sg: *const AtShaderGlobals,
         handle: *mut AtTextureHandle,
         params: *const AtTextureParams,
         success: *mut bool,
     ) -> AtRGBA;
-}
-extern "C" {
+
     pub fn AiTextureHandleDestroy(handle: *mut AtTextureHandle);
-}
-extern "C" {
+
     pub fn AiTextureAccess(
         sg: *const AtShaderGlobals,
         filename: AtString,
@@ -312,43 +309,35 @@ extern "C" {
         params: *const AtTextureParams,
         success: *mut bool,
     ) -> AtRGBA;
-}
-extern "C" {
+
     pub fn AiTextureLoad(
         filename: AtString,
         use_float: bool,
         miplevel: c_uint,
         image: *mut c_void,
     ) -> bool;
-}
-extern "C" {
+
     pub fn AiTextureGetResolution(
         filename: *const c_char,
         width: *mut c_uint,
         height: *mut c_uint,
     ) -> bool;
-}
-extern "C" {
+
     pub fn AiTextureGetNumChannels(filename: *const c_char, num_channels: *mut c_uint) -> bool;
-}
-extern "C" {
+
     pub fn AiTextureGetChannelName(filename: *const c_char, channel_index: c_uint)
         -> *const c_char;
-}
-extern "C" {
+
     pub fn AiTextureGetFormat(filename: *const c_char, format: *mut c_uint) -> bool;
-}
-extern "C" {
+
     pub fn AiTextureGetBitDepth(filename: *const c_char, bit_depth: *mut c_uint) -> bool;
-}
-extern "C" {
+
     pub fn AiTextureGetMatrices(
         filename: *const c_char,
         world_to_screen: *mut AtMatrix,
         world_to_camera: *mut AtMatrix,
     ) -> bool;
-}
-extern "C" {
+
     pub fn AiTextureInvalidate(filename: *const c_char);
 }
 pub const AtMakeTxStatus_AiTxPending: AtMakeTxStatus = 0;
@@ -360,15 +349,13 @@ pub const AtMakeTxStatus_AiTxAborted: AtMakeTxStatus = 4;
 pub type AtMakeTxStatus = c_uint;
 extern "C" {
     pub fn AiMakeTx(filename: *const c_char, flags: *const c_char, universe: *const AtUniverse);
-}
-extern "C" {
+
     pub fn AiMakeTxWaitJob(
         statuses: *mut *mut AtMakeTxStatus,
         source_files: *mut *mut *const c_char,
         num_submitted_textures: *mut c_uint,
     ) -> c_uint;
-}
-extern "C" {
+
     pub fn AiMakeTxAbort(
         statuses: *mut *mut AtMakeTxStatus,
         source_files: *mut *mut *const c_char,

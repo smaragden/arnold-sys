@@ -83,43 +83,33 @@ extern "C" {
     /// \\name API for Driver Writers
     /// \\{
     pub fn AiDriverInitialize(node: *mut AtNode, supports_multiple_outputs: bool);
-}
-extern "C" {
+
     pub fn AiRawDriverInitialize(
         node: *mut AtNode,
         required_aovs: *mut *const c_char,
         requires_depth: bool,
     );
-}
-extern "C" {
+
     pub fn AiDriverGetMatrices(world_to_camera: *mut AtMatrix, world_to_screen: *mut AtMatrix);
-}
-extern "C" {
+
     pub fn AiDriverExtension(node_entry: *const AtNodeEntry) -> *mut *const c_char;
-}
-extern "C" {
+
     pub fn AiOutputIteratorGetNext(
         iter: *mut AtOutputIterator,
         output_name: *mut AtString,
         pixel_type: *mut c_int,
         bucket_data: *mut *const c_void,
     ) -> bool;
-}
-extern "C" {
+
     pub fn AiOutputIteratorReset(iter: *mut AtOutputIterator);
-}
-extern "C" {
+
     pub fn AiOutputIteratorGetFilter(iter: *mut AtOutputIterator) -> *mut AtNode;
-}
-extern "C" {
+
     pub fn AiOutputIteratorIsHalf(iter: *mut AtOutputIterator) -> bool;
-}
-extern "C" {
+
     pub fn AiOutputIteratorGetLayerName(iter: *mut AtOutputIterator) -> AtString;
-}
-extern "C" {
+
     pub fn AiOutputIteratorGetCamera(iter: *mut AtOutputIterator) -> *mut AtNode;
-}
-extern "C" {
+
     pub fn AiFindDriverType(extension: *const c_char) -> *const AtNodeEntry;
 }

@@ -90,11 +90,9 @@ extern "C" {
         maxdist: f32,
         sg: *const AtShaderGlobals,
     ) -> AtRay;
-}
-extern "C" {
+
     pub fn AiReflectRay(ray: *mut AtRay, normal: *const AtVector, sg: *const AtShaderGlobals);
-}
-extern "C" {
+
     pub fn AiRefractRay(
         ray: *mut AtRay,
         normal: *const AtVector,
@@ -102,13 +100,10 @@ extern "C" {
         n2: f32,
         sg: *const AtShaderGlobals,
     ) -> bool;
-}
-extern "C" {
+
     pub fn AiTrace(ray: *const AtRay, weight: *const AtRGB, sample: *mut AtScrSample) -> bool;
-}
-extern "C" {
+
     pub fn AiTraceBackground(ray: *const AtRay, sample: *mut AtScrSample);
-}
-extern "C" {
+
     pub fn AiTraceProbe(ray: *const AtRay, sgout: *mut AtShaderGlobals) -> bool;
 }

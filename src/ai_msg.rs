@@ -48,68 +48,48 @@ pub type AtMsgExtendedCallBack = Option<
 >;
 extern "C" {
     pub fn AiMsgSetLogFileName(filename: *const c_char);
-}
-extern "C" {
+
     pub fn AiMsgSetLogFileFlags(universe: *const AtUniverse, flags: c_int);
-}
-extern "C" {
+
     pub fn AiMsgSetConsoleFlags(universe: *const AtUniverse, flags: c_int);
-}
-extern "C" {
+
     pub fn AiMsgGetLogFileFlags(universe: *const AtUniverse) -> c_int;
-}
-extern "C" {
+
     pub fn AiMsgGetConsoleFlags(universe: *const AtUniverse) -> c_int;
-}
-extern "C" {
+
     pub fn AiMsgSetMaxWarnings(max_warnings: c_int);
-}
-extern "C" {
+
     pub fn AiMsgSetCallback(func: AtMsgCallBack);
-}
-extern "C" {
+
     pub fn AiMsgAddCallback(func: AtMsgCallBack);
-}
-extern "C" {
+
     pub fn AiMsgResetCallback();
-}
-extern "C" {
+
     pub fn AiMsgRegisterCallback(
         func: AtMsgExtendedCallBack,
         mask: c_int,
         user_ptr: *mut c_void,
     ) -> c_uint;
-}
-extern "C" {
+
     pub fn AiMsgDeregisterCallback(callback_id: c_uint);
-}
-extern "C" {
+
     pub fn AiMsgSetCallbackMask(callback_id: c_uint, mask: c_int);
-}
-extern "C" {
+
     pub fn AiMsgGetCallbackMask(callback_id: c_uint) -> c_int;
-}
-extern "C" {
+
     pub fn AiMsgInfo(format: *const c_char, ...);
-}
-extern "C" {
+
     pub fn AiMsgDebug(format: *const c_char, ...);
-}
-extern "C" {
+
     pub fn AiMsgWarning(format: *const c_char, ...);
-}
-extern "C" {
+
     pub fn AiMsgError(format: *const c_char, ...);
-}
-extern "C" {
+
     pub fn AiMsgFatal(format: *const c_char, ...);
-}
-extern "C" {
+
     pub fn AiMsgTab(tabinc: c_int);
-}
-extern "C" {
+
     pub fn AiMsgUtilGetUsedMemory() -> c_ulong;
-}
-extern "C" {
+
     pub fn AiMsgUtilGetElapsedTime() -> u32;
 }

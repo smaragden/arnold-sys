@@ -19,13 +19,10 @@ extern "C" {
         data: *mut c_void,
         priority: c_int,
     ) -> *mut c_void;
-}
-extern "C" {
+
     pub fn AiThreadClose(thread: *mut c_void);
-}
-extern "C" {
+
     pub fn AiThreadWait(thread: *mut c_void);
-}
-extern "C" {
+
     pub fn AiThreadSelf() -> *mut c_void;
 }

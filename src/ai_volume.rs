@@ -29,19 +29,16 @@ pub struct AtVolumeIntersectionInfo {
 }
 extern "C" {
     pub fn AiVolumeAddIntersection(info: *const AtVolumeIntersectionInfo, t0: f32, t1: f32);
-}
-extern "C" {
+
     pub fn AiVolumeMergeIntersection(
         info: *const AtVolumeIntersectionInfo,
         t0: f32,
         t1: f32,
         prim_id: u32,
     );
-}
-extern "C" {
+
     pub fn AiVolumeFileGetChannels(filename: *const c_char) -> *mut AtArray;
-}
-extern "C" {
+
     pub fn AiVolumeFileGetBBox(filename: *const c_char, channels: *const AtArray) -> AtBBox;
 }
 /// Volume plugin volume creation.

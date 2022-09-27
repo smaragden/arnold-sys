@@ -20,8 +20,7 @@ extern "C" {
         properties: *const c_char,
         relative: bool,
     ) -> ::std::os::raw::c_int;
-}
-extern "C" {
+
     pub fn AiMaterialxWriteMaterial(
         filename: *const c_char,
         material_name: *const c_char,
@@ -29,14 +28,11 @@ extern "C" {
         volume: *const AtNode,
         displacement: *const AtNode,
     ) -> ::std::os::raw::c_int;
-}
-extern "C" {
+
     pub fn AiMaterialxGetLookNames(filename: *const c_char) -> *mut AtArray;
-}
-extern "C" {
+
     pub fn AiMaterialxGetMaterialNames(filename: *const c_char) -> *mut AtArray;
-}
-extern "C" {
+
     pub fn AiMaterialxReadMaterials(
         universe: *mut AtUniverse,
         filename: *const c_char,

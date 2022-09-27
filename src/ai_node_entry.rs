@@ -78,71 +78,52 @@ extern "C" {
     /// \\name AtNodeEntry Methods
     /// \\{
     pub fn AiNodeEntryLookUp(name: AtString) -> *const AtNodeEntry;
-}
-extern "C" {
+
     pub fn AiNodeEntryGetName(nentry: *const AtNodeEntry) -> *const c_char;
-}
-extern "C" {
+
     pub fn AiNodeEntryGetNameAtString(nentry: *const AtNodeEntry) -> AtString;
-}
-extern "C" {
+
     pub fn AiNodeEntryGetType(nentry: *const AtNodeEntry) -> c_int;
-}
-extern "C" {
+
     pub fn AiNodeEntryGetTypeName(nentry: *const AtNodeEntry) -> *const c_char;
-}
-extern "C" {
+
     pub fn AiNodeEntryGetDerivedType(nentry: *const AtNodeEntry) -> c_int;
-}
-extern "C" {
+
     pub fn AiNodeEntryGetDerivedTypeName(nentry: *const AtNodeEntry) -> *const c_char;
-}
-extern "C" {
+
     pub fn AiNodeEntryGetOutputType(nentry: *const AtNodeEntry) -> c_int;
-}
-extern "C" {
+
     pub fn AiNodeEntryGetFilename(nentry: *const AtNodeEntry) -> *const c_char;
-}
-extern "C" {
+
     pub fn AiNodeEntryGetVersion(nentry: *const AtNodeEntry) -> *const c_char;
-}
-extern "C" {
+
     pub fn AiNodeEntryGetCount(nentry: *const AtNodeEntry) -> c_int;
-}
-extern "C" {
+
     pub fn AiNodeEntryGetNumParams(nentry: *const AtNodeEntry) -> c_int;
-}
-extern "C" {
+
     pub fn AiNodeEntryGetParameter(nentry: *const AtNodeEntry, i: c_int) -> *const AtParamEntry;
-}
-extern "C" {
+
     pub fn AiNodeEntryLookUpParameter(
         nentry: *const AtNodeEntry,
         param: AtString,
     ) -> *const AtParamEntry;
-}
-extern "C" {
+
     pub fn AiNodeEntryGetNumOutputs(nentry: *const AtNodeEntry) -> c_int;
-}
-extern "C" {
+
     pub fn AiNodeEntryGetOutput(nentry: *const AtNodeEntry, i: c_int) -> *const AtParamEntry;
-}
-extern "C" {
+
     pub fn AiNodeEntryLookUpOutput(
         nentry: *const AtNodeEntry,
         param: AtString,
     ) -> *const AtParamEntry;
-}
-extern "C" {
+
     pub fn AiNodeEntryGetParamIterator(nentry: *const AtNodeEntry) -> *mut AtParamIterator;
-}
-extern "C" {
+
     pub fn AiNodeEntryGetMetaDataIterator(
         nentry: *const AtNodeEntry,
         param: *const c_char,
     ) -> *mut AtMetaDataIterator;
-}
-extern "C" {
+
     pub fn AiNodeEntryInstall(
         type_: c_int,
         output_type: u8,
@@ -151,29 +132,22 @@ extern "C" {
         methods: *const AtNodeMethods,
         version: *const c_char,
     );
-}
-extern "C" {
+
     pub fn AiNodeEntryUninstall(name: *const c_char);
-}
-extern "C" {
+
     /// \\name AtParamIterator Methods
     /// \\{
     pub fn AiParamIteratorDestroy(iter: *mut AtParamIterator);
-}
-extern "C" {
+
     pub fn AiParamIteratorGetNext(iter: *mut AtParamIterator) -> *const AtParamEntry;
-}
-extern "C" {
+
     pub fn AiParamIteratorFinished(iter: *const AtParamIterator) -> bool;
-}
-extern "C" {
+
     /// \\name AtMetaDataIterator Methods
     /// \\{
     pub fn AiMetaDataIteratorDestroy(iter: *mut AtMetaDataIterator);
-}
-extern "C" {
+
     pub fn AiMetaDataIteratorGetNext(iter: *mut AtMetaDataIterator) -> *const AtMetaDataEntry;
-}
-extern "C" {
+
     pub fn AiMetaDataIteratorFinished(iter: *const AtMetaDataIterator) -> bool;
 }

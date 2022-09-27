@@ -27,20 +27,16 @@ extern "C" {
     ///
     /// \\return true if the user was previously shown the Autodesk Analytics program data involvement agreement
     pub fn AiADPIntroWasShown() -> bool;
-}
-extern "C" {
+
     /// Call this after displaying the intro to user so we don't keep displaying intro message.
     pub fn AiADPSetIntroShown();
-}
-extern "C" {
+
     /// Set to true if user agreed to optin and false if opted out.
     pub fn AiADPSetOptedIn(wants_optin: bool);
-}
-extern "C" {
+
     /// \\return true if user agreed to opt in and false if opted out.
     pub fn AiADPIsOptedIn() -> bool;
-}
-extern "C" {
+
     /// Strings and URLs to display to user when displaying ADP related dialog boxes.
     ///
     /// There are two dialog boxes:
@@ -63,8 +59,7 @@ extern "C" {
     /// The other strings are the \"title\", \"learnMoreURL\" and associated
     /// \"learnMoreText\" link, and the \"privacyURL\" and associated \"privacyText\" link.
     pub fn AiADPDialogStrings(strings: *mut AtParamValueMap, custom_optin_command: *const c_char);
-}
-extern "C" {
+
     /// Provide additional data to the product analytics, such as information about the
     /// client that created the Arnold render session. This has to be called before
     /// data is collected, for instance, before `AiRenderBegin`.

@@ -14,32 +14,28 @@ extern "C" {
         interp: c_int,
         value: *mut f32,
     ) -> bool;
-}
-extern "C" {
+
     pub fn AiVolumeSampleRGBFunc(
         channel: AtString,
         sg: *const AtShaderGlobals,
         interp: c_int,
         value: *mut AtRGB,
     ) -> bool;
-}
-extern "C" {
+
     pub fn AiVolumeSampleRGBAFunc(
         channel: AtString,
         sg: *const AtShaderGlobals,
         interp: c_int,
         value: *mut AtRGBA,
     ) -> bool;
-}
-extern "C" {
+
     pub fn AiVolumeSampleVecFunc(
         channel: AtString,
         sg: *const AtShaderGlobals,
         interp: c_int,
         value: *mut AtVector,
     ) -> bool;
-}
-extern "C" {
+
     pub fn AiVolumeSampleVec2Func(
         channel: AtString,
         sg: *const AtShaderGlobals,

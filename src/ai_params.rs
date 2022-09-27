@@ -54,23 +54,17 @@ extern "C" {
     /// \\name AtParamEntry Methods
     /// \\{
     pub fn AiParamGetName(pentry: *const AtParamEntry) -> AtString;
-}
-extern "C" {
+
     pub fn AiParamGetType(pentry: *const AtParamEntry) -> u8;
-}
-extern "C" {
+
     pub fn AiParamGetSubType(pentry: *const AtParamEntry) -> u8;
-}
-extern "C" {
+
     pub fn AiParamGetDefault(pentry: *const AtParamEntry) -> *const AtParamValue;
-}
-extern "C" {
+
     pub fn AiParamGetEnum(pentry: *const AtParamEntry) -> AtEnum;
-}
-extern "C" {
+
     pub fn AiParamGetTypeName(type_: u8) -> *const c_char;
-}
-extern "C" {
+
     pub fn AiParamGetTypeSize(type_: u8) -> c_int;
 }
 /// This represents a user-declared parameter in Arnold (user-data).
@@ -86,17 +80,13 @@ extern "C" {
     /// \\name AtUserParamEntry Methods
     /// \\{
     pub fn AiUserParamGetName(upentry: *const AtUserParamEntry) -> *const c_char;
-}
-extern "C" {
+
     pub fn AiUserParamGetType(upentry: *const AtUserParamEntry) -> u8;
-}
-extern "C" {
+
     pub fn AiUserParamGetArrayType(upentry: *const AtUserParamEntry) -> u8;
-}
-extern "C" {
+
     pub fn AiUserParamGetCategory(upentry: *const AtUserParamEntry) -> u8;
-}
-extern "C" {
+
     /// Returns whether an AtParamValue of type src_type can be converted to
     /// dst_type.
     ///
@@ -107,48 +97,42 @@ extern "C" {
     /// \\param  dst_type  type of the destination value
     /// \\param  src_type  type of the source value
     pub fn AiParamTypeConvertible(dst_type: u8, src_type: u8) -> bool;
-}
-extern "C" {
+
     pub fn AiNodeParamByte(
         params: *mut AtList,
         varoffset: c_int,
         pname: *const c_char,
         pdefault: u8,
     );
-}
-extern "C" {
+
     pub fn AiNodeParamInt(
         params: *mut AtList,
         varoffset: c_int,
         pname: *const c_char,
         pdefault: c_int,
     );
-}
-extern "C" {
+
     pub fn AiNodeParamUInt(
         params: *mut AtList,
         varoffset: c_int,
         pname: *const c_char,
         pdefault: c_uint,
     );
-}
-extern "C" {
+
     pub fn AiNodeParamBool(
         params: *mut AtList,
         varoffset: c_int,
         pname: *const c_char,
         pdefault: bool,
     );
-}
-extern "C" {
+
     pub fn AiNodeParamFlt(
         params: *mut AtList,
         varoffset: c_int,
         pname: *const c_char,
         pdefault: f32,
     );
-}
-extern "C" {
+
     pub fn AiNodeParamRGB(
         params: *mut AtList,
         varoffset: c_int,
@@ -157,8 +141,7 @@ extern "C" {
         g: f32,
         b: f32,
     );
-}
-extern "C" {
+
     pub fn AiNodeParamRGBA(
         params: *mut AtList,
         varoffset: c_int,
@@ -168,8 +151,7 @@ extern "C" {
         b: f32,
         a: f32,
     );
-}
-extern "C" {
+
     pub fn AiNodeParamVec(
         params: *mut AtList,
         varoffset: c_int,
@@ -178,8 +160,7 @@ extern "C" {
         y: f32,
         z: f32,
     );
-}
-extern "C" {
+
     pub fn AiNodeParamVec2(
         params: *mut AtList,
         varoffset: c_int,
@@ -187,48 +168,42 @@ extern "C" {
         x: f32,
         y: f32,
     );
-}
-extern "C" {
+
     pub fn AiNodeParamStr(
         params: *mut AtList,
         varoffset: c_int,
         pname: *const c_char,
         pdefault: *const c_char,
     );
-}
-extern "C" {
+
     pub fn AiNodeParamPtr(
         params: *mut AtList,
         varoffset: c_int,
         pname: *const c_char,
         pdefault: *mut c_void,
     );
-}
-extern "C" {
+
     pub fn AiNodeParamNode(
         params: *mut AtList,
         varoffset: c_int,
         pname: *const c_char,
         pdefault: *mut AtNode,
     );
-}
-extern "C" {
+
     pub fn AiNodeParamArray(
         params: *mut AtList,
         varoffset: c_int,
         pname: *const c_char,
         pdefault: *mut AtArray,
     );
-}
-extern "C" {
+
     pub fn AiNodeParamMtx(
         params: *mut AtList,
         varoffset: c_int,
         pname: *const c_char,
         matrix: AtMatrix,
     );
-}
-extern "C" {
+
     pub fn AiNodeParamEnum(
         params: *mut AtList,
         varoffset: c_int,
@@ -236,55 +211,38 @@ extern "C" {
         pdefault: c_int,
         enum_type: AtEnum,
     );
-}
-extern "C" {
+
     pub fn AiNodeParamClosure(params: *mut AtList, varoffset: c_int, pname: *const c_char);
-}
-extern "C" {
+
     pub fn AiNodeOutputByte(params: *mut AtList, pname: *const c_char);
-}
-extern "C" {
+
     pub fn AiNodeOutputInt(params: *mut AtList, pname: *const c_char);
-}
-extern "C" {
+
     pub fn AiNodeOutputUInt(params: *mut AtList, pname: *const c_char);
-}
-extern "C" {
+
     pub fn AiNodeOutputBool(params: *mut AtList, pname: *const c_char);
-}
-extern "C" {
+
     pub fn AiNodeOutputFlt(params: *mut AtList, pname: *const c_char);
-}
-extern "C" {
+
     pub fn AiNodeOutputRGB(params: *mut AtList, pname: *const c_char);
-}
-extern "C" {
+
     pub fn AiNodeOutputRGBA(params: *mut AtList, pname: *const c_char);
-}
-extern "C" {
+
     pub fn AiNodeOutputVec(params: *mut AtList, pname: *const c_char);
-}
-extern "C" {
+
     pub fn AiNodeOutputVec2(params: *mut AtList, pname: *const c_char);
-}
-extern "C" {
+
     pub fn AiNodeOutputStr(params: *mut AtList, pname: *const c_char);
-}
-extern "C" {
+
     pub fn AiNodeOutputPtr(params: *mut AtList, pname: *const c_char);
-}
-extern "C" {
+
     pub fn AiNodeOutputNode(params: *mut AtList, pname: *const c_char);
-}
-extern "C" {
+
     pub fn AiNodeOutputArray(params: *mut AtList, pname: *const c_char, array_type: c_int);
-}
-extern "C" {
+
     pub fn AiNodeOutputMtx(params: *mut AtList, pname: *const c_char);
-}
-extern "C" {
+
     pub fn AiNodeOutputEnum(params: *mut AtList, pname: *const c_char, enum_type: AtEnum);
-}
-extern "C" {
+
     pub fn AiNodeOutputClosure(params: *mut AtList, pname: *const c_char);
 }

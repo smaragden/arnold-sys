@@ -211,154 +211,121 @@ pub type AtRenderUpdateCallback = Option<
 >;
 extern "C" {
     pub fn AiBegin(mode: AtSessionMode);
-}
-extern "C" {
+
     pub fn AiEnd();
-}
-extern "C" {
+
     pub fn AiArnoldIsActive() -> bool;
-}
-extern "C" {
+
     pub fn AiRenderSession(universe: *mut AtUniverse, mode: AtSessionMode) -> *mut AtRenderSession;
-}
-extern "C" {
+
     pub fn AiRenderSessionGetUniverse(render_session: *const AtRenderSession) -> *mut AtUniverse;
-}
-extern "C" {
+
     pub fn AiRenderSessionGetOptions(render_session: *const AtRenderSession) -> *const AtNode;
-}
-extern "C" {
+
     pub fn AiRenderSessionDestroy(render_session: *mut AtRenderSession);
-}
-extern "C" {
+
     pub fn AiGetSessionMode(render_session: *const AtRenderSession) -> AtSessionMode;
-}
-extern "C" {
+
     pub fn AiRenderAddInteractiveOutput(render_session: *mut AtRenderSession, output_index: u32);
-}
-extern "C" {
+
     pub fn AiRenderIsInteractiveOutput(
         render_session: *mut AtRenderSession,
         output_index: u32,
     ) -> bool;
-}
-extern "C" {
+
     pub fn AiRenderRemoveInteractiveOutput(
         render_session: *mut AtRenderSession,
         output_index: u32,
     ) -> bool;
-}
-extern "C" {
+
     pub fn AiRenderRemoveAllInteractiveOutputs(render_session: *mut AtRenderSession);
-}
-extern "C" {
+
     pub fn AiRenderSetInteractiveOutput(output_index: u32);
-}
-extern "C" {
+
     pub fn AiRenderGetInteractiveOutput() -> u32;
-}
-extern "C" {
+
     pub fn AiRenderSetHintBool(
         render_session: *mut AtRenderSession,
         hint: AtString,
         value: bool,
     ) -> bool;
-}
-extern "C" {
+
     pub fn AiRenderSetHintInt(
         render_session: *mut AtRenderSession,
         hint: AtString,
         value: i32,
     ) -> bool;
-}
-extern "C" {
+
     pub fn AiRenderSetHintFlt(
         render_session: *mut AtRenderSession,
         hint: AtString,
         value: f32,
     ) -> bool;
-}
-extern "C" {
+
     pub fn AiRenderSetHintStr(
         render_session: *mut AtRenderSession,
         hint: AtString,
         value: AtString,
     ) -> bool;
-}
-extern "C" {
+
     pub fn AiRenderSetHintArray(
         render_session: *mut AtRenderSession,
         hint: AtString,
         value: *mut AtArray,
     ) -> bool;
-}
-extern "C" {
+
     pub fn AiRenderGetHintBool(
         render_session: *const AtRenderSession,
         hint: AtString,
         value: *mut bool,
     ) -> bool;
-}
-extern "C" {
+
     pub fn AiRenderGetHintInt(
         render_session: *const AtRenderSession,
         hint: AtString,
         value: *mut i32,
     ) -> bool;
-}
-extern "C" {
+
     pub fn AiRenderGetHintFlt(
         render_session: *const AtRenderSession,
         hint: AtString,
         value: *mut f32,
     ) -> bool;
-}
-extern "C" {
+
     pub fn AiRenderGetHintStr(
         render_session: *const AtRenderSession,
         hint: AtString,
         value: *mut AtString,
     ) -> bool;
-}
-extern "C" {
+
     pub fn AiRenderGetHintArray(
         render_session: *const AtRenderSession,
         hint: AtString,
         value: *mut *const AtArray,
     ) -> bool;
-}
-extern "C" {
+
     pub fn AiRenderBegin(
         render_session: *mut AtRenderSession,
         mode: AtRenderMode,
         update_callback: AtRenderUpdateCallback,
         callback_private_data: *mut c_void,
     ) -> AtRenderErrorCode;
-}
-extern "C" {
+
     pub fn AiRenderEnd(render_session: *mut AtRenderSession) -> AtRenderErrorCode;
-}
-extern "C" {
+
     pub fn AiRenderGetStatus(render_session: *const AtRenderSession) -> AtRenderStatus;
-}
-extern "C" {
+
     pub fn AiRenderInterrupt(render_session: *mut AtRenderSession, blocking: AtBlockingCall);
-}
-extern "C" {
+
     pub fn AiRenderAbort(render_session: *mut AtRenderSession, blocking: AtBlockingCall);
-}
-extern "C" {
+
     pub fn AiRenderResume(render_session: *mut AtRenderSession);
-}
-extern "C" {
+
     pub fn AiRenderRestart(render_session: *mut AtRenderSession);
-}
-extern "C" {
+
     pub fn AiRenderIsAnyActive() -> bool;
-}
-extern "C" {
+
     pub fn AiRender(render_session: *mut AtRenderSession, mode: AtRenderMode) -> AtRenderErrorCode;
-}
-extern "C" {
+
     pub fn AiRendering() -> bool;
 }

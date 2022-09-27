@@ -51,73 +51,53 @@ extern "C" {
     /// \\name Methods
     /// \\{
     pub fn AiUniverse() -> *mut AtUniverse;
-}
-extern "C" {
+
     pub fn AiUniverseDestroy(universe: *mut AtUniverse);
-}
-extern "C" {
+
     pub fn AiUniverseCacheFlush(universe: *const AtUniverse, cache_flags: c_int) -> bool;
-}
-extern "C" {
+
     pub fn AiUniverseGetOptions(universe: *const AtUniverse) -> *mut AtNode;
-}
-extern "C" {
+
     pub fn AiUniverseGetCamera(universe: *const AtUniverse) -> *mut AtNode;
-}
-extern "C" {
+
     pub fn AiUniverseGetSceneBounds(universe: *const AtUniverse) -> AtBBox;
-}
-extern "C" {
+
     pub fn AiUniverseGetNodeIterator(
         universe: *const AtUniverse,
         node_mask: c_uint,
     ) -> *mut AtNodeIterator;
-}
-extern "C" {
+
     pub fn AiUniverseGetNodeEntryIterator(node_mask: c_uint) -> *mut AtNodeEntryIterator;
-}
-extern "C" {
+
     pub fn AiUniverseGetAOVIterator(universe: *const AtUniverse) -> *mut AtAOVIterator;
-}
-extern "C" {
+
     pub fn AiUniverseAddDefaultNodes(universe: *mut AtUniverse, params: *const AtParamValueMap);
-}
-extern "C" {
+
     pub fn AiUniverseGetRenderSession(universe: *const AtUniverse) -> *mut AtRenderSession;
-}
-extern "C" {
+
     pub fn AiUniverseIsActive() -> bool;
-}
-extern "C" {
+
     /// \\name Node Iterator API
     /// \\{
     pub fn AiNodeIteratorDestroy(iter: *mut AtNodeIterator);
-}
-extern "C" {
+
     pub fn AiNodeIteratorGetNext(iter: *mut AtNodeIterator) -> *mut AtNode;
-}
-extern "C" {
+
     pub fn AiNodeIteratorFinished(iter: *const AtNodeIterator) -> bool;
-}
-extern "C" {
+
     /// \\name Node Entry Iterator API
     /// \\{
     pub fn AiNodeEntryIteratorDestroy(iter: *mut AtNodeEntryIterator);
-}
-extern "C" {
+
     pub fn AiNodeEntryIteratorGetNext(iter: *mut AtNodeEntryIterator) -> *mut AtNodeEntry;
-}
-extern "C" {
+
     pub fn AiNodeEntryIteratorFinished(iter: *const AtNodeEntryIterator) -> bool;
-}
-extern "C" {
+
     /// \\name AOV Iterator API
     /// \\{
     pub fn AiAOVIteratorDestroy(iter: *mut AtAOVIterator);
-}
-extern "C" {
+
     pub fn AiAOVIteratorGetNext(iter: *mut AtAOVIterator) -> *const AtAOVEntry;
-}
-extern "C" {
+
     pub fn AiAOVIteratorFinished(iter: *const AtAOVIterator) -> bool;
 }
