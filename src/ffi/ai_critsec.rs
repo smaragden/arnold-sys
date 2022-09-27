@@ -30,31 +30,31 @@ private:
 
 --------
 
-#[doc = " Wrapper for Lockable type mutexes, such as std::mutex and"]
-#[doc = " std::recursive_mutex. Use this so that the arnold profiler can keep track of"]
-#[doc = " of the time spent blocked waiting to lock. For instance, you can replace the following C++11/14 code:"]
-#[doc = " \\code"]
-#[doc = "std::mutex my_mutex;"]
-#[doc = "std::lock_guard<std::mutex> my_guard(my_mutex);"]
-#[doc = "\\endcode"]
-#[doc = " with:"]
-#[doc = " \\code"]
-#[doc = "AtProfiledLockable<std::mutex> my_mutex;"]
-#[doc = "std::lock_guard<AtProfiledLockable<std::mutex>> my_guard(my_mutex);"]
-#[doc = "\\endcode"]
-#[doc = ""]
-#[doc = " As a convenience, the AtMutex and AtRecursiveMutex type aliases can be used"]
-#[doc = " so that instead one would write:"]
-#[doc = " \\code"]
-#[doc = "AtMutex my_mutex;"]
-#[doc = "std::lock_guard<AtMutex> my_guard(my_mutex);"]
-#[doc = "\\endcode"]
-#[doc = ""]
-#[doc = " Note that starting with C++17 this can be further simplified to:"]
-#[doc = " \\code"]
-#[doc = "AtMutex my_mutex;"]
-#[doc = "std::lock_guard my_guard(my_mutex);"]
-#[doc = "\\endcode"]
+/// Wrapper for Lockable type mutexes, such as std::mutex and
+/// std::recursive_mutex. Use this so that the arnold profiler can keep track of
+/// of the time spent blocked waiting to lock. For instance, you can replace the following C++11/14 code:
+/// ```c++
+///std::mutex my_mutex;
+///std::lock_guard<std::mutex> my_guard(my_mutex);
+///```
+/// with:
+/// ```c++
+///AtProfiledLockable<std::mutex> my_mutex;
+///std::lock_guard<AtProfiledLockable<std::mutex>> my_guard(my_mutex);
+///```
+///
+/// As a convenience, the AtMutex and AtRecursiveMutex type aliases can be used
+/// so that instead one would write:
+/// ```c++
+///AtMutex my_mutex;
+///std::lock_guard<AtMutex> my_guard(my_mutex);
+///```
+///
+/// Note that starting with C++17 this can be further simplified to:
+/// ```c++
+///AtMutex my_mutex;
+///std::lock_guard my_guard(my_mutex);
+///```
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct AtProfiledLockable<Mutex> {
@@ -63,14 +63,14 @@ pub struct AtProfiledLockable<Mutex> {
 }
 pub type AtProfiledLockable_mutex_type = Mutex;
 pub type AtProfiledLockable_native_handle_type = [u8; 0usize];
-#[doc = " Convenience type aliases. See \\ref AtProfiledLockable"]
+/// Convenience type aliases. See `AtProfiledLockable`
 pub type AtMutex = AtProfiledLockable<std_mutex>;
 pub type AtRecursiveMutex = AtProfiledLockable<std_recursive_mutex>;
 */
 
 use ::std::os::raw::c_void;
 
-#[doc = " Opaque data type for a critical section"]
+/// Opaque data type for a critical section
 pub type AtCritSec = *mut c_void;
 extern "C" {
     pub fn AiCritSecInit(cs: *mut AtCritSec);

@@ -23,8 +23,8 @@ pub struct AtUserParamIterator {
     _unused: [u8; 0],
 }
 extern "C" {
-    #[doc = " \\name AtNode Methods"]
-    #[doc = " \\{"]
+    /// \\name AtNode Methods
+    /// \\{
     pub fn AiNode(
         universe: *mut AtUniverse,
         nentry_name: AtString,
@@ -133,8 +133,8 @@ extern "C" {
     pub fn AiNodeGetUserParamIterator(node: *const AtNode) -> *mut AtUserParamIterator;
 }
 extern "C" {
-    #[doc = " \\name AtUserParamIterator Methods"]
-    #[doc = " \\{"]
+    /// \\name AtUserParamIterator Methods
+    /// \\{
     pub fn AiUserParamIteratorDestroy(iter: *mut AtUserParamIterator);
 }
 extern "C" {
@@ -144,8 +144,8 @@ extern "C" {
     pub fn AiUserParamIteratorFinished(iter: *const AtUserParamIterator) -> bool;
 }
 extern "C" {
-    #[doc = " \\name Parameter Writers"]
-    #[doc = " \\{"]
+    /// \\name Parameter Writers
+    /// \\{
     pub fn AiNodeSetByte(node: *mut AtNode, param: AtString, val: u8);
 }
 extern "C" {
@@ -188,8 +188,8 @@ extern "C" {
     pub fn AiNodeSetAttributes(node: *mut AtNode, attributes: *const c_char);
 }
 extern "C" {
-    #[doc = " \\name Parameter Readers"]
-    #[doc = " \\{"]
+    /// \\name Parameter Readers
+    /// \\{
     pub fn AiNodeGetByte(node: *const AtNode, param: AtString) -> u8;
 }
 extern "C" {

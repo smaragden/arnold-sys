@@ -1,7 +1,7 @@
 pub const AI_X: u32 = 0;
 pub const AI_Y: u32 = 1;
 pub const AI_Z: u32 = 2;
-#[doc = " 3D point (single precision)"]
+/// 3D point (single precision)
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct AtVector {
@@ -9,14 +9,14 @@ pub struct AtVector {
     pub y: f32,
     pub z: f32,
 }
-#[doc = " 2D point"]
+/// 2D point
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct AtVector2 {
     pub x: f32,
     pub y: f32,
 }
-#[doc = " Homogeneous point"]
+/// Homogeneous point
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct AtHPoint {
@@ -25,7 +25,7 @@ pub struct AtHPoint {
     pub z: f32,
     pub w: f32,
 }
-#[doc = " Vector with differentials"]
+/// Vector with differentials
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct AtVectorDv {
@@ -34,15 +34,15 @@ pub struct AtVectorDv {
     pub dy: AtVector,
 }
 extern "C" {
-    #[doc = " Check whether a vector has all valid components (not NaN and not infinite)"]
+    /// Check whether a vector has all valid components (not NaN and not infinite)
     pub fn AiV3IsFinite(a: *const AtVector) -> bool;
 }
 extern "C" {
-    #[doc = " Build an orthonormal basis aligned with vector N (Frisvad's method)."]
+    /// Build an orthonormal basis aligned with vector N (Frisvad's method).
     pub fn AiV3BuildLocalFrame(u: *mut AtVector, v: *mut AtVector, N: *const AtVector);
 }
 extern "C" {
-    #[doc = " Build an orthonormal basis aligned with vector N (polar method)."]
+    /// Build an orthonormal basis aligned with vector N (polar method).
     pub fn AiV3BuildLocalFramePolar(u: *mut AtVector, v: *mut AtVector, N: *const AtVector);
 }
 extern "C" {

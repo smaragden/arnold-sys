@@ -18,7 +18,7 @@ pub struct AtOutputIterator {
 pub struct AtAOVSampleIterator {
     _unused: [u8; 0],
 }
-#[doc = " Driver Node methods structure"]
+/// Driver Node methods structure
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct AtDriverNodeMethods {
@@ -80,8 +80,8 @@ pub struct AtDriverNodeMethods {
     pub DriverClose: Option<unsafe extern "C" fn(arg1: *mut AtNode, arg2: *mut AtOutputIterator)>,
 }
 extern "C" {
-    #[doc = " \\name API for Driver Writers"]
-    #[doc = " \\{"]
+    /// \\name API for Driver Writers
+    /// \\{
     pub fn AiDriverInitialize(node: *mut AtNode, supports_multiple_outputs: bool);
 }
 extern "C" {

@@ -6,21 +6,21 @@ use super::{
 };
 
 extern "C" {
-    #[doc = " \\defgroup ai_shader_closure Shader Closure API"]
-    #[doc = ""]
-    #[doc = "  \\ref AtClosure creation. Shaders can return these instead of final colors."]
-    #[doc = ""]
-    #[doc = "  \\details"]
-    #[doc = "  Closures describe the way surfaces and volumes scatter light,"]
-    #[doc = "  leaving the lights loops and integration to Arnold."]
-    #[doc = ""]
-    #[doc = "  For creating BSDF closures, an \\c AtBSDF can be wrapped in a closure:"]
-    #[doc = "  \\code"]
-    #[doc = "  AtBSDF *bsdf = AiOrenNayarBSDF(sg, sg->Nf);"]
-    #[doc = "  sg->out.CLOSURE() = AtClosure(diffuse_color, bsdf);"]
-    #[doc = "  \\endcode"]
-    #[doc = ""]
-    #[doc = " \\{"]
+    /// \\defgroup ai_shader_closure Shader Closure API
+    ///
+    ///  `AtClosure` creation. Shaders can return these instead of final colors.
+    ///
+    ///  \\details
+    ///  Closures describe the way surfaces and volumes scatter light,
+    ///  leaving the lights loops and integration to Arnold.
+    ///
+    ///  For creating BSDF closures, an \\c AtBSDF can be wrapped in a closure:
+    ///  ```c
+    ///  AtBSDF *bsdf = AiOrenNayarBSDF(sg, sg->Nf);
+    ///  sg->out.CLOSURE() = AtClosure(diffuse_color, bsdf);
+    ///  ```
+    ///
+    /// \\{
     pub fn AiClosureEmpiricalBSSRDF(
         sg: *const AtShaderGlobals,
         weight: *const AtRGB,

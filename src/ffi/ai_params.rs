@@ -35,24 +35,24 @@ pub struct AtList {
     _unused: [u8; 0],
 }
 
-#[doc = " Actual parameter value for each supported type"]
+/// Actual parameter value for each supported type
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct AtParamValue {
     pub data: [u64; 2usize],
 }
-#[doc = " This represents a parameter of a given node type in Arnold."]
-#[doc = ""]
-#[doc = " This holds details like the name, type and default value. The actual"]
-#[doc = " contents of this struct are private."]
+/// This represents a parameter of a given node type in Arnold.
+///
+/// This holds details like the name, type and default value. The actual
+/// contents of this struct are private.
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct AtParamEntry {
     _unused: [u8; 0],
 }
 extern "C" {
-    #[doc = " \\name AtParamEntry Methods"]
-    #[doc = " \\{"]
+    /// \\name AtParamEntry Methods
+    /// \\{
     pub fn AiParamGetName(pentry: *const AtParamEntry) -> AtString;
 }
 extern "C" {
@@ -73,18 +73,18 @@ extern "C" {
 extern "C" {
     pub fn AiParamGetTypeSize(type_: u8) -> c_int;
 }
-#[doc = " This represents a user-declared parameter in Arnold (user-data)."]
-#[doc = ""]
-#[doc = " This holds details like name, type, and category.  The actual"]
-#[doc = " contents of this struct are private."]
+/// This represents a user-declared parameter in Arnold (user-data).
+///
+/// This holds details like name, type, and category.  The actual
+/// contents of this struct are private.
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct AtUserParamEntry {
     _unused: [u8; 0],
 }
 extern "C" {
-    #[doc = " \\name AtUserParamEntry Methods"]
-    #[doc = " \\{"]
+    /// \\name AtUserParamEntry Methods
+    /// \\{
     pub fn AiUserParamGetName(upentry: *const AtUserParamEntry) -> *const c_char;
 }
 extern "C" {
@@ -97,15 +97,15 @@ extern "C" {
     pub fn AiUserParamGetCategory(upentry: *const AtUserParamEntry) -> u8;
 }
 extern "C" {
-    #[doc = " Returns whether an AtParamValue of type src_type can be converted to"]
-    #[doc = " dst_type."]
-    #[doc = ""]
-    #[doc = " For instance, \\c AiParamTypeConvertible(AI_TYPE_FLOAT, AI_TYPE_INT)"]
-    #[doc = " would return true since an AtParamValue containing an int can be converted"]
-    #[doc = " into an AtParamValue containing a float."]
-    #[doc = ""]
-    #[doc = " \\param  dst_type  type of the destination value"]
-    #[doc = " \\param  src_type  type of the source value"]
+    /// Returns whether an AtParamValue of type src_type can be converted to
+    /// dst_type.
+    ///
+    /// For instance, \\c AiParamTypeConvertible(AI_TYPE_FLOAT, AI_TYPE_INT)
+    /// would return true since an AtParamValue containing an int can be converted
+    /// into an AtParamValue containing a float.
+    ///
+    /// \\param  dst_type  type of the destination value
+    /// \\param  src_type  type of the source value
     pub fn AiParamTypeConvertible(dst_type: u8, src_type: u8) -> bool;
 }
 extern "C" {

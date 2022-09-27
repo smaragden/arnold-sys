@@ -3,11 +3,11 @@ use ::std::os::raw::c_uint;
 use super::{ai_color::AtRGB, ai_shaderglobals::AtShaderGlobals};
 
 extern "C" {
-    #[doc = " \\defgroup ai_shader_sss Sub-Surface Scattering API"]
-    #[doc = ""]
-    #[doc = " SSS utility functions."]
-    #[doc = ""]
-    #[doc = " \\{"]
+    /// \\defgroup ai_shader_sss Sub-Surface Scattering API
+    ///
+    /// SSS utility functions.
+    ///
+    /// \\{
     pub fn AiBSSRDFEmpirical(
         sg: *const AtShaderGlobals,
         direct: *mut AtRGB,

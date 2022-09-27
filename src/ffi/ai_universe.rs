@@ -28,28 +28,28 @@ pub struct AtAOVIterator {
 
 #[repr(C)]
 pub struct AtAOVEntry {
-    #[doc = "< AOV name"]
+    /// AOV name
     pub name: AtString,
-    #[doc = "< Data type"]
+    /// Data type
     pub type_: u8,
-    #[doc = "< Blend mode"]
+    /// Blend mode
     pub blend_mode: c_int,
-    #[doc = "< Optional light path expression"]
+    /// Optional light path expression
     pub expression: AtString,
 }
-#[doc = " \\struct AtUniverse"]
-#[doc = ""]
-#[doc = " This represents a universe in Arnold."]
-#[doc = ""]
-#[doc = " \\see AiUniverse"]
+/// \\struct AtUniverse
+///
+/// This represents a universe in Arnold.
+///
+/// \\see AiUniverse
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct AtUniverse {
     _unused: [u8; 0],
 }
 extern "C" {
-    #[doc = " \\name Methods"]
-    #[doc = " \\{"]
+    /// \\name Methods
+    /// \\{
     pub fn AiUniverse() -> *mut AtUniverse;
 }
 extern "C" {
@@ -89,8 +89,8 @@ extern "C" {
     pub fn AiUniverseIsActive() -> bool;
 }
 extern "C" {
-    #[doc = " \\name Node Iterator API"]
-    #[doc = " \\{"]
+    /// \\name Node Iterator API
+    /// \\{
     pub fn AiNodeIteratorDestroy(iter: *mut AtNodeIterator);
 }
 extern "C" {
@@ -100,8 +100,8 @@ extern "C" {
     pub fn AiNodeIteratorFinished(iter: *const AtNodeIterator) -> bool;
 }
 extern "C" {
-    #[doc = " \\name Node Entry Iterator API"]
-    #[doc = " \\{"]
+    /// \\name Node Entry Iterator API
+    /// \\{
     pub fn AiNodeEntryIteratorDestroy(iter: *mut AtNodeEntryIterator);
 }
 extern "C" {
@@ -111,8 +111,8 @@ extern "C" {
     pub fn AiNodeEntryIteratorFinished(iter: *const AtNodeEntryIterator) -> bool;
 }
 extern "C" {
-    #[doc = " \\name AOV Iterator API"]
-    #[doc = " \\{"]
+    /// \\name AOV Iterator API
+    /// \\{
     pub fn AiAOVIteratorDestroy(iter: *mut AtAOVIterator);
 }
 extern "C" {

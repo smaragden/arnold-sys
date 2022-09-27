@@ -2,15 +2,15 @@ use ::std::os::raw::c_int;
 
 use super::ai_shaderglobals::AtShaderGlobals;
 
-#[doc = " \\struct AtSampler"]
-#[doc = " Opaque data type for a sampler"]
+/// \\struct AtSampler
+/// Opaque data type for a sampler
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct AtSampler {
     _unused: [u8; 0],
 }
-#[doc = " \\struct AtSamplerIterator"]
-#[doc = " Opaque data type for a sampler iterator"]
+/// \\struct AtSamplerIterator
+/// Opaque data type for a sampler iterator
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct AtSamplerIterator {

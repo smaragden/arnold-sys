@@ -4,13 +4,13 @@ use super::{
     ai_array::AtArray, ai_map::AtParamValueMap, ai_nodes::AtNode, ai_universe::AtUniverse,
 };
 
-#[doc = "< no error"]
+/// no error
 pub const AtMaterialxErrorCode_AI_MATX_SUCCESS: AtMaterialxErrorCode = 0;
-#[doc = "< error loading the document"]
+/// error loading the document
 pub const AtMaterialxErrorCode_AI_MATX_ERROR_LOAD_DOCUMENT: AtMaterialxErrorCode = 1;
-#[doc = "< no materials found"]
+/// no materials found
 pub const AtMaterialxErrorCode_AI_MATX_ERROR_NO_MATERIALS: AtMaterialxErrorCode = 2;
-#[doc = " MaterialX error codes"]
+/// MaterialX error codes
 pub type AtMaterialxErrorCode = c_uint;
 extern "C" {
     pub fn AiMaterialxWrite(

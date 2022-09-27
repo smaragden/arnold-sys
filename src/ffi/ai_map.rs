@@ -17,8 +17,8 @@ pub struct AtParamValueMapIterator {
     _unused: [u8; 0],
 }
 extern "C" {
-    #[doc = " \\name AtParamValueMap Methods"]
-    #[doc = " \\{"]
+    /// \\name AtParamValueMap Methods
+    /// \\{
     pub fn AiParamValueMap() -> *mut AtParamValueMap;
 }
 extern "C" {
@@ -138,8 +138,8 @@ pub struct AtParamValueMapEntry {
     pub value: AtParamValue,
 }
 extern "C" {
-    #[doc = " \\name AtParamValueMap Methods"]
-    #[doc = " \\{"]
+    /// \\name AtParamValueMap Methods
+    /// \\{
     pub fn AiParamValueMapIteratorDestroy(iter: *mut AtParamValueMapIterator);
 }
 extern "C" {

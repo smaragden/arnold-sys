@@ -103,31 +103,31 @@ pub const AI_TEXTURE_MIPMODE_ONE: u32 = 2;
 pub const AI_TEXTURE_MIPMODE_TRILINEAR: u32 = 3;
 pub const AI_TEXTURE_MIPMODE_ANISOTROPIC: u32 = 4;
 
-#[doc = " Structure that holds all of the available texture map look-up options"]
+/// Structure that holds all of the available texture map look-up options
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct AtTextureParams {
-    #[doc = "< value for nonexistent channels (e.g. alpha)"]
+    /// value for nonexistent channels (e.g. alpha)
     pub fill: f32,
     pub _bitfield_align_1: [u8; 0],
     pub _bitfield_1: __BindgenBitfieldUnit<[u8; 1usize]>,
-    #[doc = "< starting channel index to read from"]
+    /// starting channel index to read from
     pub start_channel: u8,
-    #[doc = "< mipmap level bias"]
+    /// mipmap level bias
     pub mipmap_bias: i8,
     pub _bitfield_align_2: [u8; 0],
     pub _bitfield_2: __BindgenBitfieldUnit<[u8; 1usize]>,
-    #[doc = "< scale S coordinate"]
+    /// scale S coordinate
     pub scale_s: f32,
-    #[doc = "< scale T coordinate"]
+    /// scale T coordinate
     pub scale_t: f32,
-    #[doc = "< multiplicative widening of look-ups on the S axis"]
+    /// multiplicative widening of look-ups on the S axis
     pub width_s: f32,
-    #[doc = "< multiplicative widening of look-ups on the T axis"]
+    /// multiplicative widening of look-ups on the T axis
     pub width_t: f32,
-    #[doc = "< additive blur in look-ups along the S axis"]
+    /// additive blur in look-ups along the S axis
     pub blur_s: f32,
-    #[doc = "< additive blur in look-ups along the T axis"]
+    /// additive blur in look-ups along the T axis
     pub blur_t: f32,
 }
 impl AtTextureParams {
@@ -275,13 +275,13 @@ impl AtTextureParams {
 extern "C" {
     pub fn AiTextureParamsSetDefaults(params: *mut AtTextureParams);
 }
-#[doc = " \\struct AtTextureHandle"]
-#[doc = ""]
-#[doc = " \\brief  Structure that holds a handle for a given texture"]
-#[doc = ""]
-#[doc = " Texture handles can be created through \\ref AiTextureHandleCreate and destroyed"]
-#[doc = " with \\ref AiTextureHandleDestroy. Texture lookups can be done with \\ref AiTextureHandleAccess,"]
-#[doc = " which is faster than \\ref AiTextureAccess."]
+/// \\struct AtTextureHandle
+///
+/// \\brief  Structure that holds a handle for a given texture
+///
+/// Texture handles can be created through `AiTextureHandleCreate` and destroyed
+/// with `AiTextureHandleDestroy`. Texture lookups can be done with `AiTextureHandleAccess`,
+/// which is faster than `AiTextureAccess`.
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct AtTextureHandle {
@@ -356,7 +356,7 @@ pub const AtMakeTxStatus_AiTxError: AtMakeTxStatus = 1;
 pub const AtMakeTxStatus_AiTxUpdated: AtMakeTxStatus = 2;
 pub const AtMakeTxStatus_AiTxUpdate_unneeded: AtMakeTxStatus = 3;
 pub const AtMakeTxStatus_AiTxAborted: AtMakeTxStatus = 4;
-#[doc = " Status of AiMakeTx jobs."]
+/// Status of AiMakeTx jobs.
 pub type AtMakeTxStatus = c_uint;
 extern "C" {
     pub fn AiMakeTx(filename: *const c_char, flags: *const c_char, universe: *const AtUniverse);

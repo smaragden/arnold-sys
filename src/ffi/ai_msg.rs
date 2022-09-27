@@ -25,18 +25,18 @@ pub const AI_LOG_MEMORY: u32 = 2048;
 pub const AI_LOG_COLOR: u32 = 4096;
 pub const AI_LOG_ALL: u32 = 8191;
 
-#[doc = " Custom message callback, as passed to AiMsgSetCallback()"]
+/// Custom message callback, as passed to AiMsgSetCallback()
 pub type AtMsgCallBack = Option<
     unsafe extern "C" fn(logmask: c_int, severity: c_int, msg_string: *const c_char, tabs: c_int),
 >;
-#[doc = " Custom message callback, as passed to AiMsgRegisterCallback()"]
-#[doc = ""]
-#[doc = " The following items will be passed to the callback through the \\c metadata list:"]
-#[doc = ""]
-#[doc = "  <table>"]
-#[doc = "  <tr><th>Name<th>Type<th>Description"]
-#[doc = "  <tr><td>universe<td> Universe*<td>Universe this log message refers to"]
-#[doc = "  </table>"]
+/// Custom message callback, as passed to AiMsgRegisterCallback()
+///
+/// The following items will be passed to the callback through the \\c metadata list:
+///
+///  <table>
+///  <tr><th>Name<th>Type<th>Description
+///  <tr><td>universe<td> Universe*<td>Universe this log message refers to
+///  </table>
 pub type AtMsgExtendedCallBack = Option<
     unsafe extern "C" fn(
         logmask: c_int,

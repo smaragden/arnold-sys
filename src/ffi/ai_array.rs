@@ -7,7 +7,7 @@ use super::{
     ai_vector::{AtVector, AtVector2},
 };
 
-#[doc = " Generic array data type"]
+/// Generic array data type
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct AtArray {
@@ -79,13 +79,13 @@ extern "C" {
     pub fn AiArrayInterpolateMtx(array: *const AtArray, time: f32, idx: u32) -> AtMatrix;
 }
 extern "C" {
-    #[doc = " \\name AtArray Getters"]
-    #[doc = ""]
-    #[doc = " \\details"]
-    #[doc = " The following getter functions return the i'th element in an array of the"]
-    #[doc = " given type."]
-    #[doc = " In case of out-of-bounds access, an error message is generated"]
-    #[doc = " \\{"]
+    /// \\name AtArray Getters
+    ///
+    /// \\details
+    /// The following getter functions return the i'th element in an array of the
+    /// given type.
+    /// In case of out-of-bounds access, an error message is generated
+    /// \\{
     pub fn AiArrayGetBool(a: *const AtArray, i: u32) -> bool;
 }
 extern "C" {
@@ -125,14 +125,14 @@ extern "C" {
     pub fn AiArrayGetArray(a: *const AtArray, i: u32) -> *mut AtArray;
 }
 extern "C" {
-    #[doc = " \\name AtArray Setters"]
-    #[doc = ""]
-    #[doc = " \\details"]
-    #[doc = " The following functions write an element of a given type into the i'th position"]
-    #[doc = " in an array. If the write was succesful, these functions will return true, otherwise"]
-    #[doc = " a detailed error message will be logged and false will be returned."]
-    #[doc = ""]
-    #[doc = " \\{"]
+    /// \\name AtArray Setters
+    ///
+    /// \\details
+    /// The following functions write an element of a given type into the i'th position
+    /// in an array. If the write was succesful, these functions will return true, otherwise
+    /// a detailed error message will be logged and false will be returned.
+    ///
+    /// \\{
     pub fn AiArraySetBool(a: *mut AtArray, i: u32, val: bool) -> bool;
 }
 extern "C" {

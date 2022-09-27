@@ -24,62 +24,62 @@ pub const AI_RAY_ALL_TRANSMIT: u32 = 12;
 pub struct AtLightSample {
     _unused: [u8; 0],
 }
-#[doc = " Ray data structure"]
+/// Ray data structure
 #[repr(C)]
 pub struct AtRay {
-    #[doc = "< Type of ray (\\c AI_RAY_CAMERA, etc)"]
+    /// Type of ray (\\c AI_RAY_CAMERA, etc)
     pub type_: u8,
-    #[doc = "< Number of bounces so far (0 for camera rays)"]
+    /// Number of bounces so far (0 for camera rays)
     pub bounces: u8,
-    #[doc = "< Number of diffuse bounces so far"]
+    /// Number of diffuse bounces so far
     pub bounces_diffuse: u8,
-    #[doc = "< Number of specular bounces so far"]
+    /// Number of specular bounces so far
     pub bounces_specular: u8,
-    #[doc = "< Number of reflection bounces so far"]
+    /// Number of reflection bounces so far
     pub bounces_reflect: u8,
-    #[doc = "< Number of transmission bounces so far"]
+    /// Number of transmission bounces so far
     pub bounces_transmit: u8,
-    #[doc = "< Number of volume bounces so far"]
+    /// Number of volume bounces so far
     pub bounces_volume: u8,
-    #[doc = "< Is the trace-set inclusive or exclusive?"]
+    /// Is the trace-set inclusive or exclusive?
     pub inclusive_traceset: bool,
-    #[doc = "< Trace-set for this ray"]
+    /// Trace-set for this ray
     pub traceset: AtString,
-    #[doc = "< Thread ID"]
+    /// Thread ID
     pub tid: u16,
-    #[doc = "< Sub-pixel sample index when supersampling"]
+    /// Sub-pixel sample index when supersampling
     pub sindex: u16,
-    #[doc = "< Raster-space X coordinate"]
+    /// Raster-space X coordinate
     pub x: c_int,
-    #[doc = "< Raster-space Y coordinate"]
+    /// Raster-space Y coordinate
     pub y: c_int,
-    #[doc = "< Subpixel X coordinate in [0,1)"]
+    /// Subpixel X coordinate in [0,1)
     pub px: f32,
-    #[doc = "< Subpixel Y coordinate in [0,1)"]
+    /// Subpixel Y coordinate in [0,1)
     pub py: f32,
-    #[doc = "< Ray origin"]
+    /// Ray origin
     pub origin: AtVector,
-    #[doc = "< Unit ray direction"]
+    /// Unit ray direction
     pub dir: AtVector,
-    #[doc = "< Minimum useful distance from the origin"]
+    /// Minimum useful distance from the origin
     pub mindist: f32,
-    #[doc = "< Maximum useful distance from the origin (volatile while ray is traced)"]
+    /// Maximum useful distance from the origin (volatile while ray is traced)
     pub maxdist: f32,
-    #[doc = "< Parent shader globals (last shaded)"]
+    /// Parent shader globals (last shaded)
     pub psg: *const AtShaderGlobals,
-    #[doc = "< Associated light sample, for shadow rays only"]
+    /// Associated light sample, for shadow rays only
     pub light_sample: *const AtLightSample,
-    #[doc = "< Ray weight, AI_RGB_WHITE for clean camera rays"]
+    /// Ray weight, AI_RGB_WHITE for clean camera rays
     pub weight: AtRGB,
-    #[doc = "< Time at which the ray was created, in [0,1)"]
+    /// Time at which the ray was created, in [0,1)
     pub time: f32,
-    #[doc = "< Partial derivative of ray origin wrt image-space X coordinate"]
+    /// Partial derivative of ray origin wrt image-space X coordinate
     pub dOdx: AtVector,
-    #[doc = "< Partial derivative of ray origin wrt image-space Y coordinate"]
+    /// Partial derivative of ray origin wrt image-space Y coordinate
     pub dOdy: AtVector,
-    #[doc = "< Partial derivative of ray direction wrt image-space X coordinate"]
+    /// Partial derivative of ray direction wrt image-space X coordinate
     pub dDdx: AtVector,
-    #[doc = "< Partial derivative of ray direction wrt image-space Y coordinate"]
+    /// Partial derivative of ray direction wrt image-space Y coordinate
     pub dDdy: AtVector,
 }
 extern "C" {

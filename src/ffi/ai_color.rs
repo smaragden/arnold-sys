@@ -1,6 +1,6 @@
 use ::std::os::raw::c_uint;
 
-#[doc = " RGB color"]
+/// RGB color
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct AtRGB {
@@ -8,7 +8,7 @@ pub struct AtRGB {
     pub g: f32,
     pub b: f32,
 }
-#[doc = " RGB color + alpha"]
+/// RGB color + alpha
 #[repr(C)]
 #[derive(Debug, Copy, Clone)]
 pub struct AtRGBA {
@@ -18,11 +18,11 @@ pub struct AtRGBA {
     pub a: f32,
 }
 extern "C" {
-    #[doc = " Check to see if an RGB color has any corrupted components (nan or infinite)."]
+    /// Check to see if an RGB color has any corrupted components (nan or infinite).
     pub fn AiRGBIsFinite(rgba: *const AtRGB) -> bool;
 }
 extern "C" {
-    #[doc = " Check to see if an RGBA color has any corrupted components (nan or infinite)."]
+    /// Check to see if an RGBA color has any corrupted components (nan or infinite).
     pub fn AiRGBAIsFinite(rgba: *const AtRGBA) -> bool;
 }
 extern "C" {
