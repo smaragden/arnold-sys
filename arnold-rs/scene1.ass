@@ -1,0 +1,87 @@
+### exported: Thu Sep 29 00:47:44 2022
+### from:     Arnold 7.1.1.0 [5cc0f625] linux clang-10.0.1 oiio-2.4.0 osl-1.12.0 vdb-7.1.1 adlsdk-6.3.1.44 clmhub-2.0.0.235 rlm-14.1.3 optix-6.6.0 2022/03/24 18:59:55
+### meters_per_unit: 1.000000
+
+
+
+options
+{
+ AA_samples 8
+ outputs "RGBA RGBA myfilter mydriver"
+ xres 480
+ yres 360
+ camera "mycamera"
+ GI_diffuse_depth 4
+}
+
+sphere
+{
+ name mysphere
+ shader "myshader1"
+ center 0 4 0
+ radius 4
+}
+
+polymesh
+{
+ name mymesh
+ shader "myshader2"
+ nsides 4
+ vidxs 4 1 UINT
+0 1 3 2
+ uvidxs 4 1 UINT
+0 1 2 3
+ vlist 4 1 VECTOR
+-10 0 10 10 0 10 -10 0 -10 10 0 -10
+ uvlist 4 1 VECTOR2
+0 0 1 0 1 1 0 1
+}
+
+standard_surface
+{
+ name myshader1
+ base_color 1 0.0199999996 0.0199999996
+ specular 0.0500000007
+}
+
+standard_surface
+{
+ name myshader2
+ base_color myimage
+}
+
+image
+{
+ name myimage
+ filename "examples/leaves.jpg"
+ sscale 4
+ tscale 4
+}
+
+persp_camera
+{
+ name mycamera
+ position 0 10 35
+ look_at 0 3 0
+ fov 45
+}
+
+point_light
+{
+ name mylight
+ intensity 4500
+ position 15 30 15
+ radius 4
+}
+
+driver_jpeg
+{
+ name mydriver
+ filename "scene1.jpg"
+}
+
+gaussian_filter
+{
+ name myfilter
+}
+
